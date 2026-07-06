@@ -4,25 +4,72 @@
  */
 
 export const stats = [
-  { value: "260万+", label: "SNS総フォロワー", note: "けーさんとたろー関連" },
   { value: "150万+", label: "YouTube登録者", note: "関連チャンネル合計" },
   { value: "39億+", label: "YouTube総再生数", note: "関連チャンネル合計" },
-  { value: "1,200本+", label: "YouTube投稿数", note: "関連チャンネル合計" },
   { value: "10+", label: "関連チャンネル", note: "けーさんとたろー関連" },
-  { value: "50+", label: "月間制作本数", note: "編集チーム実績" },
 ] as const;
 
 export const channels = [
-  { name: "けーさんとたろー", description: "メインチャンネル", image: "/images/channels/main.jpg" },
-  { name: "けーさんとたろーの土曜日", description: "関連チャンネル", image: "/images/channels/saturday.jpg" },
-  { name: "けーさんとたろーのメンシプ", description: "関連チャンネル", image: "/images/channels/membership.jpg" },
-  { name: "けーさんとたろーの不動産", description: "関連チャンネル", image: "/images/channels/realestate.jpg" },
-  { name: "いただきます。", description: "関連チャンネル", image: "/images/channels/itadakimasu.jpg" },
-  { name: "Mr.蛙化キリュウのゲロゲロチャンネル", description: "関連チャンネル", image: "/images/channels/gerogero.jpg" },
-  { name: "けーさんが休みの日。", description: "関連チャンネル", image: "/images/channels/holiday.jpg" },
-  { name: "Mニキ日記", description: "関連チャンネル", image: "/images/channels/mniki.jpg" },
-  { name: "プリンス稲葉の台所", description: "関連チャンネル", image: "/images/channels/inaba.jpg" },
-  { name: "見習い画伯まーちゃん", description: "関連チャンネル", image: "/images/channels/marchan.jpg" },
+  {
+    name: "けーさんとたろー",
+    description: "メインチャンネル",
+    image: "/images/channels/main.jpg",
+    url: "https://youtube.com/@kesantotaro",
+  },
+  {
+    name: "けーさんとたろーの土曜日",
+    description: "関連チャンネル",
+    image: "/images/channels/saturday.jpg",
+    url: "https://youtube.com/channel/UCU-teYyHjG28Ih8GAIse3oA",
+  },
+  {
+    name: "けーさんとたろーのメンシプ",
+    description: "関連チャンネル",
+    image: "/images/channels/membership.jpg",
+    url: "https://youtube.com/@kesantotaro",
+  },
+  {
+    name: "けーさんとたろーの不動産",
+    description: "関連チャンネル",
+    image: "/images/channels/realestate.jpg",
+    url: "https://youtube.com/@ketarofudosan",
+  },
+  {
+    name: "いただきますっ。",
+    description: "関連チャンネル",
+    image: "/images/channels/itadakimasu.jpg",
+    url: "https://youtube.com/@itadakimasu_thank",
+  },
+  {
+    name: "Mr.蛙化キリュウのゲロゲロチャンネル",
+    description: "関連チャンネル",
+    image: "/images/channels/gerogero.jpg",
+    url: "https://youtube.com/channel/UC-ZuCG8ALlNoc7LnukJ-i6Q",
+  },
+  {
+    name: "けーさんが休みの日。",
+    description: "関連チャンネル",
+    image: "/images/channels/holiday.jpg",
+    url: "https://youtube.com/channel/UCZOPwy5luJvWuLTBY-wISIA",
+  },
+  {
+    name: "Mニキ日記",
+    description: "関連チャンネル",
+    image: "/images/channels/mniki.jpg",
+    url: "https://youtube.com/channel/UCAZ7ubYbQSi9z5V3ZW-5d-Q",
+  },
+  {
+    name: "プリンス稲葉の台所",
+    description: "関連チャンネル",
+    image: "/images/channels/inaba.jpg",
+    url: "https://youtube.com/@princeinabakitchen",
+  },
+  {
+    name: "見習い画伯まーちゃん",
+    description: "関連チャンネル",
+    image: "/images/channels/marchan.jpg",
+    url: "https://youtube.com/@oekakitanoc-masato",
+  },
 ] as const;
 
 export const problems = [

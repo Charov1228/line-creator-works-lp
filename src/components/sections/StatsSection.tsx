@@ -27,7 +27,7 @@ export function StatsSection() {
         />
       </AnimatedSection>
 
-      <StaggerContainer className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+      <StaggerContainer className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
         {stats.map((stat) => (
           <StaggerItem key={stat.label}>
             <div className="rounded-2xl border border-white/10 bg-black/50 p-6 text-center transition hover:border-line-green/30 hover:bg-card-hover">
@@ -48,9 +48,12 @@ export function StatsSection() {
         </h3>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-5">
           {channels.map((channel) => (
-            <div
+            <a
               key={channel.name}
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-black/50 transition hover:border-white/20"
+              href={channel.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group overflow-hidden rounded-2xl border border-white/10 bg-black/50 transition hover:border-line-green/30 hover:bg-card-hover"
             >
               <PlaceholderImage
                 src={channel.image}
@@ -59,12 +62,12 @@ export function StatsSection() {
                 rounded="none"
               />
               <div className="p-4">
-                <p className="font-semibold text-white group-hover:text-line-green transition">
+                <p className="font-semibold text-white transition group-hover:text-line-green">
                   {channel.name}
                 </p>
                 <p className="mt-1 text-sm text-white/50">{channel.description}</p>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </AnimatedSection>

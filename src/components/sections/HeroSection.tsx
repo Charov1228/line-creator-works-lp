@@ -43,29 +43,26 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-[1.75rem] leading-[1.3] font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem] lg:leading-[1.2]"
+              className="text-[1.75rem] leading-[1.35] font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem] lg:leading-[1.3]"
             >
-              <span className="block lg:inline">
+              <span className="block">
                 <span className="text-gradient-green">{siteConfig.brand}</span>
                 <span className="text-white">の</span>
               </span>
-              <span className="block lg:inline">動画編集スクール</span>
+              <span className="block">動画編集スクール</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-5 max-w-lg text-[0.9375rem] leading-[1.8] text-white/60 sm:text-base md:mt-6 md:text-lg md:leading-relaxed"
+              className="mt-5 max-w-lg text-[0.9375rem] leading-[1.8] text-white/60 sm:text-base md:mt-6 md:text-lg md:leading-[1.8]"
             >
-              <span className="block sm:inline">学んで終わりじゃない。</span>
-              <span className="block sm:inline sm:ml-0">
-                <span className="hidden sm:inline"> </span>
-                仕事につなげる、約2ヶ月の完全オンラインプログラム。
-              </span>
-              <span className="mt-2 block">
-                現役編集者が教え、卒業後も案件紹介制度でキャリアをサポートします。
-              </span>
+              学んで終わりじゃない。
+              <br />
+              仕事につなげる、約2ヶ月の完全オンラインプログラム。
+              <br />
+              現役編集者が教え、卒業後も案件紹介制度でキャリアをサポートします。
             </motion.p>
 
             <motion.div
@@ -121,8 +118,8 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="absolute -bottom-4 -left-2 rounded-2xl border border-white/10 bg-black/90 p-3 backdrop-blur-xl sm:-bottom-6 sm:-left-4 sm:p-4 md:-left-8"
             >
-              <p className="text-xl font-bold text-line-green sm:text-2xl">150万+</p>
-              <p className="text-[10px] text-white/50 sm:text-xs">YouTube登録者</p>
+              <p className="text-xl font-bold text-line-green sm:text-2xl">260万+</p>
+              <p className="text-[10px] text-white/50 sm:text-xs">SNS総フォロワー</p>
             </motion.div>
 
             <motion.div
