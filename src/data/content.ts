@@ -223,40 +223,35 @@ export const instructors = [
     role: "運営・講師",
     description: "サラリーマンYouTuber。けーさんとたろーチャンネル運営。編集チーム統括。",
     image: "/images/instructors/ke.jpg",
-    featured: true,
   },
   {
     name: "みなと",
     role: "編集講師",
-    description: "けーさんとたろーチャンネルの主力編集者。YouTube編集の実務を担当。",
+    description: "けーさんとたろーチャンネルの編集長。Mニキ日記も運営。",
     image: "/images/instructors/minato.jpg",
-    featured: false,
   },
   {
     name: "きりゅう",
     role: "編集講師",
-    description: "制作スタッフ。テロップ・モーショングラフィックスを専門とする。",
+    description: "けーさんとたろーのメンバー。Mr.蛙化キリュウのゲロゲロチャンネルも運営。",
     image: "/images/instructors/kiryu.jpg",
-    featured: false,
   },
   {
     name: "こうた",
     role: "編集講師",
-    description: "元スクワッド所属。現場経験豊富なクリエイター。フィードバック会を担当。",
+    description: "元スクワッド所属。現場経験豊富なクリエイター。",
     image: "/images/instructors/kota.jpg",
-    featured: false,
   },
   {
-    name: "編集スタッフ",
-    role: "制作チーム",
-    description: "けーさんとたろーの編集チームメンバーが教材制作・サポートを担当。",
+    name: "りょうたろう",
+    role: "運営",
+    description: "けーさんとたろーチャンネルの企画・編集を担当。",
     image: "/images/instructors/staff.jpg",
-    featured: false,
   },
 ] as const;
 
 export const advisor = {
-  name: "青笹",
+  name: "青笹 雅史",
   role: "公式アドバイザー",
   title: "動画編集キャンプ 代表",
   comment:

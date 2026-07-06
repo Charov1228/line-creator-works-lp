@@ -14,12 +14,9 @@ import {
 
 /**
  * 講師紹介セクション
- * けーさんを最上位に、青笹社長は後半で公式アドバイザーとして掲載
+ * 青笹社長は後半で公式アドバイザーとして掲載
  */
 export function InstructorsSection() {
-  const featured = instructors.filter((i) => i.featured);
-  const others = instructors.filter((i) => !i.featured);
-
   return (
     <SectionWrapper id="instructors" variant="card">
       <AnimatedSection>
@@ -30,36 +27,8 @@ export function InstructorsSection() {
         />
       </AnimatedSection>
 
-      {/* けーさん（大きく表示） */}
-      <StaggerContainer className="mb-12 grid gap-6 md:max-w-xl md:mx-auto">
-        {featured.map((instructor) => (
-          <StaggerItem key={instructor.name}>
-            <div className="overflow-hidden rounded-3xl border border-white/10 bg-black/50 transition hover:border-line-green/30">
-              <PlaceholderImage
-                src={instructor.image}
-                alt={instructor.name}
-                aspectRatio="aspect-[3/2]"
-                rounded="none"
-              />
-              <div className="p-6">
-                <div className="flex items-center gap-2">
-                  <h3 className="text-xl font-bold text-white">{instructor.name}</h3>
-                  <span className="rounded-full bg-line-green/10 px-2 py-0.5 text-xs text-line-green">
-                    {instructor.role}
-                  </span>
-                </div>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  {instructor.description}
-                </p>
-              </div>
-            </div>
-          </StaggerItem>
-        ))}
-      </StaggerContainer>
-
-      {/* その他講師 */}
-      <StaggerContainer className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-        {others.map((instructor) => (
+      <StaggerContainer className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-5">
+        {instructors.map((instructor) => (
           <StaggerItem key={instructor.name}>
             <div className="text-center">
               <PlaceholderImage
