@@ -23,10 +23,10 @@ export const channels = [
     url: "https://youtube.com/channel/UCU-teYyHjG28Ih8GAIse3oA",
   },
   {
-    name: "けーさんとたろーのメンシプ",
+    name: "元気マンTV",
     description: "関連チャンネル",
-    image: "/images/channels/membership.jpg",
-    url: "https://youtube.com/@kesantotaro",
+    image: "/images/channels/genkiman.jpg",
+    url: "https://www.youtube.com/@TV-se5vj",
   },
   {
     name: "けーさんとたろーの不動産",
