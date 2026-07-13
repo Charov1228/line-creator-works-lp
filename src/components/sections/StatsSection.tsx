@@ -55,14 +55,18 @@ export function StatsSection() {
               rel="noopener noreferrer"
               className="group flex flex-col items-center text-center"
             >
-              <div className="relative size-24 overflow-hidden rounded-full border border-white/10 bg-black transition group-hover:border-line-green/50 group-hover:shadow-[0_0_24px_rgba(6,199,85,0.25)] sm:size-28 md:size-32">
-                <Image
-                  src={channel.image}
-                  alt={channel.name}
-                  fill
-                  sizes="128px"
-                  className="object-cover transition duration-300 group-hover:scale-105"
-                />
+              <div className="rounded-full bg-gradient-to-br from-line-green via-[#c9a227]/70 to-line-green/40 p-[3px] transition group-hover:shadow-[0_0_28px_rgba(6,199,85,0.35)]">
+                <div className="rounded-full bg-black p-1">
+                  <div className="relative size-20 overflow-hidden rounded-full sm:size-24 md:size-28">
+                    <Image
+                      src={channel.image}
+                      alt={channel.name}
+                      fill
+                      sizes="112px"
+                      className="object-cover transition duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                </div>
               </div>
               <p className="mt-4 text-sm font-semibold leading-snug text-white transition group-hover:text-line-green md:text-base">
                 {channel.name}

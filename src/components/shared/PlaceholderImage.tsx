@@ -12,6 +12,7 @@ interface PlaceholderImageProps {
   className?: string;
   rounded?: "none" | "lg" | "full";
   priority?: boolean;
+  objectPosition?: string;
 }
 
 const roundedClassMap = {
@@ -35,6 +36,7 @@ export function PlaceholderImage({
   className,
   rounded = "lg",
   priority = false,
+  objectPosition = "center",
 }: PlaceholderImageProps) {
   const [hasError, setHasError] = useState(false);
   const roundedClass = roundedClassMap[rounded];
@@ -75,6 +77,7 @@ export function PlaceholderImage({
           alt={alt}
           fill
           className={cn("object-cover", roundedClass)}
+          style={{ objectPosition }}
           sizes="(max-width: 768px) 100vw, 50vw"
           priority={priority}
           onError={() => setHasError(true)}

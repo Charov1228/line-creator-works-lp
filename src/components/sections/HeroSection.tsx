@@ -1,10 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
 import { Logo } from "@/components/shared/Logo";
-import { PlaceholderImage } from "@/components/shared/PlaceholderImage";
 import { siteConfig } from "@/data/site-config";
 
 /**
@@ -102,14 +102,17 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            <div className="glow-green relative rounded-3xl border border-white/10 bg-card p-2">
-              <PlaceholderImage
-                src="/images/hero.jpg"
-                alt="けーさんとたろー 動画編集スクール"
-                aspectRatio="aspect-[4/3]"
-                rounded="lg"
-                priority
-              />
+            <div className="glow-green relative overflow-hidden rounded-3xl border border-white/10 bg-card p-2">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl sm:aspect-[4/3]">
+                <Image
+                  src="/images/hero.png"
+                  alt="けーさんとたろー 動画編集スクール"
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover object-top"
+                />
+              </div>
             </div>
 
             <motion.div

@@ -222,19 +222,19 @@ export const instructors = [
     name: "けーさん",
     role: "運営・講師",
     description: "サラリーマンYouTuber。けーさんとたろーチャンネル運営。編集チーム統括。",
-    image: "/images/instructors/ke.jpg",
+    image: "/images/instructors/ke.png",
   },
   {
     name: "みなと",
     role: "編集講師",
     description: "けーさんとたろーチャンネルの編集長。Mニキ日記も運営。",
-    image: "/images/instructors/minato.jpg",
+    image: "/images/instructors/minato.png",
   },
   {
     name: "きりゅう",
     role: "編集講師",
     description: "けーさんとたろーのメンバー。Mr.蛙化キリュウのゲロゲロチャンネルも運営。",
-    image: "/images/instructors/kiryu.jpg",
+    image: "/images/instructors/kiryu.png",
   },
   {
     name: "こうた",

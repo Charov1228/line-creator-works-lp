@@ -31,13 +31,17 @@ export function InstructorsSection() {
         {instructors.map((instructor) => (
           <StaggerItem key={instructor.name}>
             <div className="text-center">
-              <PlaceholderImage
-                src={instructor.image}
-                alt={instructor.name}
-                aspectRatio="aspect-square"
-                rounded="full"
-                className="mx-auto max-w-[160px]"
-              />
+              <div className="mx-auto max-w-[160px] rounded-full bg-gradient-to-br from-line-green via-[#c9a227]/60 to-line-green/40 p-[3px]">
+                <div className="rounded-full bg-black p-1">
+                  <PlaceholderImage
+                    src={instructor.image}
+                    alt={instructor.name}
+                    aspectRatio="aspect-square"
+                    rounded="full"
+                    objectPosition="center 18%"
+                  />
+                </div>
+              </div>
               <h4 className="mt-4 font-semibold text-white">{instructor.name}</h4>
               <p className="mt-1 text-xs text-line-green">{instructor.role}</p>
               <p className="mt-2 text-xs leading-relaxed text-white/50">

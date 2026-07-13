@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Check } from "lucide-react";
 import { curriculum } from "@/data/content";
 import {
@@ -26,6 +27,24 @@ export function CurriculumSection() {
           title="約2ヶ月で、現場レベルの編集スキルを"
           description="基礎から実践、そして仕事につなげるまで。段階的にスキルを積み上げるカリキュラムです。"
         />
+      </AnimatedSection>
+
+      <AnimatedSection className="mb-12 flex flex-wrap items-center justify-center gap-4 rounded-2xl border border-white/10 bg-card px-6 py-5">
+        <Image
+          src="/images/icons/premiere.png"
+          alt="Adobe Premiere Pro"
+          width={48}
+          height={48}
+          className="size-12 rounded-xl"
+        />
+        <div className="text-center sm:text-left">
+          <p className="text-sm font-semibold text-white">
+            メインツールは Adobe Premiere Pro
+          </p>
+          <p className="mt-1 text-xs text-white/50">
+            現場で最も使われる編集ソフトを、実践形式で習得します（DaVinci Resolve にも対応）
+          </p>
+        </div>
       </AnimatedSection>
 
       <div className="relative">
