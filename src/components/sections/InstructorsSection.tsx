@@ -36,7 +36,7 @@ export function InstructorsSection() {
                   <div
                     className={
                       instructor.name === "けーさん"
-                        ? "overflow-hidden rounded-full [&_img]:!scale-[2] [&_img]:!object-[center_0%] [&_img]:origin-top"
+                        ? "overflow-hidden rounded-full [&_img]:!scale-[1.7] [&_img]:!-translate-y-[18%] [&_img]:origin-center"
                         : "overflow-hidden rounded-full"
                     }
                   >
@@ -45,7 +45,11 @@ export function InstructorsSection() {
                       alt={instructor.name}
                       aspectRatio="aspect-square"
                       rounded="full"
-                      objectPosition={instructor.objectPosition}
+                      objectPosition={
+                        instructor.name === "けーさん"
+                          ? "center 45%"
+                          : instructor.objectPosition
+                      }
                     />
                   </div>
                 </div>

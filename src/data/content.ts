@@ -223,7 +223,7 @@ export const instructors = [
     role: "運営・講師",
     description: "サラリーマンYouTuber。けーさんとたろーチャンネル運営。編集チーム統括。",
     image: "/images/instructors/ke.png",
-    objectPosition: "center 0%",
+    objectPosition: "center 45%",
   },
   {
     name: "みなと",
@@ -237,7 +237,7 @@ export const instructors = [
     role: "編集講師",
     description: "けーさんとたろーのメンバー。Mr.蛙化キリュウのゲロゲロチャンネルも運営。",
     image: "/images/instructors/kiryu.png",
-    objectPosition: "center 18%",
+    objectPosition: "center 22%",
   },
   {
     name: "こうた",
