@@ -41,32 +41,28 @@ export function StatsSection() {
         ))}
       </StaggerContainer>
 
-      {/* 関連チャンネル（丸アイコン） */}
+      {/* 関連チャンネル */}
       <AnimatedSection className="mt-16">
         <h3 className="mb-10 text-center text-lg font-semibold text-white">
           関連チャンネル（10チャンネル以上）
         </h3>
-        <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 md:grid-cols-5 md:gap-x-6 md:gap-y-12">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5 md:gap-5">
           {channels.map((channel) => (
             <a
               key={channel.name}
               href={channel.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex flex-col items-center text-center"
+              className="group flex flex-col items-center rounded-2xl border border-white/15 bg-black/40 px-3 py-5 text-center transition hover:border-line-green/40 hover:bg-card-hover md:px-4 md:py-6"
             >
-              <div className="rounded-full bg-gradient-to-br from-line-green via-[#c9a227]/70 to-line-green/40 p-[3px] transition group-hover:shadow-[0_0_28px_rgba(6,199,85,0.35)]">
-                <div className="rounded-full bg-black p-1">
-                  <div className="relative size-20 overflow-hidden rounded-full sm:size-24 md:size-28">
-                    <Image
-                      src={channel.image}
-                      alt={channel.name}
-                      fill
-                      sizes="112px"
-                      className="object-cover transition duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                </div>
+              <div className="relative size-20 overflow-hidden rounded-full sm:size-24 md:size-28">
+                <Image
+                  src={channel.image}
+                  alt={channel.name}
+                  fill
+                  sizes="112px"
+                  className="object-cover transition duration-300 group-hover:scale-105"
+                />
               </div>
               <p className="mt-4 text-sm font-semibold leading-snug text-white transition group-hover:text-line-green md:text-base">
                 {channel.name}

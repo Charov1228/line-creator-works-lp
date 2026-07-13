@@ -223,30 +223,35 @@ export const instructors = [
     role: "運営・講師",
     description: "サラリーマンYouTuber。けーさんとたろーチャンネル運営。編集チーム統括。",
     image: "/images/instructors/ke.png",
+    objectPosition: "center 12%",
   },
   {
     name: "みなと",
     role: "編集講師",
     description: "けーさんとたろーチャンネルの編集長。Mニキ日記も運営。",
     image: "/images/instructors/minato.png",
+    objectPosition: "center 18%",
   },
   {
     name: "きりゅう",
     role: "編集講師",
     description: "けーさんとたろーのメンバー。Mr.蛙化キリュウのゲロゲロチャンネルも運営。",
     image: "/images/instructors/kiryu.png",
+    objectPosition: "center 18%",
   },
   {
     name: "こうた",
     role: "編集講師",
     description: "元スクワッド所属。現場経験豊富なクリエイター。",
     image: "/images/instructors/kota.jpg",
+    objectPosition: "center 18%",
   },
   {
     name: "りょうたろう",
     role: "運営",
     description: "けーさんとたろーチャンネルの企画・編集を担当。",
     image: "/images/instructors/staff.jpg",
+    objectPosition: "center 18%",
   },
 ] as const;
 

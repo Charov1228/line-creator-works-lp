@@ -31,15 +31,23 @@ export function InstructorsSection() {
         {instructors.map((instructor) => (
           <StaggerItem key={instructor.name}>
             <div className="text-center">
-              <div className="mx-auto max-w-[160px] rounded-full bg-gradient-to-br from-line-green via-[#c9a227]/60 to-line-green/40 p-[3px]">
-                <div className="rounded-full bg-black p-1">
-                  <PlaceholderImage
-                    src={instructor.image}
-                    alt={instructor.name}
-                    aspectRatio="aspect-square"
-                    rounded="full"
-                    objectPosition="center 18%"
-                  />
+              <div className="mx-auto max-w-[160px] overflow-hidden rounded-full bg-gradient-to-br from-line-green via-[#c9a227]/60 to-line-green/40 p-[3px]">
+                <div className="overflow-hidden rounded-full bg-black p-1">
+                  <div
+                    className={
+                      instructor.name === "けーさん"
+                        ? "overflow-hidden rounded-full [&_img]:!scale-[2.35] [&_img]:origin-[center_10%]"
+                        : "overflow-hidden rounded-full"
+                    }
+                  >
+                    <PlaceholderImage
+                      src={instructor.image}
+                      alt={instructor.name}
+                      aspectRatio="aspect-square"
+                      rounded="full"
+                      objectPosition={instructor.objectPosition}
+                    />
+                  </div>
                 </div>
               </div>
               <h4 className="mt-4 font-semibold text-white">{instructor.name}</h4>
