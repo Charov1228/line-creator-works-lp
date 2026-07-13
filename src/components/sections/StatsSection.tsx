@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { stats, channels } from "@/data/content";
 import {
   AnimatedSection,
@@ -10,7 +11,6 @@ import {
   SectionWrapper,
   SectionHeader,
 } from "@/components/shared/SectionWrapper";
-import { PlaceholderImage } from "@/components/shared/PlaceholderImage";
 
 /**
  * 実績紹介セクション
@@ -41,32 +41,33 @@ export function StatsSection() {
         ))}
       </StaggerContainer>
 
-      {/* 運営チャンネル */}
+      {/* 関連チャンネル（丸アイコン） */}
       <AnimatedSection className="mt-16">
-        <h3 className="mb-8 text-center text-lg font-semibold text-white">
+        <h3 className="mb-10 text-center text-lg font-semibold text-white">
           関連チャンネル（10チャンネル以上）
         </h3>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-5">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 md:grid-cols-5 md:gap-x-6 md:gap-y-12">
           {channels.map((channel) => (
             <a
               key={channel.name}
               href={channel.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group overflow-hidden rounded-2xl border border-white/10 bg-black/50 transition hover:border-line-green/30 hover:bg-card-hover"
+              className="group flex flex-col items-center text-center"
             >
-              <PlaceholderImage
-                src={channel.image}
-                alt={channel.name}
-                aspectRatio="aspect-video"
-                rounded="none"
-              />
-              <div className="p-4">
-                <p className="font-semibold text-white transition group-hover:text-line-green">
-                  {channel.name}
-                </p>
-                <p className="mt-1 text-sm text-white/50">{channel.description}</p>
+              <div className="relative size-24 overflow-hidden rounded-full border border-white/10 bg-black transition group-hover:border-line-green/50 group-hover:shadow-[0_0_24px_rgba(6,199,85,0.25)] sm:size-28 md:size-32">
+                <Image
+                  src={channel.image}
+                  alt={channel.name}
+                  fill
+                  sizes="128px"
+                  className="object-cover transition duration-300 group-hover:scale-105"
+                />
               </div>
+              <p className="mt-4 text-sm font-semibold leading-snug text-white transition group-hover:text-line-green md:text-base">
+                {channel.name}
+              </p>
+              <p className="mt-1 text-xs text-white/40">{channel.description}</p>
             </a>
           ))}
         </div>
