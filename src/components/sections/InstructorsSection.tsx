@@ -36,7 +36,7 @@ export function InstructorsSection() {
                   <div
                     className={
                       instructor.name === "けーさん"
-                        ? "overflow-hidden rounded-full [&_img]:!scale-[1.7] [&_img]:!-translate-y-[18%] [&_img]:origin-center"
+                        ? "overflow-hidden rounded-full [&_img]:!scale-[1.45] [&_img]:!-translate-y-[10%] [&_img]:origin-center"
                         : "overflow-hidden rounded-full"
                     }
                   >
