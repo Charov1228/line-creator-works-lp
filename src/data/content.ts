@@ -223,7 +223,7 @@ export const instructors = [
     role: "運営・講師",
     description: "サラリーマンYouTuber。けーさんとたろーチャンネル運営。編集チーム統括。",
     image: "/images/instructors/ke.png",
-    objectPosition: "center 8%",
+    objectPosition: "center 0%",
   },
   {
     name: "みなと",
