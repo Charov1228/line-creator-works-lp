@@ -110,7 +110,7 @@ export function HeroSection() {
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="scale-110 object-cover object-[center_35%] sm:scale-[1.2] sm:object-[center_38%]"
+                  className="object-cover object-center"
                 />
               </div>
             </div>
