@@ -14,7 +14,7 @@ export const siteConfig = {
     title:
       "Line Creator Works | けーさんとたろー公式 動画編集スクール",
     description:
-      "けーさんとたろーが運営する動画編集スクール。現役編集者が教え、卒業後も案件紹介制度でキャリアをサポート。完全オンライン・約2ヶ月集中プログラム。まずは公式LINEに登録。",
+      "けーさんとたろーが運営する動画編集スクール。未経験から仕事につながる編集スキルの習得を目指せます。現役編集者が指導し、卒業後は案件紹介の可能性も。まずは公式LINEから無料面談を。",
     ogImage: "/og-image.jpg",
     url: "https://line-creator-works.example.com",
   },

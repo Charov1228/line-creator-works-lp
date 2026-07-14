@@ -26,20 +26,21 @@ export function FinalCtaSection() {
             Get Started
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white md:text-5xl">
-            まずは、公式LINEに
+            まずは無料個別相談で、
             <br />
-            登録してください。
+            詳しく聞いてみませんか。
           </h2>
           <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-white/60 md:text-lg">
-            登録後、無料個別面談のご案内をお送りします。
+            公式LINEから無料面談を予約できます。
             {siteConfig.brand}の編集チームが直接お話を伺い、
-            あなたに最適なコースをご提案します。
+            あなたに合う学び方をご案内します。未経験の方もお気軽にご相談ください。
           </p>
 
           <div className="mt-10">
             <LineCtaButton
               size="xl"
-              sublabel="無料・30秒で登録完了 → 個別面談のご案内"
+              label="公式LINEから無料面談を予約する"
+              sublabel="公式LINE限定でスクールの詳細をご案内"
             />
           </div>
 

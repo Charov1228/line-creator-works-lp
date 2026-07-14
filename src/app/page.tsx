@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { OpeningAnimation } from "@/components/shared/OpeningAnimation";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProblemsSection } from "@/components/sections/ProblemsSection";
+import { BenefitsSection } from "@/components/sections/BenefitsSection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import { WhySection } from "@/components/sections/WhySection";
@@ -30,6 +31,7 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <ProblemsSection />
+        <BenefitsSection />
         <TestimonialsSection />
         <StatsSection />
         <WhySection />

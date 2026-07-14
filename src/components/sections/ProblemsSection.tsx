@@ -22,7 +22,7 @@ export function ProblemsSection() {
         <SectionHeader
           label="For You"
           title="こんな悩み、ありませんか？"
-          description="動画編集を学びたい。でも、何から始めればいいかわからない。そんな方のために、このスクールは作られました。"
+          description="動画編集を学びたい。でも、何から始めればいいかわからない。副業や在宅での働き方を本気で考えている方のために、このスクールは作られました。"
         />
       </AnimatedSection>
 

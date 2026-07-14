@@ -9,7 +9,7 @@ import { siteConfig } from "@/data/site-config";
 
 /**
  * ファーストビュー
- * けーさんとたろーのスクールであることを1画面で明確に訴求
+ * 受講後の未来 → 特徴 → CTA → けーさんとたろーの安心感、の順で視線誘導
  */
 export function HeroSection() {
   return (
@@ -20,8 +20,8 @@ export function HeroSection() {
 
       <div className="relative mx-auto flex min-h-[calc(100vh-5rem)] max-w-6xl flex-col justify-center px-5 py-12 md:px-8 md:py-20">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+          {/* 左：ブランド → 未来コピー → 特徴 → CTA */}
           <div>
-            {/* ブランドロゴ＋スクール名 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -31,10 +31,10 @@ export function HeroSection() {
               <Logo size="lg" />
               <div>
                 <p className="text-xs font-medium tracking-wider text-line-green md:text-sm">
-                  {siteConfig.brand}
+                  {siteConfig.brand} 公式
                 </p>
                 <p className="text-lg font-bold text-white md:text-xl">
-                  公式 動画編集スクール
+                  Line Creator Works
                 </p>
               </div>
             </motion.div>
@@ -43,13 +43,13 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-[1.75rem] leading-[1.35] font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.25rem] lg:leading-[1.3]"
+              className="text-[1.75rem] leading-[1.35] font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.1rem] lg:leading-[1.25]"
             >
-              <span className="block">
-                <span className="text-gradient-green">{siteConfig.brand}</span>
-                <span className="text-white">の</span>
+              <span className="block">学ぶだけで終わらない。</span>
+              <span className="mt-1 block">
+                <span className="text-gradient-green">動画編集を仕事にする</span>
               </span>
-              <span className="block">動画編集スクール</span>
+              <span className="mt-1 block">約2ヶ月。</span>
             </motion.h1>
 
             <motion.p
@@ -58,11 +58,9 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-5 max-w-lg text-[0.9375rem] leading-[1.8] text-white/60 sm:text-base md:mt-6 md:text-lg md:leading-[1.8]"
             >
-              学んで終わりじゃない。
-              <br />
-              仕事につなげる、約2ヶ月の完全オンラインプログラム。
-              <br />
-              現役編集者が教え、卒業後も案件紹介制度でキャリアをサポートします。
+              未経験から、副業や在宅で使える編集スキルの習得を目指せます。
+              <br className="hidden sm:block" />
+              現役編集者が教え、卒業後はスキルに応じた案件紹介の可能性もあります。
             </motion.p>
 
             <motion.div
@@ -71,16 +69,19 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-6 flex flex-wrap gap-2 md:mt-8 md:gap-3"
             >
-              {["完全オンライン", "初心者歓迎", "現役編集者が指導", "案件紹介制度あり"].map(
-                (badge) => (
-                  <span
-                    key={badge}
-                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70"
-                  >
-                    {badge}
-                  </span>
-                )
-              )}
+              {[
+                "初心者・未経験歓迎",
+                "完全オンライン",
+                "現役編集者が指導",
+                "卒業後は案件紹介の可能性",
+              ].map((badge) => (
+                <span
+                  key={badge}
+                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70"
+                >
+                  {badge}
+                </span>
+              ))}
             </motion.div>
 
             <motion.div
@@ -91,49 +92,47 @@ export function HeroSection() {
             >
               <LineCtaButton
                 size="xl"
-                sublabel="無料登録 → 個別面談のご案内"
+                label="公式LINEから無料面談を予約する"
+                sublabel="未経験でも大丈夫？個別相談で詳しくご案内"
               />
             </motion.div>
           </div>
 
+          {/* 右：けーさんとたろーの安心感（画像） */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
+            <div className="absolute -top-2 right-0 z-10 sm:-top-3 sm:right-2">
+              <div className="rounded-full border border-line-green/30 bg-black/85 px-3 py-1.5 backdrop-blur-md sm:px-4 sm:py-2">
+                <p className="text-[10px] font-medium tracking-wider text-line-green sm:text-xs">
+                  {siteConfig.brand} 運営
+                </p>
+              </div>
+            </div>
+
             <div className="glow-green relative overflow-hidden rounded-3xl border border-white/10 bg-card p-2">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl sm:aspect-[4/3]">
                 <Image
                   src="/images/hero.png"
-                  alt="けーさんとたろー 動画編集スクール"
+                  alt="けーさんとたろー —— 動画編集を仕事にする第一歩"
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover object-center"
                 />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-4 pb-4 pt-16 sm:px-5 sm:pb-5">
+                  <p className="text-sm font-semibold text-white sm:text-base">
+                    好きな場所で学べる、新しい働き方へ。
+                  </p>
+                  <p className="mt-1 text-xs text-white/60 sm:text-sm">
+                    現場の編集チームが、あなたの成長をサポートします。
+                  </p>
+                </div>
               </div>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="absolute -bottom-4 -left-2 rounded-2xl border border-white/10 bg-black/90 p-3 backdrop-blur-xl sm:-bottom-6 sm:-left-4 sm:p-4 md:-left-8"
-            >
-              <p className="text-xl font-bold text-line-green sm:text-2xl">260万+</p>
-              <p className="text-[10px] text-white/50 sm:text-xs">SNS総フォロワー</p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              className="absolute -top-3 -right-2 rounded-2xl border border-white/10 bg-black/90 p-3 backdrop-blur-xl sm:-top-4 sm:-right-4 sm:p-4"
-            >
-              <p className="text-xl font-bold text-line-green sm:text-2xl">39億+</p>
-              <p className="text-[10px] text-white/50 sm:text-xs">YouTube総再生数</p>
-            </motion.div>
           </motion.div>
         </div>
 

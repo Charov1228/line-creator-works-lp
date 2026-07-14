@@ -66,7 +66,10 @@ export function WhySection() {
       </div>
 
       <AnimatedSection className="mt-12 flex justify-center">
-        <LineCtaButton sublabel="まずは公式LINEで詳細を確認" />
+        <LineCtaButton
+          label="まずは無料個別相談で詳しく聞いてみる"
+          sublabel="まずは公式LINEで詳細を確認"
+        />
       </AnimatedSection>
     </SectionWrapper>
   );

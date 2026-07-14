@@ -20,7 +20,7 @@ export function CareerSection() {
         <SectionHeader
           label="After Graduation"
           title="卒業は、スタート地点"
-          description="多くのスクールは卒業で終わり。私たちは卒業後のキャリアまで見据えています。"
+          description="多くのスクールは卒業で終わり。私たちは卒業後も、スキルに応じた案件紹介の可能性や、関連案件に携われるチャンスまで見据えています。"
         />
       </AnimatedSection>
 
@@ -51,12 +51,12 @@ export function CareerSection() {
           </h3>
           <div className="flex flex-col items-center gap-4 md:flex-row md:justify-center md:gap-0">
             {[
-              "公式LINE登録",
+              "公式LINEで面談予約",
               "無料個別面談",
               "スクール受講",
               "卒業",
               "コミュニティ継続",
-              "案件紹介",
+              "スキルに応じた案件紹介",
             ].map((step, index, arr) => (
               <div key={step} className="flex items-center">
                 <div className="rounded-xl border border-line-green/30 bg-line-green/10 px-4 py-3 text-center">
@@ -73,7 +73,10 @@ export function CareerSection() {
       </AnimatedSection>
 
       <AnimatedSection className="mt-12 flex justify-center">
-        <LineCtaButton sublabel="キャリアの詳細は個別面談でご説明" />
+        <LineCtaButton
+          label="キャリアの相談は無料面談で"
+          sublabel="案件紹介の仕組みも個別にご説明"
+        />
       </AnimatedSection>
     </SectionWrapper>
   );

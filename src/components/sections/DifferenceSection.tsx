@@ -30,7 +30,7 @@ export function DifferenceSection() {
         <SectionHeader
           label="Why Us"
           title="一般的なスクールとの違い"
-          description="「動画編集を教える」だけの場所は、たくさんあります。私たちは「仕事につなげる」まで設計しています。"
+          description="「動画編集を教える」だけの場所は、たくさんあります。私たちは学んで終わりではなく、実際の仕事につながる環境づくりを大切にしています。"
         />
       </AnimatedSection>
 
@@ -72,7 +72,8 @@ export function DifferenceSection() {
               {[
                 ["教材の質", "汎用的なカリキュラム", "現場で使われるノウハウ"],
                 ["講師", "専業講師が中心", "現役編集者・制作スタッフ"],
-                ["卒業後", "修了で終了", "コミュニティ継続・案件紹介"],
+                ["卒業後", "修了で終了", "スキルに応じた案件紹介の可能性"],
+                ["関わり方", "教材中心の学習", "関連案件に携われるチャンスも"],
                 ["運営", "教育会社", "動画編集会社が直接運営"],
               ].map(([item, general, ours]) => (
                 <tr key={item} className="border-b border-white/5">

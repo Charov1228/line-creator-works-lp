@@ -15,72 +15,84 @@ export const channels = [
     description: "メインチャンネル",
     image: "/images/channels/main.png",
     url: "https://youtube.com/@kesantotaro",
+    subscribers: "151万人",
   },
   {
     name: "けーさんとたろーの土曜日",
     description: "関連チャンネル",
     image: "/images/channels/saturday.png",
     url: "https://youtube.com/channel/UCU-teYyHjG28Ih8GAIse3oA",
+    subscribers: "13.4万人",
   },
   {
     name: "元気マンTV",
     description: "関連チャンネル",
     image: "/images/channels/genkiman.png",
     url: "https://www.youtube.com/@TV-se5vj",
+    subscribers: "2.6万人",
   },
   {
     name: "けーさんとたろーの不動産",
     description: "関連チャンネル",
     image: "/images/channels/realestate.png",
     url: "https://youtube.com/@ketarofudosan",
+    subscribers: "3.5万人",
   },
   {
     name: "いただきますっ。",
     description: "関連チャンネル",
     image: "/images/channels/itadakimasu.png",
     url: "https://youtube.com/@itadakimasu_thank",
+    subscribers: "3.8万人",
   },
   {
     name: "Mr.蛙化キリュウのゲロゲロチャンネル",
     description: "関連チャンネル",
     image: "/images/channels/gerogero.png",
     url: "https://youtube.com/channel/UC-ZuCG8ALlNoc7LnukJ-i6Q",
+    subscribers: "2.2万人",
   },
   {
     name: "けーさんが休みの日。",
     description: "関連チャンネル",
     image: "/images/channels/holiday.png",
     url: "https://youtube.com/channel/UCZOPwy5luJvWuLTBY-wISIA",
+    subscribers: "4.9万人",
   },
   {
     name: "Mニキ日記",
     description: "関連チャンネル",
     image: "/images/channels/mniki.png",
     url: "https://youtube.com/channel/UCAZ7ubYbQSi9z5V3ZW-5d-Q",
+    subscribers: "1.0万人",
   },
   {
     name: "プリンス稲葉の台所",
     description: "関連チャンネル",
     image: "/images/channels/inaba.png",
     url: "https://youtube.com/@princeinabakitchen",
+    subscribers: "2.6万人",
   },
   {
     name: "見習い画伯まーちゃん",
     description: "関連チャンネル",
     image: "/images/channels/marchan.png",
     url: "https://youtube.com/@oekakitanoc-masato",
+    subscribers: "1.2万人",
   },
   {
     name: "こたこた",
     description: "関連チャンネル",
     image: "/images/channels/kotakota.png",
     url: "https://youtube.com/@kotakotaa_a",
+    subscribers: "7.5万人",
   },
   {
     name: "スクワッド",
     description: "関連チャンネル",
     image: "/images/channels/squad.png",
     url: "https://youtube.com/@squad.1998",
+    subscribers: "78.8万人",
   },
 ] as const;
 
@@ -100,6 +112,40 @@ export const problems = [
     description:
       "「動画編集で稼ぎたい」「会社員のまま副業を始めたい」。意欲はあるのに、どのスクールを選べばいいか、本当に仕事につながるのか——判断材料が足りなくて、ずっと迷っている。",
   },
+] as const;
+
+/** 受講後に目指せる変化（断定・収益保証は避ける） */
+export const benefits = [
+  {
+    title: "副業の第一歩を踏み出せる",
+    description:
+      "動画編集スキルを身につけ、会社員のまま副業を始める土台をつくれます。",
+  },
+  {
+    title: "在宅で使えるスキルを学べる",
+    description:
+      "場所を選ばず取り組める編集スキルを、約2ヶ月のオンライン学習で習得できます。",
+  },
+  {
+    title: "実案件へ挑戦できる可能性がある",
+    description:
+      "スキルや適性に応じて、卒業後に案件紹介を受けられる仕組みがあります。",
+  },
+  {
+    title: "未経験から、仕事につながる一歩へ",
+    description:
+      "ゼロからの学習でも、動画編集を仕事にするための実践力を目指せます。",
+  },
+] as const;
+
+/** 向いている人（初心者歓迎は維持しつつ具体化） */
+export const targetAudiences = [
+  "副業を始めたい会社員の方",
+  "在宅ワークを目指している方",
+  "家事や育児と両立して働きたい主婦・主夫の方",
+  "動画編集を仕事にしたい学生の方",
+  "未経験から新しいスキルを身につけたい方",
+  "将来的にフリーランスを目指したい方",
 ] as const;
 
 export const testimonials = [
@@ -130,13 +176,13 @@ export const differences = [
   {
     title: "学んで終わりにしない",
     description:
-      "一般的なスクールはカリキュラム修了で卒業。私たちは動画編集会社として案件を受注しており、卒業後もコミュニティを通じて実務につなげる環境があります。",
+      "一般的なスクールはカリキュラム修了で卒業。私たちは動画編集会社として案件を受注しており、卒業後もコミュニティを通じて、実際の仕事につながる環境を目指します。",
     icon: "target" as const,
   },
   {
     title: "現場で使われるノウハウ",
     description:
-      "教材はけーさんとたろーの編集チームが制作。YouTubeで毎日使われているワークフロー・テロップ・カット設計を、そのまま学べます。",
+      "教材はけーさんとたろーの編集チームが制作。YouTubeで毎日使われているワークフロー・テロップ・カット設計を、そのまま学べます。実際の仕事を意識した実践的な学習ができます。",
     icon: "video" as const,
   },
   {
@@ -146,9 +192,9 @@ export const differences = [
     icon: "users" as const,
   },
   {
-    title: "案件紹介制度",
+    title: "スキルに応じた案件紹介",
     description:
-      "弊社が受注した案件を、スキルと意欲に応じてコミュニティ内で紹介。採用・収入の保証ではありませんが、仕事につながる道筋は用意しています。",
+      "卒業後は、スキルや適性に応じて実案件をご紹介できる可能性があります。けーさんとたろーに関連する動画編集案件に携われるチャンスもあります（紹介・採用・収入の保証ではありません）。",
     icon: "briefcase" as const,
   },
 ] as const;
@@ -213,9 +259,9 @@ export const communityFeatures = [
 
 export const careerPoints = [
   {
-    title: "案件紹介制度",
+    title: "スキルに応じた案件紹介",
     description:
-      "弊社が受注した動画編集案件を、スキルと意欲を評価した上でコミュニティ内で紹介。案件の内容・報酬・条件は案件ごとに異なります。",
+      "卒業後、スキルや適性に応じて実案件をご紹介できる可能性があります。けーさんとたろーに関連する案件に携われるチャンスもあります。内容・報酬・条件は案件ごとに異なり、紹介を保証するものではありません。",
   },
   {
     title: "コミュニティ内キャリア支援",

@@ -25,7 +25,7 @@ export function LineCtaButton({
   size = "lg",
   variant = "default",
   className,
-  label = "公式LINEに登録する",
+  label = "公式LINEから無料面談を予約する",
   sublabel,
   fullWidth = false,
 }: LineCtaButtonProps) {
@@ -41,7 +41,7 @@ export function LineCtaButton({
           href={siteConfig.lineUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`${siteConfig.brand}公式LINEに登録する`}
+          aria-label={label}
         >
           <MessageCircle className="size-5" />
           {label}

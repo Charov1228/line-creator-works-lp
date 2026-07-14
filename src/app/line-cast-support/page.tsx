@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
-  ArrowLeft,
   Film,
   GraduationCap,
   Handshake,
@@ -17,7 +15,6 @@ import {
   SectionHeader,
 } from "@/components/shared/SectionWrapper";
 import { lineCastSupport } from "@/data/line-cast-support";
-import { siteConfig } from "@/data/site-config";
 
 export const metadata: Metadata = {
   title: `${lineCastSupport.companyName} | 事業概要`,
@@ -35,7 +32,7 @@ const serviceIcons = {
 export default function LineCastSupportPage() {
   return (
     <>
-      <Header />
+      <Header variant="company" />
       <main>
         {/* ヒーロー */}
         <section className="relative overflow-hidden bg-black pt-28 pb-16 md:pt-36 md:pb-24">
@@ -43,14 +40,6 @@ export default function LineCastSupportPage() {
           <div className="absolute top-1/3 left-1/2 size-[500px] -translate-x-1/2 rounded-full bg-line-green/5 blur-[120px]" />
 
           <div className="relative mx-auto max-w-6xl px-5 md:px-8">
-            <Link
-              href="/"
-              className="mb-8 inline-flex items-center gap-2 text-sm text-white/50 transition hover:text-white"
-            >
-              <ArrowLeft className="size-4" />
-              スクールTOPに戻る
-            </Link>
-
             <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-start md:text-left">
               <Logo size="xl" />
               <div className="flex-1">
