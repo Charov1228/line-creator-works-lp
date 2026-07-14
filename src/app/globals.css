@@ -98,6 +98,30 @@ body {
   box-shadow: 0 0 60px rgba(6, 199, 85, 0.15);
 }
 
+/* 関連チャンネルの横スクロール */
+@keyframes channel-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.channel-marquee {
+  animation: channel-marquee 45s linear infinite;
+}
+
+.channel-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .channel-marquee {
+    animation: none;
+  }
+}
+
 /* スクロールバー */
 ::-webkit-scrollbar {
   width: 6px;

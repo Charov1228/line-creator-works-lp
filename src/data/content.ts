@@ -6,7 +6,7 @@
 export const stats = [
   { value: "150万+", label: "YouTube登録者", note: "関連チャンネル合計" },
   { value: "39億+", label: "YouTube総再生数", note: "関連チャンネル合計" },
-  { value: "10+", label: "関連チャンネル", note: "けーさんとたろー関連" },
+  { value: "12", label: "関連チャンネル", note: "けーさんとたろー関連" },
 ] as const;
 
 export const channels = [
@@ -69,6 +69,18 @@ export const channels = [
     description: "関連チャンネル",
     image: "/images/channels/marchan.png",
     url: "https://youtube.com/@oekakitanoc-masato",
+  },
+  {
+    name: "こたこた",
+    description: "関連チャンネル",
+    image: "/images/channels/kotakota.png",
+    url: "https://youtube.com/@kotakotaa_a",
+  },
+  {
+    name: "スクワッド",
+    description: "関連チャンネル",
+    image: "/images/channels/squad.png",
+    url: "https://youtube.com/@squad.1998",
   },
 ] as const;
 
@@ -243,8 +255,8 @@ export const instructors = [
     name: "こうた",
     role: "編集講師",
     description: "元スクワッド所属。現場経験豊富なクリエイター。",
-    image: "/images/instructors/kota.jpg",
-    objectPosition: "center 18%",
+    image: "/images/instructors/kota.png",
+    objectPosition: "center 20%",
   },
   {
     name: "りょうたろう",
