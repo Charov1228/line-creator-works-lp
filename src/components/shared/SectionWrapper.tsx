@@ -1,8 +1,9 @@
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface SectionWrapperProps {
   id?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   /** 背景バリエーション */
   variant?: "default" | "card" | "gradient";
@@ -34,8 +35,8 @@ export function SectionWrapper({
 
 interface SectionHeaderProps {
   label?: string;
-  title: string;
-  description?: string;
+  title: ReactNode;
+  description?: ReactNode;
   align?: "left" | "center";
 }
 

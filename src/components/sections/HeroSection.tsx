@@ -47,9 +47,9 @@ export function HeroSection() {
             >
               <span className="block">学ぶだけで終わらない。</span>
               <span className="mt-1 block">
-                <span className="text-gradient-green">動画編集を仕事にする</span>
+                <span className="text-gradient-green">仕事で使えるスキル</span>
+                <span className="text-white">へ。</span>
               </span>
-              <span className="mt-1 block">約2ヶ月。</span>
             </motion.h1>
 
             <motion.p
@@ -58,26 +58,26 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-5 max-w-lg text-[0.9375rem] leading-[1.8] text-white/60 sm:text-base md:mt-6 md:text-lg md:leading-[1.8]"
             >
-              未経験から、副業や在宅で使える編集スキルの習得を目指せます。
-              <br className="hidden sm:block" />
-              現役編集者が教え、卒業後はスキルに応じた案件紹介の可能性もあります。
+              現役編集者が教え、
+              <br />
+              卒業後はスキルに応じた案件紹介が出来ます。
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 flex flex-wrap gap-2 md:mt-8 md:gap-3"
+              className="mt-6 flex flex-nowrap gap-2 overflow-x-auto pb-1 md:mt-8 md:gap-3"
             >
               {[
                 "初心者・未経験歓迎",
                 "完全オンライン",
                 "現役編集者が指導",
-                "卒業後は案件紹介の可能性",
+                "案件紹介",
               ].map((badge) => (
                 <span
                   key={badge}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs text-white/70"
+                  className="shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs whitespace-nowrap text-white/70"
                 >
                   {badge}
                 </span>
@@ -93,7 +93,7 @@ export function HeroSection() {
               <LineCtaButton
                 size="xl"
                 label="公式LINEから無料面談を予約する"
-                sublabel="未経験でも大丈夫？個別相談で詳しくご案内"
+                sublabel="個別相談で詳しくご案内"
               />
             </motion.div>
           </div>

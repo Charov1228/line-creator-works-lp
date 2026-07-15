@@ -30,7 +30,13 @@ export function DifferenceSection() {
         <SectionHeader
           label="Why Us"
           title="一般的なスクールとの違い"
-          description="「動画編集を教える」だけの場所は、たくさんあります。私たちは学んで終わりではなく、実際の仕事につながる環境づくりを大切にしています。"
+          description={
+            <>
+              「動画編集を教える」だけの場所は、たくさんあります。
+              <br />
+              私たちは学んで終わりではなく、実際の仕事につながる環境づくりを大切にしています。
+            </>
+          }
         />
       </AnimatedSection>
 

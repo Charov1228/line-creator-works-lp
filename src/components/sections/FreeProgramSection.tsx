@@ -37,7 +37,15 @@ export function FreeProgramSection() {
         <SectionHeader
           label="Talent Development"
           title="実務レベルまで育てる、長期育成プログラム"
-          description="けーさんとたろーでは人材派遣事業も行っています。一定の条件を満たし、長期的に稼働いただける方には、受講料を実質負担なく学べる制度をご用意しています。"
+          description={
+            <>
+              けーさんとたろーでは人材派遣事業も行っています。
+              <br />
+              一定の条件を満たし長期的に稼働いただける方には、
+              <br />
+              受講料を実質負担なく学べる制度をご用意しています。
+            </>
+          }
         />
       </AnimatedSection>
 

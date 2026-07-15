@@ -39,7 +39,13 @@ export function WhySection() {
         <SectionHeader
           label="Our Story"
           title="なぜ、このスクールを作ったのか"
-          description="YouTubeチャンネルを運営し、動画編集会社として案件を受注する——その現場から生まれたスクールです。"
+          description={
+            <>
+              YouTubeチャンネルを運営し、動画編集会社として案件を受注する——
+              <br />
+              その現場から生まれたスクールです。
+            </>
+          }
         />
       </AnimatedSection>
 

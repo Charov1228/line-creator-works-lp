@@ -25,7 +25,13 @@ export function CurriculumSection() {
         <SectionHeader
           label="Curriculum"
           title="約2ヶ月で、現場レベルの編集スキルを"
-          description="基礎から実践、そして仕事につなげるまで。段階的にスキルを積み上げるカリキュラムです。"
+          description={
+            <>
+              基礎から実践、そして仕事につなげるまで。
+              <br />
+              段階的にスキルを積み上げるカリキュラムです。
+            </>
+          }
         />
       </AnimatedSection>
 

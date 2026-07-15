@@ -22,8 +22,22 @@ export function FeedbackSection() {
         <AnimatedSection>
           <SectionHeader
             label="Feedback Session"
-            title="現役編集者が、あなたの作品に直接フィードバック"
-            description="教科書を読むだけじゃない。普段実際に動画を作っているクリエイターが、あなたの課題を見て、具体的にアドバイスします。"
+            title={
+              <>
+                現役編集者による
+                <br />
+                フィードバック
+              </>
+            }
+            description={
+              <>
+                教科書を読むだけじゃない。
+                <br />
+                普段実際に動画を作っているクリエイターが、
+                <br />
+                あなたの課題に具体的にアドバイスします。
+              </>
+            }
             align="left"
           />
 

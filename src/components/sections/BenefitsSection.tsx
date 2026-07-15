@@ -23,18 +23,24 @@ export function BenefitsSection() {
         <SectionHeader
           label="Your Future"
           title="受講後に、目指せる未来"
-          description="断定や収入保証はありません。それでも、未経験から動画編集を仕事にする第一歩として、次のような変化を目指せます。"
+          description={
+            <>
+              断定や収入保証はありません。
+              <br />
+              それでも未経験から動画編集を仕事にする第一歩として、次のような変化を目指せます。
+            </>
+          }
         />
       </AnimatedSection>
 
-      <StaggerContainer className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <StaggerContainer className="mx-auto grid max-w-4xl gap-5 sm:grid-cols-2">
         {benefits.map((benefit, index) => (
           <StaggerItem key={benefit.title}>
-            <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-black/50 p-6 transition hover:border-line-green/25 md:p-7">
+            <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-black/50 p-6 transition hover:border-line-green/25 md:p-8">
               <span className="text-sm font-medium text-line-green/50">
                 0{index + 1}
               </span>
-              <h3 className="mt-3 text-lg font-bold text-white">
+              <h3 className="mt-3 text-lg font-bold whitespace-nowrap text-white md:text-xl">
                 {benefit.title}
               </h3>
               <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">
@@ -54,7 +60,9 @@ export function BenefitsSection() {
             こんな方に向いています
           </h3>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-white/50 md:text-base">
-            初心者・未経験の方を歓迎しています。特に、次のような目標をお持ちの方にフィットしやすいスクールです。
+            初心者・未経験の方を歓迎しています。
+            <br />
+            特に、次のような目標をお持ちの方にフィットしやすいスクールです。
           </p>
           <ul className="mx-auto mt-8 grid max-w-4xl gap-3 sm:grid-cols-2 md:grid-cols-3">
             {targetAudiences.map((item) => (

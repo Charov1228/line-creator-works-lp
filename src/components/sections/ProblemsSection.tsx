@@ -22,7 +22,13 @@ export function ProblemsSection() {
         <SectionHeader
           label="For You"
           title="こんな悩み、ありませんか？"
-          description="動画編集を学びたい。でも、何から始めればいいかわからない。副業や在宅での働き方を本気で考えている方のために、このスクールは作られました。"
+          description={
+            <>
+              動画編集を学びたい。でも、何から始めればいいかわからない。
+              <br />
+              新しい働き方を本気で考えている方のために、このスクールは作られました。
+            </>
+          }
         />
       </AnimatedSection>
 
@@ -33,7 +39,7 @@ export function ProblemsSection() {
               <span className="mb-4 text-sm font-medium text-line-green/60">
                 0{index + 1}
               </span>
-              <h3 className="text-lg font-bold text-white md:text-xl">
+              <h3 className="whitespace-pre-line text-lg font-bold text-white md:text-xl">
                 {problem.title}
               </h3>
               <p className="mt-4 flex-1 text-sm leading-relaxed text-white/60 md:text-base">

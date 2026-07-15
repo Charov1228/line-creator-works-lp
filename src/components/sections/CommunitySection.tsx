@@ -21,7 +21,13 @@ export function CommunitySection() {
         <SectionHeader
           label="Community"
           title="一人じゃない。仲間と一緒に成長する"
-          description="受講期間中も卒業後も、コミュニティに参加し続けられます。案件情報の共有、スキルアップの情報交換、切磋琢磨の場。"
+          description={
+            <>
+              受講期間中も卒業後も、コミュニティに参加し続けられます。
+              <br />
+              案件情報の共有、スキルアップの情報交換、切磋琢磨の場。
+            </>
+          }
         />
       </AnimatedSection>
 

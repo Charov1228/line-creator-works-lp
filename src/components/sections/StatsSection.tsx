@@ -42,7 +42,13 @@ export function StatsSection() {
         <SectionHeader
           label="Track Record"
           title="けーさんとたろー関連の実績"
-          description="YouTubeで培った編集ノウハウと、大量の動画制作実績。だからこそ、現場で通用するスクールが作れます。"
+          description={
+            <>
+              YouTubeで培った編集ノウハウと、大量の動画制作実績。
+              <br />
+              だからこそ現場で通用するスクールが作れます。
+            </>
+          }
         />
       </AnimatedSection>
 

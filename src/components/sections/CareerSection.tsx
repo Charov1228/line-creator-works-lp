@@ -20,7 +20,15 @@ export function CareerSection() {
         <SectionHeader
           label="After Graduation"
           title="卒業は、スタート地点"
-          description="多くのスクールは卒業で終わり。私たちは卒業後も、スキルに応じた案件紹介の可能性や、関連案件に携われるチャンスまで見据えています。"
+          description={
+            <>
+              私たちは卒業後も、
+              <br />
+              スキルに応じた案件紹介や、
+              <br />
+              けーさんとたろー関連の案件に携われるチャンスまで見据えています。
+            </>
+          }
         />
       </AnimatedSection>
 

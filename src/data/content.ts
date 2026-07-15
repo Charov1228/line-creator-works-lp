@@ -4,9 +4,9 @@
  */
 
 export const stats = [
-  { value: "150万+", label: "YouTube登録者", note: "関連チャンネル合計" },
-  { value: "39億+", label: "YouTube総再生数", note: "関連チャンネル合計" },
-  { value: "12", label: "関連チャンネル", note: "けーさんとたろー関連" },
+  { value: "260万+", label: "SNS総フォロワー数", note: "けーさんとたろー関連" },
+  { value: "150万+", label: "YouTube登録者", note: "メインチャンネル" },
+  { value: "39億+", label: "YouTube総再生数", note: "メインチャンネル" },
 ] as const;
 
 export const channels = [
@@ -98,12 +98,12 @@ export const channels = [
 
 export const problems = [
   {
-    title: "独学のまま、正しい方向かわからない",
+    title: "独学のまま、\n正しい方向かわからない",
     description:
       "YouTubeやSNSで情報を集めても、何から手をつければいいか迷う。テロップの入れ方、カットのテンポ、音の設計——「これで合ってるのか」がいつまでも判断できない。",
   },
   {
-    title: "スクールに通ったのに、仕事につながらなかった",
+    title: "スクールに通ったのに、\n仕事につながらなかった",
     description:
       "動画編集スクールは世の中にたくさんある。でも卒業後、実際に案件をもらえた人はどれだけいるだろう。学んだ内容と、現場で求められるスキルにギャップがある——そう感じたことはありませんか。",
   },
@@ -300,7 +300,7 @@ export const instructors = [
   {
     name: "こうた",
     role: "編集講師",
-    description: "元スクワッド所属。現場経験豊富なクリエイター。",
+    description: "元スクワッド所属。こたこたチャンネルも運営。",
     image: "/images/instructors/kota.png",
     objectPosition: "center 20%",
   },

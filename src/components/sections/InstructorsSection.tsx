@@ -23,7 +23,15 @@ export function InstructorsSection() {
         <SectionHeader
           label="Instructors"
           title="現場で動画を作っている人が、教える"
-          description="専業講師ではありません。けーさんとたろーのチャンネルを毎日支えている、現役のクリエイターたちです。"
+          description={
+            <>
+              専業講師ではありません。
+              <br />
+              けーさんとたろーのチャンネルを毎日支えている、
+              <br />
+              現役のクリエイターたちです。
+            </>
+          }
         />
       </AnimatedSection>
 
