@@ -34,7 +34,9 @@ export function DifferenceSection() {
             <>
               「動画編集を教える」だけの場所は、たくさんあります。
               <br />
-              私たちは学んで終わりではなく、実際の仕事につながる環境づくりを大切にしています。
+              私たちは学んで終わりではなく、
+              <br className="md:hidden" />
+              実際の仕事につながる環境づくりを大切にしています。
             </>
           }
         />
@@ -59,17 +61,17 @@ export function DifferenceSection() {
         })}
       </StaggerContainer>
 
-      {/* 比較表 */}
+      {/* 比較表：スマホは文字縮小＋nowrapで改行なし */}
       <AnimatedSection className="mt-16">
-        <div className="overflow-hidden rounded-3xl border border-white/10">
-          <table className="w-full text-sm">
+        <div className="-mx-1 overflow-x-auto rounded-2xl border border-white/10 md:mx-0 md:overflow-hidden md:rounded-3xl">
+          <table className="w-full min-w-[340px] text-[10px] leading-snug md:min-w-0 md:text-sm">
             <thead>
               <tr className="border-b border-white/10 bg-card">
-                <th className="p-4 text-left font-medium text-white/50" />
-                <th className="p-4 text-center font-medium text-white/50">
+                <th className="whitespace-nowrap p-2 text-left font-medium text-white/50 md:p-4" />
+                <th className="whitespace-nowrap p-2 text-center font-medium text-white/50 md:p-4">
                   一般的なスクール
                 </th>
-                <th className="p-4 text-center font-bold text-line-green">
+                <th className="whitespace-nowrap p-2 text-center font-bold text-line-green md:p-4">
                   Line Creator Works
                 </th>
               </tr>
@@ -83,9 +85,13 @@ export function DifferenceSection() {
                 ["運営", "教育会社", "動画編集会社が直接運営"],
               ].map(([item, general, ours]) => (
                 <tr key={item} className="border-b border-white/5">
-                  <td className="p-4 font-medium text-white">{item}</td>
-                  <td className="p-4 text-center text-white/40">{general}</td>
-                  <td className="p-4 text-center font-medium text-white">
+                  <td className="whitespace-nowrap p-2 font-medium text-white md:p-4">
+                    {item}
+                  </td>
+                  <td className="whitespace-nowrap p-2 text-center text-white/40 md:p-4">
+                    {general}
+                  </td>
+                  <td className="whitespace-nowrap p-2 text-center font-medium text-white md:p-4">
                     {ours}
                   </td>
                 </tr>

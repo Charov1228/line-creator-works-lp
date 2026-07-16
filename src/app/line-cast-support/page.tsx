@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   Film,
   GraduationCap,
@@ -8,7 +9,6 @@ import {
 } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Logo } from "@/components/shared/Logo";
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
 import {
   SectionWrapper,
@@ -40,8 +40,15 @@ export default function LineCastSupportPage() {
           <div className="absolute top-1/3 left-1/2 size-[500px] -translate-x-1/2 rounded-full bg-line-green/5 blur-[120px]" />
 
           <div className="relative mx-auto max-w-6xl px-5 md:px-8">
-            <div className="flex flex-col items-center gap-8 text-center md:flex-row md:items-start md:text-left">
-              <Logo size="xl" />
+            <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-center md:gap-8 md:text-left">
+              <Image
+                src="/images/line-cast-support-logo.png"
+                alt="LINE CAST SUPPORT"
+                width={220}
+                height={146}
+                priority
+                className="h-auto w-[160px] shrink-0 object-contain md:w-[200px] lg:w-[220px]"
+              />
               <div className="flex-1">
                 <p className="text-sm font-medium tracking-widest text-line-green uppercase">
                   Company

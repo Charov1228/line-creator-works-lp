@@ -10,19 +10,19 @@ import { siteConfig } from "@/data/site-config";
 /**
  * ファーストビュー
  * 受講後の未来 → 特徴 → CTA → けーさんとたろーの安心感、の順で視線誘導
- * スマホは1画面（100svh）に収まるコンパクト構成
+ * スマホは100svhを余白なく使い切る
  */
 export function HeroSection() {
   return (
-    <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-black pt-16 md:pt-20">
+    <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-black pt-14 md:pt-20">
       <div className="absolute inset-0 grid-bg opacity-50" />
       <div className="absolute top-1/4 left-1/2 size-[600px] -translate-x-1/2 rounded-full bg-line-green/5 blur-[120px]" />
       <div className="absolute right-0 bottom-0 size-[400px] rounded-full bg-line-green/3 blur-[100px]" />
 
-      <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 py-4 md:px-8 md:py-16 lg:py-20">
-        <div className="grid items-center gap-4 md:gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12">
+      <div className="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-between px-5 py-3 pb-5 md:justify-center md:px-8 md:py-16 lg:py-20">
+        <div className="grid min-h-0 flex-1 items-stretch gap-3 md:flex-none md:items-center md:gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12">
           {/* 左：ブランド → 未来コピー → 特徴 → CTA */}
-          <div className="min-w-0">
+          <div className="min-w-0 shrink-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -49,7 +49,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-[clamp(1.4rem,4.6vw,2.65rem)] leading-[1.3] font-bold tracking-tight text-white"
+              className="text-[clamp(1.55rem,5.4vw,2.65rem)] leading-[1.3] font-bold tracking-tight text-white"
             >
               <span className="block whitespace-nowrap">
                 学ぶだけで終わらない。
@@ -64,7 +64,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-3 max-w-lg text-[0.8125rem] leading-[1.7] text-white/60 sm:text-[0.9375rem] md:mt-6 md:text-lg md:leading-[1.8]"
+              className="mt-3 max-w-lg text-[0.875rem] leading-[1.7] text-white/60 sm:text-[0.9375rem] md:mt-6 md:text-lg md:leading-[1.8]"
             >
               現役編集者が教え、
               <br />
@@ -112,7 +112,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative mx-auto w-full max-w-md lg:mx-0 lg:max-w-none"
+            className="relative mx-auto flex min-h-0 w-full max-w-md flex-1 flex-col lg:mx-0 lg:max-w-none lg:flex-none"
           >
             <div className="absolute -top-1.5 right-1 z-10 sm:-top-3 sm:right-2">
               <div className="rounded-full border border-line-green/30 bg-black/85 px-2.5 py-1 backdrop-blur-md sm:px-4 sm:py-2">
@@ -122,8 +122,8 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div className="glow-green relative overflow-hidden rounded-2xl border border-white/10 bg-card p-1.5 sm:rounded-3xl sm:p-2">
-              <div className="relative h-[min(22svh,38vw)] w-full overflow-hidden rounded-xl sm:aspect-[4/3] sm:h-auto sm:rounded-2xl lg:aspect-[4/3]">
+            <div className="glow-green relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-white/10 bg-card p-1.5 sm:rounded-3xl sm:p-2 md:block md:flex-none">
+              <div className="relative min-h-[220px] flex-1 overflow-hidden rounded-xl sm:aspect-[4/3] sm:min-h-0 sm:flex-none sm:rounded-2xl lg:aspect-[4/3]">
                 <Image
                   src="/images/hero.png"
                   alt="けーさんとたろー —— 動画編集を仕事にする第一歩"

@@ -24,7 +24,13 @@ export function CurriculumSection() {
       <AnimatedSection>
         <SectionHeader
           label="Curriculum"
-          title="約2ヶ月で、現場レベルの編集スキルを"
+          title={
+            <>
+              約2ヶ月で、
+              <br className="md:hidden" />
+              現場レベルの編集スキルを
+            </>
+          }
           description={
             <>
               基礎から実践、そして仕事につなげるまで。

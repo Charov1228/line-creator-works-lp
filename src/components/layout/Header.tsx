@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
@@ -43,7 +44,26 @@ export function Header({ variant = "default" }: HeaderProps) {
         )}
       >
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:h-20 md:px-8">
-          <Logo size="sm" href="/" showText />
+          {isCompany ? (
+            <Link
+              href="/line-cast-support"
+              className="inline-flex items-center gap-3 transition opacity-90 hover:opacity-100"
+            >
+              <Image
+                src="/images/line-cast-support-logo.png"
+                alt="LINE CAST SUPPORT"
+                width={120}
+                height={80}
+                className="h-10 w-auto object-contain md:h-12"
+                priority
+              />
+              <span className="hidden text-sm font-bold text-white sm:inline">
+                株式会社LINE CAST SUPPORT
+              </span>
+            </Link>
+          ) : (
+            <Logo size="sm" href="/" showText />
+          )}
 
           {isCompany ? (
             <Link

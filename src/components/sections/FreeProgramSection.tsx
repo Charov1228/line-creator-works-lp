@@ -36,7 +36,13 @@ export function FreeProgramSection() {
       <AnimatedSection>
         <SectionHeader
           label="Talent Development"
-          title="実務レベルまで育てる、長期育成プログラム"
+          title={
+            <>
+              実務レベルまで育てる、
+              <br className="md:hidden" />
+              長期育成プログラム
+            </>
+          }
           description={
             <>
               けーさんとたろーでは人材派遣事業も行っています。

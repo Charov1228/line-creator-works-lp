@@ -24,9 +24,13 @@ export function ProblemsSection() {
           title="こんな悩み、ありませんか？"
           description={
             <>
-              動画編集を学びたい。でも、何から始めればいいかわからない。
+              動画編集を学びたい。
+              <br className="md:hidden" />
+              でも、何から始めればいいかわからない。
               <br />
-              新しい働き方を本気で考えている方のために、このスクールは作られました。
+              新しい働き方を本気で考えている方のために、
+              <br className="md:hidden" />
+              このスクールは作られました。
             </>
           }
         />

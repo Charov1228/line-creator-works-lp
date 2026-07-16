@@ -38,10 +38,16 @@ export function WhySection() {
       <AnimatedSection>
         <SectionHeader
           label="Our Story"
-          title="なぜ、このスクールを作ったのか"
+          title={
+            <span className="inline-block text-[1.35rem] leading-snug whitespace-nowrap sm:text-3xl md:text-4xl lg:text-5xl">
+              なぜ、このスクールを作ったのか
+            </span>
+          }
           description={
             <>
-              YouTubeチャンネルを運営し、動画編集会社として案件を受注する——
+              YouTubeチャンネルを運営し、
+              <br className="md:hidden" />
+              動画編集会社として案件を受注する——
               <br />
               その現場から生まれたスクールです。
             </>
