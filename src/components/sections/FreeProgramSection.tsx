@@ -56,14 +56,15 @@ export function FreeProgramSection() {
       </AnimatedSection>
 
       <div className="grid gap-6 md:grid-cols-2">
-        {courses.map((course) => (
+        {courses.map((course, index) => (
           <AnimatedSection key={course.name}>
             <div
-              className={`relative h-full rounded-3xl border p-8 ${
+              className={`card-border-flow relative h-full rounded-3xl border p-8 ${
                 course.highlight
                   ? "border-line-green/40 bg-line-green/5 glow-green"
                   : "border-white/10 bg-card"
               }`}
+              style={{ animationDelay: `${index * 2}s` }}
             >
               {course.highlight && (
                 <>

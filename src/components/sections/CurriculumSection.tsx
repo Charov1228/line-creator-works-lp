@@ -77,7 +77,10 @@ export function CurriculumSection() {
                 <div className="absolute left-8 hidden size-4 -translate-x-1/2 rounded-full border-2 border-line-green bg-black md:left-1/2 md:block" />
 
                 <div className={`md:w-1/2 ${index % 2 === 0 ? "md:pr-16" : "md:pl-16"}`}>
-                  <div className="ml-16 rounded-3xl border border-white/10 bg-card p-8 md:ml-0">
+                  <div
+                    className="card-border-flow ml-16 rounded-3xl border border-white/10 bg-card p-8 md:ml-0"
+                    style={{ animationDelay: `${index * 1.8}s` }}
+                  >
                     <div className="mb-4 flex items-center gap-3">
                       <span className="rounded-full bg-line-green/10 px-3 py-1 text-xs font-semibold text-line-green">
                         {phase.phase}

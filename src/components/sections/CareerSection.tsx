@@ -3,11 +3,22 @@
 import { ArrowRight } from "lucide-react";
 import { careerPoints } from "@/data/content";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
+import { AnimatedStraightLines } from "@/components/shared/AnimatedStraightLines";
+import { HorizontalMarquee } from "@/components/shared/HorizontalMarquee";
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
 import {
   SectionWrapper,
   SectionHeader,
 } from "@/components/shared/SectionWrapper";
+
+const careerFlowSteps = [
+  "公式LINEで面談予約",
+  "無料個別面談",
+  "スクール受講",
+  "卒業",
+  "コミュニティ継続",
+  "スキルに応じた案件紹介",
+] as const;
 
 /**
  * 卒業後のキャリアセクション
@@ -15,7 +26,12 @@ import {
  */
 export function CareerSection() {
   return (
-    <SectionWrapper variant="gradient" id="career" atmosphere="arc">
+    <SectionWrapper
+      variant="gradient"
+      id="career"
+      atmosphere="none"
+      ambient={<AnimatedStraightLines variant="career" />}
+    >
       <AnimatedSection>
         <SectionHeader
           label="After Graduation"
@@ -37,7 +53,10 @@ export function CareerSection() {
       <div className="space-y-6">
         {careerPoints.map((point, index) => (
           <AnimatedSection key={point.title} delay={index * 0.1}>
-            <div className="flex flex-col gap-4 rounded-3xl border border-white/10 bg-black/50 p-8 md:flex-row md:items-center md:gap-8">
+            <div
+              className="card-border-flow flex flex-col gap-4 rounded-3xl border border-white/10 bg-black/50 p-8 md:flex-row md:items-center md:gap-8"
+              style={{ animationDelay: `${index * 1.6}s` }}
+            >
               <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-line-green/10 text-2xl font-bold text-line-green">
                 {index + 1}
               </div>
@@ -53,32 +72,25 @@ export function CareerSection() {
         ))}
       </div>
 
-      {/* フロー図 */}
       <AnimatedSection className="mt-16">
-        <div className="rounded-3xl border border-white/10 bg-card p-8 md:p-12">
+        <div className="card-border-flow rounded-3xl border border-white/10 bg-card p-8 md:p-12">
           <h3 className="mb-8 text-center text-lg font-semibold text-white">
             受講からキャリアまでの流れ
           </h3>
-          <div className="flex flex-col items-center gap-4 md:flex-row md:justify-center md:gap-0">
-            {[
-              "公式LINEで面談予約",
-              "無料個別面談",
-              "スクール受講",
-              "卒業",
-              "コミュニティ継続",
-              "スキルに応じた案件紹介",
-            ].map((step, index, arr) => (
-              <div key={step} className="flex items-center">
-                <div className="rounded-xl border border-line-green/30 bg-line-green/10 px-4 py-3 text-center">
-                  <p className="text-xs font-medium text-line-green">Step {index + 1}</p>
-                  <p className="mt-1 text-sm font-semibold text-white">{step}</p>
-                </div>
-                {index < arr.length - 1 && (
-                  <ArrowRight className="mx-2 hidden size-4 text-white/30 md:block" />
-                )}
+          <HorizontalMarquee edgeFrom="from-card" className="gap-3">
+            {careerFlowSteps.map((step, index) => (
+              <div
+                key={step}
+                className="card-border-flow w-44 shrink-0 rounded-xl border border-line-green/30 bg-line-green/10 px-4 py-3 text-center"
+                style={{ animationDelay: `${index * 0.8}s` }}
+              >
+                <p className="text-xs font-medium text-line-green">
+                  Step {index + 1}
+                </p>
+                <p className="mt-1 text-sm font-semibold text-white">{step}</p>
               </div>
             ))}
-          </div>
+          </HorizontalMarquee>
         </div>
       </AnimatedSection>
 

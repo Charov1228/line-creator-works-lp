@@ -6,7 +6,7 @@ import {
   SectionWrapper,
   SectionHeader,
 } from "@/components/shared/SectionWrapper";
-import { WhyParallaxArc } from "@/components/shared/WhyParallaxArc";
+import { AnimatedStraightLines } from "@/components/shared/AnimatedStraightLines";
 import { siteConfig } from "@/data/site-config";
 
 /**
@@ -39,7 +39,7 @@ export function WhySection() {
       id="about"
       atmosphere="none"
       className="bg-[#050505]"
-      ambient={<WhyParallaxArc />}
+      ambient={<AnimatedStraightLines variant="why" />}
     >
       <AnimatedSection>
         <SectionHeader
@@ -64,7 +64,10 @@ export function WhySection() {
       <div className="space-y-6">
         {reasons.map((reason, index) => (
           <AnimatedSection key={reason.number} delay={index * 0.1}>
-            <div className="group flex flex-col gap-6 rounded-3xl border border-white/10 bg-card p-8 transition hover:border-line-green/20 md:flex-row md:items-start md:gap-10 md:p-10">
+            <div
+              className="card-border-flow group flex flex-col gap-6 rounded-3xl border border-white/10 bg-card p-8 transition hover:border-line-green/20 md:flex-row md:items-start md:gap-10 md:p-10"
+              style={{ animationDelay: `${index * 1.4}s` }}
+            >
               <div className="shrink-0">
                 <span className="text-5xl font-bold text-line-green/20 transition group-hover:text-line-green/40">
                   {reason.number}

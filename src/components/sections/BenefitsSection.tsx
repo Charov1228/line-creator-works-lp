@@ -41,7 +41,10 @@ export function BenefitsSection() {
       <StaggerContainer className="mx-auto grid max-w-4xl gap-5 sm:grid-cols-2">
         {benefits.map((benefit, index) => (
           <StaggerItem key={benefit.title}>
-            <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-black/50 p-6 transition hover:border-line-green/25 md:p-8">
+            <div
+              className="card-border-flow flex h-full flex-col rounded-3xl border border-white/10 bg-black/50 p-6 transition hover:border-line-green/25 md:p-8"
+              style={{ animationDelay: `${index * 1.2}s` }}
+            >
               <span className="text-sm font-medium text-line-green/50">
                 0{index + 1}
               </span>

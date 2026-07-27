@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { OpeningAnimation } from "@/components/shared/OpeningAnimation";
+import { ScrollToTopOnLoad } from "@/components/shared/ScrollToTopOnLoad";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProblemsSection } from "@/components/sections/ProblemsSection";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
@@ -26,6 +27,7 @@ import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
 export default function HomePage() {
   return (
     <>
+      <ScrollToTopOnLoad />
       <OpeningAnimation />
       <Header />
       <main>

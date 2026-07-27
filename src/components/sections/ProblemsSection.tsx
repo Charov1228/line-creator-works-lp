@@ -39,7 +39,10 @@ export function ProblemsSection() {
       <StaggerContainer className="grid gap-6 md:grid-cols-3">
         {problems.map((problem, index) => (
           <StaggerItem key={problem.title}>
-            <div className="flex h-full flex-col rounded-3xl border border-white/10 bg-card p-6 transition hover:border-line-green/20 md:p-8">
+            <div
+              className="card-border-flow flex h-full flex-col rounded-3xl border border-white/10 bg-card p-6 transition hover:border-line-green/20 md:p-8"
+              style={{ animationDelay: `${index * 1.3}s` }}
+            >
               <span className="mb-4 text-sm font-medium text-line-green/60">
                 0{index + 1}
               </span>

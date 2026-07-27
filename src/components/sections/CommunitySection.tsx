@@ -44,7 +44,10 @@ export function CommunitySection() {
       <StaggerContainer className="grid gap-6 md:grid-cols-3">
         {communityFeatures.map((feature, index) => (
           <StaggerItem key={feature.title}>
-            <div className="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-card p-8">
+            <div
+              className="card-border-flow relative h-full overflow-hidden rounded-3xl border border-white/10 bg-card p-8"
+              style={{ animationDelay: `${index * 1.4}s` }}
+            >
               <span className="absolute top-6 right-6 text-6xl font-bold text-white/5">
                 0{index + 1}
               </span>

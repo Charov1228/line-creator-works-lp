@@ -46,11 +46,14 @@ export function DifferenceSection() {
       </AnimatedSection>
 
       <StaggerContainer className="grid gap-6 md:grid-cols-2">
-        {differences.map((diff) => {
+        {differences.map((diff, index) => {
           const Icon = iconMap[diff.icon];
           return (
             <StaggerItem key={diff.title}>
-              <div className="h-full rounded-3xl border border-white/10 bg-black/60 p-8 transition hover:border-line-green/30 hover:bg-card">
+              <div
+                className="card-border-flow h-full rounded-3xl border border-white/10 bg-black/60 p-8 transition hover:border-line-green/30 hover:bg-card"
+                style={{ animationDelay: `${index * 1.5}s` }}
+              >
                 <div className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-line-green/10">
                   <Icon className="size-6 text-line-green" />
                 </div>
