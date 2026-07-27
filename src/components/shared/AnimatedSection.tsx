@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, type Variants, type ViewportOptions } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const fadeUpVariants: Variants = {
@@ -8,8 +8,25 @@ const fadeUpVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] },
   },
+};
+
+/**
+ * スクロール表示の発火位置
+ * 下端ギリギリではなく、読みやすい位置に入ってから一度だけアニメーション
+ */
+const REVEAL_VIEWPORT_BLOCK: ViewportOptions = {
+  once: true,
+  // 上下を少し狭め、要素が画面の見やすい帯に入ってから開始
+  margin: "-10% 0px -22% 0px",
+  amount: 0.4,
+};
+
+const REVEAL_VIEWPORT_STAGGER: ViewportOptions = {
+  once: true,
+  margin: "-8% 0px -20% 0px",
+  amount: 0.35,
 };
 
 interface AnimatedSectionProps {
@@ -31,7 +48,7 @@ export function AnimatedSection({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px", amount: 0.1 }}
+      viewport={REVEAL_VIEWPORT_BLOCK}
       variants={{
         hidden: fadeUpVariants.hidden,
         visible: {
@@ -65,7 +82,7 @@ export function StaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px", amount: 0.1 }}
+      viewport={REVEAL_VIEWPORT_STAGGER}
       variants={{
         hidden: {},
         visible: {
