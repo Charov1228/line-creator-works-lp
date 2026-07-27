@@ -19,7 +19,7 @@ import {
  */
 export function FaqSection() {
   return (
-    <SectionWrapper id="faq">
+    <SectionWrapper id="faq" atmosphere="none">
       <AnimatedSection>
         <SectionHeader
           label="FAQ"

@@ -17,7 +17,7 @@ const featureIcons = [Mic, Users, MessageSquare, Eye];
  */
 export function FeedbackSection() {
   return (
-    <SectionWrapper variant="card">
+    <SectionWrapper variant="card" atmosphere="glow-left">
       <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <AnimatedSection>
           <SectionHeader

@@ -17,7 +17,7 @@ import {
  */
 export function ProblemsSection() {
   return (
-    <SectionWrapper id="problems">
+    <SectionWrapper id="problems" atmosphere="glow-left">
       <AnimatedSection>
         <SectionHeader
           label="For You"

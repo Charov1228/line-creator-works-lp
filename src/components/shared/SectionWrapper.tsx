@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import {
+  AmbientBackground,
+  type Atmosphere,
+} from "@/components/shared/AmbientBackground";
 
 interface SectionWrapperProps {
   id?: string;
@@ -7,6 +11,10 @@ interface SectionWrapperProps {
   className?: string;
   /** 背景バリエーション */
   variant?: "default" | "card" | "gradient";
+  /** 背景の抽象オブジェクト */
+  atmosphere?: Atmosphere;
+  /** 追加の背景レイヤー（セクション直下・コンテンツより背面） */
+  ambient?: ReactNode;
 }
 
 /**
@@ -18,17 +26,23 @@ export function SectionWrapper({
   children,
   className,
   variant = "default",
+  atmosphere = "none",
+  ambient,
 }: SectionWrapperProps) {
   const bgClass = {
     default: "bg-black",
     card: "bg-card",
-    gradient:
-      "bg-gradient-to-b from-black via-card to-black",
+    gradient: "bg-gradient-to-b from-black via-card to-black",
   }[variant];
 
   return (
-    <section id={id} className={cn("relative py-20 md:py-32", bgClass, className)}>
-      <div className="mx-auto max-w-6xl px-5 md:px-8">{children}</div>
+    <section
+      id={id}
+      className={cn("relative overflow-hidden py-20 md:py-32", bgClass, className)}
+    >
+      <AmbientBackground atmosphere={atmosphere} />
+      {ambient}
+      <div className="relative z-10 mx-auto max-w-6xl px-5 md:px-8">{children}</div>
     </section>
   );
 }

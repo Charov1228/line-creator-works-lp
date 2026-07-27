@@ -11,6 +11,7 @@ import {
   SectionWrapper,
   SectionHeader,
 } from "@/components/shared/SectionWrapper";
+import { StrikeLine } from "@/components/shared/StrikeLine";
 
 const iconMap = {
   target: Target,
@@ -25,11 +26,13 @@ const iconMap = {
  */
 export function DifferenceSection() {
   return (
-    <SectionWrapper variant="gradient">
+    <SectionWrapper variant="gradient" atmosphere="glow-right">
       <AnimatedSection>
         <SectionHeader
           label="Why Us"
-          title="一般的なスクールとの違い"
+          title={
+            <StrikeLine>一般的なスクールとの違い</StrikeLine>
+          }
           description={
             <>
               「動画編集を教える」だけの場所は、たくさんあります。
@@ -64,6 +67,7 @@ export function DifferenceSection() {
       {/* 比較表：スマホは文字縮小＋nowrapで改行なし */}
       <AnimatedSection className="mt-16">
         <div className="-mx-1 overflow-x-auto rounded-2xl border border-white/10 md:mx-0 md:overflow-hidden md:rounded-3xl">
+          <div className="h-px w-full origin-left bg-gradient-to-r from-line-green/60 via-line-green/30 to-transparent strike-line-run" />
           <table className="w-full min-w-[340px] text-[10px] leading-snug md:min-w-0 md:text-sm">
             <thead>
               <tr className="border-b border-white/10 bg-card">

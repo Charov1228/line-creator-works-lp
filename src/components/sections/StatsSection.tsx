@@ -37,7 +37,7 @@ export function StatsSection() {
   }, [listOpen]);
 
   return (
-    <SectionWrapper id="stats" variant="card">
+    <SectionWrapper id="stats" variant="card" atmosphere="diagonal">
       <AnimatedSection>
         <SectionHeader
           label="Track Record"
@@ -52,10 +52,14 @@ export function StatsSection() {
         />
       </AnimatedSection>
 
-      <StaggerContainer className="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
+      <StaggerContainer className="relative grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6">
+        <div
+          aria-hidden
+          className="ambient-line-slide pointer-events-none absolute top-1/2 left-[-20%] hidden h-[2px] w-[140%] -translate-y-1/2 bg-gradient-to-r from-transparent via-line-green/20 to-transparent sm:block"
+        />
         {stats.map((stat) => (
           <StaggerItem key={stat.label}>
-            <div className="rounded-2xl border border-white/10 bg-black/50 p-6 text-center transition hover:border-line-green/30 hover:bg-card-hover">
+            <div className="relative rounded-2xl border border-white/10 bg-black/50 p-6 text-center transition hover:border-line-green/30 hover:bg-card-hover">
               <p className="text-3xl font-bold text-line-green md:text-4xl">
                 {stat.value}
               </p>

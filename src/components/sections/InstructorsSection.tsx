@@ -18,7 +18,7 @@ import {
  */
 export function InstructorsSection() {
   return (
-    <SectionWrapper id="instructors" variant="card">
+    <SectionWrapper id="instructors" variant="card" atmosphere="none">
       <AnimatedSection>
         <SectionHeader
           label="Instructors"

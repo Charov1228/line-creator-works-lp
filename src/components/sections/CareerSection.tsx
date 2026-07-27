@@ -15,7 +15,7 @@ import {
  */
 export function CareerSection() {
   return (
-    <SectionWrapper variant="gradient" id="career">
+    <SectionWrapper variant="gradient" id="career" atmosphere="arc">
       <AnimatedSection>
         <SectionHeader
           label="After Graduation"

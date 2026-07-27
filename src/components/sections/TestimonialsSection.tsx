@@ -18,7 +18,7 @@ import {
  */
 export function TestimonialsSection() {
   return (
-    <SectionWrapper id="testimonials" variant="card">
+    <SectionWrapper id="testimonials" variant="card" atmosphere="glow-right">
       <AnimatedSection>
         <SectionHeader
           label="Voice"

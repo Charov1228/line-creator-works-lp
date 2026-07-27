@@ -11,6 +11,7 @@ import {
   SectionHeader,
 } from "@/components/shared/SectionWrapper";
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
+import { StrikeLine } from "@/components/shared/StrikeLine";
 
 /**
  * 受講メリット・ターゲット具体化
@@ -18,11 +19,13 @@ import { LineCtaButton } from "@/components/shared/LineCtaButton";
  */
 export function BenefitsSection() {
   return (
-    <SectionWrapper id="benefits" variant="card">
+    <SectionWrapper id="benefits" variant="card" atmosphere="soft-green">
       <AnimatedSection>
         <SectionHeader
           label="Your Future"
-          title="受講後に、目指せる未来"
+          title={
+            <StrikeLine>受講後に、目指せる未来</StrikeLine>
+          }
           description={
             <>
               断定や収入保証はありません。

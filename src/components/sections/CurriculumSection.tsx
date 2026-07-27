@@ -20,7 +20,7 @@ import {
  */
 export function CurriculumSection() {
   return (
-    <SectionWrapper id="curriculum">
+    <SectionWrapper id="curriculum" atmosphere="glow-left">
       <AnimatedSection>
         <SectionHeader
           label="Curriculum"
@@ -60,8 +60,10 @@ export function CurriculumSection() {
       </AnimatedSection>
 
       <div className="relative">
-        {/* タイムライン縦線 */}
-        <div className="absolute top-0 bottom-0 left-8 hidden w-px bg-gradient-to-b from-line-green/50 via-line-green/20 to-transparent md:left-1/2 md:block md:-translate-x-px" />
+        {/* タイムライン縦線＋光の流れ */}
+        <div className="absolute top-0 bottom-0 left-8 hidden w-px overflow-hidden bg-gradient-to-b from-line-green/50 via-line-green/20 to-transparent md:left-1/2 md:block md:-translate-x-px">
+          <div className="timeline-glow-flow absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-transparent via-line-green/80 to-transparent blur-[1px]" />
+        </div>
 
         <StaggerContainer className="space-y-8">
           {curriculum.map((phase, index) => (

@@ -6,6 +6,7 @@ import {
   SectionWrapper,
   SectionHeader,
 } from "@/components/shared/SectionWrapper";
+import { WhyParallaxArc } from "@/components/shared/WhyParallaxArc";
 import { siteConfig } from "@/data/site-config";
 
 /**
@@ -34,7 +35,12 @@ export function WhySection() {
   ];
 
   return (
-    <SectionWrapper id="about">
+    <SectionWrapper
+      id="about"
+      atmosphere="none"
+      className="bg-[#050505]"
+      ambient={<WhyParallaxArc />}
+    >
       <AnimatedSection>
         <SectionHeader
           label="Our Story"

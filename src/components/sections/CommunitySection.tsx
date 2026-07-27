@@ -16,7 +16,7 @@ import {
  */
 export function CommunitySection() {
   return (
-    <SectionWrapper>
+    <SectionWrapper atmosphere="glow-right">
       <AnimatedSection>
         <SectionHeader
           label="Community"

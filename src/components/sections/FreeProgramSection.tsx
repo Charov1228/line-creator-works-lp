@@ -32,7 +32,7 @@ export function FreeProgramSection() {
   ];
 
   return (
-    <SectionWrapper id="free-program">
+    <SectionWrapper id="free-program" atmosphere="soft-green">
       <AnimatedSection>
         <SectionHeader
           label="Talent Development"
@@ -66,9 +66,15 @@ export function FreeProgramSection() {
               }`}
             >
               {course.highlight && (
-                <span className="absolute -top-3 left-6 rounded-full bg-line-green px-3 py-1 text-xs font-semibold text-white">
-                  おすすめ
-                </span>
+                <>
+                  <div
+                    aria-hidden
+                    className="ambient-breathe pointer-events-none absolute -inset-4 -z-10 rounded-[2rem] bg-line-green/[0.08] blur-2xl"
+                  />
+                  <span className="absolute -top-3 left-6 rounded-full bg-line-green px-3 py-1 text-xs font-semibold text-white">
+                    おすすめ
+                  </span>
+                </>
               )}
               <div className="mb-4 flex items-center gap-3">
                 <div className="flex size-10 items-center justify-center rounded-xl bg-line-green/10">

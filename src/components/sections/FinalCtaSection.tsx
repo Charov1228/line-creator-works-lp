@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
+import { AmbientBackground } from "@/components/shared/AmbientBackground";
+import { StrikeLine } from "@/components/shared/StrikeLine";
 import { siteConfig } from "@/data/site-config";
 
 /**
@@ -9,15 +11,15 @@ import { siteConfig } from "@/data/site-config";
  * 読了後のコンバージョンポイント
  */
 export function FinalCtaSection() {
+  const reduce = useReducedMotion();
+
   return (
     <section className="relative overflow-hidden py-24 md:py-32">
-      {/* 背景 */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-line-green/5 to-black" />
-      <div className="absolute top-1/2 left-1/2 size-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-line-green/10 blur-[100px]" />
+      <AmbientBackground atmosphere="final" />
 
-      <div className="relative mx-auto max-w-3xl px-5 text-center md:px-8">
+      <div className="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={reduce ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
@@ -26,7 +28,9 @@ export function FinalCtaSection() {
             Get Started
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white md:text-5xl">
-            まずは無料個別相談で、
+            <StrikeLine>
+              まずは無料個別相談で、
+            </StrikeLine>
             <br />
             詳しく聞いてみませんか。
           </h2>
