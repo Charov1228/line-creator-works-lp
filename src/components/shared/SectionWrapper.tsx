@@ -41,7 +41,7 @@ export function SectionWrapper({
       className={cn("relative overflow-hidden py-20 md:py-32", bgClass, className)}
     >
       <AmbientBackground atmosphere={atmosphere} />
-      {ambient}
+      {ambient && <div className="pointer-events-none absolute inset-0 z-0">{ambient}</div>}
       <div className="relative z-10 mx-auto max-w-6xl px-5 md:px-8">{children}</div>
     </section>
   );

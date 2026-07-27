@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 const fadeUpVariants: Variants = {
@@ -12,14 +12,6 @@ const fadeUpVariants: Variants = {
   },
 };
 
-const fadeOnlyVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.35 },
-  },
-};
-
 interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
@@ -28,28 +20,25 @@ interface AnimatedSectionProps {
 
 /**
  * スクロール連動のフェードインアニメーション
- * prefers-reduced-motion 時は移動なしの簡易フェード
+ * 各セクションのラッパーとして使用
  */
 export function AnimatedSection({
   children,
   className,
   delay = 0,
 }: AnimatedSectionProps) {
-  const reduce = useReducedMotion();
-  const base = reduce ? fadeOnlyVariants : fadeUpVariants;
-
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-80px", amount: 0.1 }}
       variants={{
-        hidden: base.hidden,
+        hidden: fadeUpVariants.hidden,
         visible: {
-          ...base.visible,
+          ...fadeUpVariants.visible,
           transition: {
-            ...(base.visible as { transition: object }).transition,
-            delay: reduce ? 0 : delay,
+            ...(fadeUpVariants.visible as { transition: object }).transition,
+            delay,
           },
         },
       }}
@@ -72,19 +61,15 @@ export function StaggerContainer({
   className,
   staggerDelay = 0.1,
 }: StaggerContainerProps) {
-  const reduce = useReducedMotion();
-
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-60px", amount: 0.1 }}
       variants={{
         hidden: {},
         visible: {
-          transition: {
-            staggerChildren: reduce ? 0 : staggerDelay,
-          },
+          transition: { staggerChildren: staggerDelay },
         },
       }}
       className={cn(className)}
@@ -101,13 +86,8 @@ export function StaggerItem({
   children: React.ReactNode;
   className?: string;
 }) {
-  const reduce = useReducedMotion();
-
   return (
-    <motion.div
-      variants={reduce ? fadeOnlyVariants : fadeUpVariants}
-      className={cn(className)}
-    >
+    <motion.div variants={fadeUpVariants} className={cn(className)}>
       {children}
     </motion.div>
   );
