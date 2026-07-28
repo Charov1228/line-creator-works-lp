@@ -89,7 +89,7 @@ export function Header({ variant = "default" }: HeaderProps) {
                   href="/line-cast-support"
                   className="text-sm text-white/60 transition hover:text-white"
                 >
-                  LINE CAST SUPPORT
+                  働きながら学びたい方は
                 </Link>
                 <a href="#faq" className="text-sm text-white/60 transition hover:text-white">
                   よくある質問

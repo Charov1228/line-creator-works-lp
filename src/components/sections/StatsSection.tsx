@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import { ExternalLink, List, X } from "lucide-react";
-import { stats, channels } from "@/data/content";
+// import { useEffect, useState } from "react";
+// import Image from "next/image";
+// import { ExternalLink, List, X } from "lucide-react";
+// import { stats, channels } from "@/data/content";
+import { stats } from "@/data/content";
 import {
   AnimatedSection,
   StaggerContainer,
@@ -19,22 +20,23 @@ import {
  * 数字で信頼性・権威性を訴求
  */
 export function StatsSection() {
-  const loopChannels = [...channels, ...channels];
-  const [listOpen, setListOpen] = useState(false);
-
-  useEffect(() => {
-    if (!listOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setListOpen(false);
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [listOpen]);
+  // --- 関連チャンネル（再利用予定のためコメントアウト） ---
+  // const loopChannels = [...channels, ...channels];
+  // const [listOpen, setListOpen] = useState(false);
+  //
+  // useEffect(() => {
+  //   if (!listOpen) return;
+  //   const previousOverflow = document.body.style.overflow;
+  //   document.body.style.overflow = "hidden";
+  //   const onKeyDown = (event: KeyboardEvent) => {
+  //     if (event.key === "Escape") setListOpen(false);
+  //   };
+  //   window.addEventListener("keydown", onKeyDown);
+  //   return () => {
+  //     document.body.style.overflow = previousOverflow;
+  //     window.removeEventListener("keydown", onKeyDown);
+  //   };
+  // }, [listOpen]);
 
   return (
     <SectionWrapper id="stats" variant="card" atmosphere="diagonal">
@@ -70,7 +72,8 @@ export function StatsSection() {
         ))}
       </StaggerContainer>
 
-      {/* 関連チャンネル：横一列を常時スクロール */}
+      {/*
+      // --- 関連チャンネル：横一列を常時スクロール（再利用予定） ---
       <AnimatedSection className="mt-16">
         <h3 className="mb-8 text-center text-lg font-semibold text-white">
           関連チャンネル
@@ -193,6 +196,7 @@ export function StatsSection() {
           </div>
         </div>
       )}
+      */}
     </SectionWrapper>
   );
 }

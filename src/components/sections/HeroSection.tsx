@@ -6,7 +6,7 @@ import { ArrowDown } from "lucide-react";
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
 import { Logo } from "@/components/shared/Logo";
 import { AmbientBackground } from "@/components/shared/AmbientBackground";
-import { StrikeLine } from "@/components/shared/StrikeLine";
+import { TypewriterHeadline } from "@/components/shared/TypewriterHeadline";
 import { siteConfig } from "@/data/site-config";
 
 /**
@@ -46,27 +46,12 @@ export function HeroSection() {
               </div>
             </motion.div>
 
-            <motion.h1
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-[clamp(1.55rem,5.4vw,2.65rem)] leading-[1.3] font-bold tracking-tight text-white"
-            >
-              <span className="block whitespace-nowrap">
-                学ぶだけで終わらない。
-              </span>
-              <span className="mt-0.5 block whitespace-nowrap md:mt-1">
-                <StrikeLine lineClassName="top-[62%] h-[0.38em] bg-line-green/40">
-                  <span className="text-gradient-green">仕事で使えるスキル</span>
-                </StrikeLine>
-                <span className="text-white">へ。</span>
-              </span>
-            </motion.h1>
+            <TypewriterHeadline startDelayMs={reduce ? 0 : 2800} />
 
             <motion.p
               initial={reduce ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: reduce ? 0 : 4.8 }}
               className="mt-3 max-w-lg text-[0.875rem] leading-[1.7] text-white/60 sm:text-[0.9375rem] md:mt-6 md:text-lg md:leading-[1.8]"
             >
               現役編集者が教え、
@@ -77,7 +62,7 @@ export function HeroSection() {
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: reduce ? 0 : 5.0 }}
               className="mt-3 flex flex-nowrap gap-1.5 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] md:mt-8 md:gap-3 [&::-webkit-scrollbar]:hidden"
             >
               {[
@@ -98,7 +83,7 @@ export function HeroSection() {
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: reduce ? 0 : 5.2 }}
               className="mt-4 md:mt-10"
             >
               <LineCtaButton
