@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
 interface TypewriterLabelProps {
@@ -17,11 +17,36 @@ export function TypewriterLabel({
   startDelayMs = 120,
 }: TypewriterLabelProps) {
   const reduce = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
   const [value, setValue] = useState(reduce ? text : "");
   const [showCursor, setShowCursor] = useState(!reduce);
+  const [started, setStarted] = useState(reduce);
 
   useEffect(() => {
     if (reduce) return;
+
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.8,
+        rootMargin: "0px 0px -8% 0px",
+      }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [reduce]);
+
+  useEffect(() => {
+    if (reduce || !started) return;
 
     let cancelled = false;
     const timers: number[] = [];
@@ -49,10 +74,10 @@ export function TypewriterLabel({
       cancelled = true;
       timers.forEach((id) => window.clearTimeout(id));
     };
-  }, [reduce, startDelayMs, text]);
+  }, [reduce, startDelayMs, started, text]);
 
   return (
-    <>
+    <span ref={ref}>
       {value}
       {showCursor && (
         <span
@@ -60,6 +85,6 @@ export function TypewriterLabel({
           className="ml-0.5 inline-block h-[0.95em] w-[0.08em] translate-y-[0.08em] bg-line-green align-baseline motion-safe:animate-pulse"
         />
       )}
-    </>
+    </span>
   );
 }
