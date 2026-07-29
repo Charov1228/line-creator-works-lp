@@ -58,12 +58,12 @@ export function TypewriterLabel({
       setValue(text.slice(0, index));
 
       if (index < text.length) {
-        timers.push(window.setTimeout(tick, 45));
+        timers.push(window.setTimeout(tick, 78));
       } else {
         timers.push(
           window.setTimeout(() => {
             if (!cancelled) setShowCursor(false);
-          }, 500)
+          }, 700)
         );
       }
     };
