@@ -13,7 +13,6 @@ import { CurriculumSection } from "@/components/sections/CurriculumSection";
 import { FeedbackSection } from "@/components/sections/FeedbackSection";
 import { CommunitySection } from "@/components/sections/CommunitySection";
 import { CareerSection } from "@/components/sections/CareerSection";
-import { FreeProgramSection } from "@/components/sections/FreeProgramSection";
 import { InstructorsSection } from "@/components/sections/InstructorsSection";
 import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCtaSection } from "@/components/sections/FinalCtaSection";
@@ -42,7 +41,6 @@ export default function HomePage() {
         <FeedbackSection />
         <CommunitySection />
         <CareerSection />
-        <FreeProgramSection />
         <InstructorsSection />
         <FaqSection />
         <FinalCtaSection />

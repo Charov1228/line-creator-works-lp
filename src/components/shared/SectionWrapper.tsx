@@ -4,6 +4,7 @@ import {
   AmbientBackground,
   type Atmosphere,
 } from "@/components/shared/AmbientBackground";
+import { TypewriterLabel } from "@/components/shared/TypewriterLabel";
 
 interface SectionWrapperProps {
   id?: string;
@@ -71,7 +72,7 @@ export function SectionHeader({
     >
       {label && (
         <p className="mb-3 text-sm font-medium tracking-widest text-line-green uppercase">
-          {label}
+          <TypewriterLabel text={label} />
         </p>
       )}
       <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">

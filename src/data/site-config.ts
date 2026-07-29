@@ -16,6 +16,6 @@ export const siteConfig = {
     description:
       "けーさんとたろーが運営する動画編集スクール。未経験から仕事につながる編集スキルの習得を目指せます。現役編集者が指導し、卒業後は案件紹介の可能性も。まずは公式LINEから無料面談を。",
     ogImage: "/og-image.jpg",
-    url: "https://line-creator-works.example.com",
+    url: "https://lp.line-cw.com",
   },
 } as const;
