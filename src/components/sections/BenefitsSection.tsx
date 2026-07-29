@@ -12,6 +12,7 @@ import {
 } from "@/components/shared/SectionWrapper";
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
 import { StrikeLine } from "@/components/shared/StrikeLine";
+import { TypewriterLabel } from "@/components/shared/TypewriterLabel";
 
 /**
  * 受講メリット・ターゲット具体化
@@ -62,7 +63,7 @@ export function BenefitsSection() {
       <AnimatedSection className="mt-16">
         <div className="rounded-3xl border border-white/10 bg-black/40 px-6 py-10 md:px-10 md:py-12">
           <p className="text-center text-sm font-medium tracking-widest text-line-green uppercase">
-            For Whom
+            <TypewriterLabel text="For Whom" />
           </p>
           <h3 className="mt-3 text-center text-2xl font-bold text-white md:text-3xl">
             こんな方に向いています

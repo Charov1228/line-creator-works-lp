@@ -14,7 +14,7 @@ interface TypewriterLabelProps {
  */
 export function TypewriterLabel({
   text,
-  startDelayMs = 120,
+  startDelayMs = 260,
 }: TypewriterLabelProps) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
