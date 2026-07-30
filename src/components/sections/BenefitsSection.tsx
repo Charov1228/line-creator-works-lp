@@ -60,10 +60,11 @@ export function BenefitsSection() {
         ))}
       </StaggerContainer>
 
-      <AnimatedSection className="mt-16">
-        <div className="rounded-3xl border border-white/10 bg-black/40 px-6 py-10 md:px-10 md:py-12">
+      <div className="mt-16 rounded-3xl border border-white/10 bg-black/40 px-6 py-10 md:px-10 md:py-12">
+        {/* 見出しだけ別枠でフェードインし、タイピングが見えるタイミングにする */}
+        <AnimatedSection>
           <p className="text-center text-sm font-medium tracking-widest text-line-green uppercase">
-            <TypewriterLabel text="For Whom" />
+            <TypewriterLabel text="For Whom" startDelayMs={850} />
           </p>
           <h3 className="mt-3 text-center text-2xl font-bold text-white md:text-3xl">
             こんな方に向いています
@@ -73,7 +74,10 @@ export function BenefitsSection() {
             <br />
             特に、次のような目標をお持ちの方にフィットしやすいスクールです。
           </p>
-          <ul className="mx-auto mt-8 grid max-w-4xl gap-3 sm:grid-cols-2 md:grid-cols-3">
+        </AnimatedSection>
+
+        <AnimatedSection className="mt-8">
+          <ul className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2 md:grid-cols-3">
             {targetAudiences.map((item) => (
               <li
                 key={item}
@@ -90,8 +94,8 @@ export function BenefitsSection() {
               sublabel="公式LINE限定でスクールの詳細をご案内"
             />
           </div>
-        </div>
-      </AnimatedSection>
+        </AnimatedSection>
+      </div>
     </SectionWrapper>
   );
 }

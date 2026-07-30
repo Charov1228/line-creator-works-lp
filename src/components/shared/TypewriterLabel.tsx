@@ -5,22 +5,23 @@ import { useReducedMotion } from "framer-motion";
 
 interface TypewriterLabelProps {
   text: string;
+  /** 親のフェードイン後に開始する余白(ms) */
   startDelayMs?: number;
 }
 
 /**
  * セクションラベル用の軽いタイピング演出
- * 小さな英字ラベル向けなので、短時間で完了させる
+ * 画面内に見えてから、かつ親のフェードインが進んでから開始する
  */
 export function TypewriterLabel({
   text,
-  startDelayMs = 260,
+  startDelayMs = 750,
 }: TypewriterLabelProps) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
   const [value, setValue] = useState(reduce ? text : "");
   const [showCursor, setShowCursor] = useState(!reduce);
-  const [started, setStarted] = useState(reduce);
+  const [started, setStarted] = useState(!!reduce);
 
   useEffect(() => {
     if (reduce) return;
@@ -28,22 +29,58 @@ export function TypewriterLabel({
     const element = ref.current;
     if (!element) return;
 
+    let cancelled = false;
+    let rafId = 0;
+    let delayTimer = 0;
+
+    const isVisiblyShown = () => {
+      let node: HTMLElement | null = element;
+      while (node) {
+        const style = window.getComputedStyle(node);
+        if (style.visibility === "hidden" || style.display === "none") {
+          return false;
+        }
+        if (parseFloat(style.opacity) < 0.85) {
+          return false;
+        }
+        if (node === document.body) break;
+        node = node.parentElement;
+      }
+      return true;
+    };
+
+    const beginWhenVisible = () => {
+      if (cancelled) return;
+      if (!isVisiblyShown()) {
+        rafId = window.requestAnimationFrame(beginWhenVisible);
+        return;
+      }
+      delayTimer = window.setTimeout(() => {
+        if (!cancelled) setStarted(true);
+      }, startDelayMs);
+    };
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setStarted(true);
-          observer.disconnect();
-        }
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        beginWhenVisible();
       },
       {
-        threshold: 0.8,
-        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.9,
+        rootMargin: "0px 0px -18% 0px",
       }
     );
 
     observer.observe(element);
-    return () => observer.disconnect();
-  }, [reduce]);
+
+    return () => {
+      cancelled = true;
+      observer.disconnect();
+      window.cancelAnimationFrame(rafId);
+      window.clearTimeout(delayTimer);
+    };
+  }, [reduce, startDelayMs]);
 
   useEffect(() => {
     if (reduce || !started) return;
@@ -68,13 +105,13 @@ export function TypewriterLabel({
       }
     };
 
-    timers.push(window.setTimeout(tick, startDelayMs));
+    timers.push(window.setTimeout(tick, 80));
 
     return () => {
       cancelled = true;
       timers.forEach((id) => window.clearTimeout(id));
     };
-  }, [reduce, startDelayMs, started, text]);
+  }, [reduce, started, text]);
 
   return (
     <span ref={ref}>
