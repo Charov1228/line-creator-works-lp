@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useReducedMotion } from "framer-motion";
-import { StrikeLine } from "@/components/shared/StrikeLine";
 import { cn } from "@/lib/utils";
 
 const LINE1 = "学ぶだけで終わらない。";
@@ -94,7 +93,6 @@ export function TypewriterHeadline({
 
   const cursorOnLine1 = phase === "line1" || phase === "wait";
   const cursorOnLine2 = phase === "line2" || (phase === "done" && showCursor);
-  const line2Ready = phase === "done" && line2Prefix.length === LINE2_PREFIX.length;
 
   return (
     <h1
@@ -109,19 +107,8 @@ export function TypewriterHeadline({
         {showCursor && cursorOnLine1 && <TypingCursor />}
       </span>
       <span className="mt-0.5 block min-h-[1.3em] whitespace-nowrap md:mt-1">
-        {line2Ready ? (
-          <>
-            <StrikeLine lineClassName="top-[62%] h-[0.68em] bg-line-green/80">
-              <span className="text-gradient-green">{line2Prefix}</span>
-            </StrikeLine>
-            <span className="text-white">{line2Suffix}</span>
-          </>
-        ) : (
-          <>
-            <span className="text-gradient-green">{line2Prefix}</span>
-            <span className="text-white">{line2Suffix}</span>
-          </>
-        )}
+        <span className="text-gradient-green">{line2Prefix}</span>
+        <span className="text-white">{line2Suffix}</span>
         {showCursor && cursorOnLine2 && <TypingCursor />}
       </span>
     </h1>
