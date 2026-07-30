@@ -215,29 +215,55 @@ body {
   animation: strike-line 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* カード枠の緩やかな光の流れ */
+/* カード枠の緩やかな光の流れ（はっきり見える強さ） */
 @keyframes card-border-flow {
   0%,
   100% {
-    border-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.12);
     box-shadow: 0 0 0 rgba(6, 199, 85, 0);
   }
   50% {
-    border-color: rgba(6, 199, 85, 0.32);
-    box-shadow: 0 0 28px rgba(6, 199, 85, 0.07);
+    border-color: rgba(6, 199, 85, 0.55);
+    box-shadow:
+      0 0 0 1px rgba(6, 199, 85, 0.25),
+      0 0 36px rgba(6, 199, 85, 0.18);
   }
 }
 
 .card-border-flow {
-  animation: card-border-flow 6s ease-in-out infinite;
+  animation: card-border-flow 5.5s ease-in-out infinite;
+}
+
+/* キャリア流れ：ステップが順番に強調される */
+@keyframes step-highlight {
+  0%,
+  100% {
+    border-color: rgba(6, 199, 85, 0.22);
+    background-color: rgba(6, 199, 85, 0.08);
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(6, 199, 85, 0);
+  }
+  12%,
+  22% {
+    border-color: rgba(6, 199, 85, 0.75);
+    background-color: rgba(6, 199, 85, 0.18);
+    transform: scale(1.04);
+    box-shadow: 0 0 28px rgba(6, 199, 85, 0.22);
+  }
+  30% {
+    border-color: rgba(6, 199, 85, 0.22);
+    background-color: rgba(6, 199, 85, 0.08);
+    transform: scale(1);
+    box-shadow: 0 0 0 rgba(6, 199, 85, 0);
+  }
+}
+
+.step-highlight {
+  animation: step-highlight 9s ease-in-out infinite;
 }
 
 .channel-marquee-slow {
   animation: channel-marquee 60s linear infinite;
-}
-
-.channel-marquee-slow:hover {
-  animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -249,7 +275,8 @@ body {
   .ambient-line-slide,
   .timeline-glow-flow,
   .strike-line-run,
-  .card-border-flow {
+  .card-border-flow,
+  .step-highlight {
     animation: none !important;
   }
 

@@ -4,7 +4,6 @@ import { ArrowRight } from "lucide-react";
 import { careerPoints } from "@/data/content";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { AnimatedStraightLines } from "@/components/shared/AnimatedStraightLines";
-import { HorizontalMarquee } from "@/components/shared/HorizontalMarquee";
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
 import {
   SectionWrapper,
@@ -73,24 +72,28 @@ export function CareerSection() {
       </div>
 
       <AnimatedSection className="mt-16">
-        <div className="card-border-flow rounded-3xl border border-white/10 bg-card p-8 md:p-12">
+        <div className="rounded-3xl border border-white/10 bg-card p-8 md:p-12">
           <h3 className="mb-8 text-center text-lg font-semibold text-white">
             受講からキャリアまでの流れ
           </h3>
-          <HorizontalMarquee edgeFrom="from-card" className="gap-3">
-            {careerFlowSteps.map((step, index) => (
-              <div
-                key={step}
-                className="card-border-flow w-44 shrink-0 rounded-xl border border-line-green/30 bg-line-green/10 px-4 py-3 text-center"
-                style={{ animationDelay: `${index * 0.8}s` }}
-              >
-                <p className="text-xs font-medium text-line-green">
-                  Step {index + 1}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-white">{step}</p>
+          <div className="flex flex-col items-stretch gap-3 sm:grid sm:grid-cols-2 lg:flex lg:flex-row lg:flex-wrap lg:items-center lg:justify-center lg:gap-2">
+            {careerFlowSteps.map((step, index, arr) => (
+              <div key={step} className="flex items-center lg:contents">
+                <div
+                  className="step-highlight flex-1 rounded-xl border border-line-green/30 bg-line-green/10 px-4 py-3 text-center lg:w-40 lg:flex-none"
+                  style={{ animationDelay: `${index * 1.5}s` }}
+                >
+                  <p className="text-xs font-medium text-line-green">
+                    Step {index + 1}
+                  </p>
+                  <p className="mt-1 text-sm font-semibold text-white">{step}</p>
+                </div>
+                {index < arr.length - 1 && (
+                  <ArrowRight className="mx-1 hidden size-4 shrink-0 text-line-green/40 lg:block" />
+                )}
               </div>
             ))}
-          </HorizontalMarquee>
+          </div>
         </div>
       </AnimatedSection>
 
