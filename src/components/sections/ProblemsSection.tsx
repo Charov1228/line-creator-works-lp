@@ -63,7 +63,9 @@ export function ProblemsSection() {
           <span className="font-semibold text-white">
             けーさんとたろーの動画編集スクール
           </span>
-          なら解決の糸口があります。
+          なら
+          <br className="md:hidden" />
+          解決の糸口があります。
         </p>
       </AnimatedSection>
     </SectionWrapper>
