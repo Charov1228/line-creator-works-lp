@@ -80,13 +80,15 @@ export function CareerSection() {
             {careerFlowSteps.map((step, index, arr) => (
               <div key={step} className="flex items-center lg:contents">
                 <div
-                  className="step-highlight flex-1 rounded-xl border border-line-green/30 bg-line-green/10 px-4 py-3 text-center lg:w-40 lg:flex-none"
+                  className="step-highlight flex-1 rounded-xl border border-line-green/30 bg-line-green/10 px-3 py-3 text-center lg:w-auto lg:min-w-0 lg:flex-none lg:px-3.5"
                   style={{ animationDelay: `${index * 1.5}s` }}
                 >
-                  <p className="text-xs font-medium text-line-green">
+                  <p className="text-[10px] font-medium text-line-green sm:text-xs">
                     Step {index + 1}
                   </p>
-                  <p className="mt-1 text-sm font-semibold text-white">{step}</p>
+                  <p className="mt-1 text-[11px] font-semibold whitespace-nowrap text-white sm:text-xs">
+                    {step}
+                  </p>
                 </div>
                 {index < arr.length - 1 && (
                   <ArrowRight className="mx-1 hidden size-4 shrink-0 text-line-green/40 lg:block" />

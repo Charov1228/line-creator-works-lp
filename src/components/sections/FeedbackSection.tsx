@@ -1,6 +1,6 @@
 "use client";
 
-import { Mic, Users, MessageSquare, Eye } from "lucide-react";
+import { Mic, Users, MessageSquare, Eye, Monitor } from "lucide-react";
 import { feedbackFeatures } from "@/data/content";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { PlaceholderImage } from "@/components/shared/PlaceholderImage";
@@ -9,7 +9,7 @@ import {
   SectionHeader,
 } from "@/components/shared/SectionWrapper";
 
-const featureIcons = [Mic, Users, MessageSquare, Eye];
+const featureIcons = [Mic, Monitor, MessageSquare, Users, Eye];
 
 /**
  * フィードバック会セクション
@@ -69,7 +69,7 @@ export function FeedbackSection() {
         <AnimatedSection>
           <PlaceholderImage
             src="/images/feedback-session.jpg"
-            alt="オンラインフィードバック会の様子"
+            alt="対面フィードバック会の様子"
             aspectRatio="aspect-[4/5]"
           />
         </AnimatedSection>
