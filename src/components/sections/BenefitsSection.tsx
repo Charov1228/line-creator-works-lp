@@ -24,9 +24,7 @@ export function BenefitsSection() {
       <AnimatedSection>
         <SectionHeader
           label="Your Future"
-          title={
-            <StrikeLine>受講後に、目指せる未来</StrikeLine>
-          }
+          title="受講後に、目指せる未来"
           description={
             <>
               断定や収入保証はありません。
@@ -67,7 +65,7 @@ export function BenefitsSection() {
             <TypewriterLabel text="For Whom" startDelayMs={850} />
           </p>
           <h3 className="mt-3 text-center text-2xl font-bold text-white md:text-3xl">
-            こんな方に向いています
+            <StrikeLine>こんな方に向いています</StrikeLine>
           </h3>
           <p className="mx-auto mt-3 max-w-2xl text-center text-sm text-white/50 md:text-base">
             初心者・未経験の方を歓迎しています。

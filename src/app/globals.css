@@ -181,12 +181,12 @@ body {
     transform: scaleX(0);
     opacity: 0;
   }
-  15% {
-    opacity: 0.7;
+  18% {
+    opacity: 0.95;
   }
   100% {
     transform: scaleX(1);
-    opacity: 0.35;
+    opacity: 0.9;
   }
 }
 
@@ -212,7 +212,7 @@ body {
 
 .strike-line-run {
   transform-origin: left center;
-  animation: strike-line 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: strike-line 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* カード枠の緩やかな光の流れ（はっきり見える強さ） */
@@ -281,7 +281,7 @@ body {
   }
 
   .strike-line-run {
-    opacity: 0.3;
+    opacity: 0.85;
     transform: scaleX(1);
   }
 }

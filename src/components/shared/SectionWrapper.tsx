@@ -4,6 +4,7 @@ import {
   AmbientBackground,
   type Atmosphere,
 } from "@/components/shared/AmbientBackground";
+import { StrikeLine } from "@/components/shared/StrikeLine";
 import { TypewriterLabel } from "@/components/shared/TypewriterLabel";
 
 interface SectionWrapperProps {
@@ -76,7 +77,7 @@ export function SectionHeader({
         </p>
       )}
       <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
-        {title}
+        <StrikeLine>{title}</StrikeLine>
       </h2>
       {description && (
         <p

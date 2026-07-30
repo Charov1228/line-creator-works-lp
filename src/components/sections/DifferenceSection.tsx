@@ -11,7 +11,6 @@ import {
   SectionWrapper,
   SectionHeader,
 } from "@/components/shared/SectionWrapper";
-import { StrikeLine } from "@/components/shared/StrikeLine";
 
 const iconMap = {
   target: Target,
@@ -30,9 +29,7 @@ export function DifferenceSection() {
       <AnimatedSection>
         <SectionHeader
           label="Why Us"
-          title={
-            <StrikeLine>一般的なスクールとの違い</StrikeLine>
-          }
+          title="一般的なスクールとの違い"
           description={
             <>
               「動画編集を教える」だけの場所は、たくさんあります。

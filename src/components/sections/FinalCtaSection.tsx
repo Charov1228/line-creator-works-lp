@@ -21,9 +21,11 @@ export function FinalCtaSection() {
             Get Started
           </p>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-white md:text-5xl">
-            <StrikeLine>まずは無料個別相談で、</StrikeLine>
-            <br />
-            詳しく聞いてみませんか。
+            <StrikeLine>
+              まずは無料個別相談で、
+              <br />
+              詳しく聞いてみませんか。
+            </StrikeLine>
           </h2>
           <p className="mx-auto mt-6 max-w-lg text-base leading-relaxed text-white/60 md:text-lg">
             公式LINEから無料面談を予約できます。

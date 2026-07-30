@@ -111,7 +111,7 @@ export function TypewriterHeadline({
       <span className="mt-0.5 block min-h-[1.3em] whitespace-nowrap md:mt-1">
         {line2Ready ? (
           <>
-            <StrikeLine lineClassName="top-[62%] h-[0.38em] bg-line-green/40">
+            <StrikeLine lineClassName="top-[62%] h-[0.68em] bg-line-green/80">
               <span className="text-gradient-green">{line2Prefix}</span>
             </StrikeLine>
             <span className="text-white">{line2Suffix}</span>
