@@ -40,7 +40,7 @@ export function SectionWrapper({
   return (
     <section
       id={id}
-      className={cn("relative overflow-hidden py-20 md:py-32", bgClass, className)}
+      className={cn("relative overflow-hidden py-14 md:py-32", bgClass, className)}
     >
       <AmbientBackground atmosphere={atmosphere} />
       {ambient && <div className="pointer-events-none absolute inset-0 z-0">{ambient}</div>}

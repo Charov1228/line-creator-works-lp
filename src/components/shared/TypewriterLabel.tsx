@@ -74,7 +74,7 @@ export function TypewriterLabel({
       },
       {
         threshold: isMobile ? 0 : 0.9,
-        rootMargin: isMobile ? "0px 0px -10% 0px" : "0px 0px -18% 0px",
+        rootMargin: isMobile ? "0px 0px -18% 0px" : "0px 0px -18% 0px",
       }
     );
 

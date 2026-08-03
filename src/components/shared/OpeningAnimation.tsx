@@ -5,27 +5,26 @@ import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
-const TOTAL_DURATION_DESKTOP_MS = 3200;
-const TOTAL_DURATION_MOBILE_MS = 2000;
+export const OPENING_DURATION_DESKTOP_MS = 3200;
+export const OPENING_DURATION_MOBILE_MS = 2200;
+export const OPENING_DONE_EVENT = "lcw:opening-done";
 
 /**
- * LP初回表示時の全画面オープニングアニメーション
- * 紋章ロゴを中心にフェードイン → ホールド → 画面全体がフェードアウト
+ * LP初回表示時の全画面オープニング
+ * 初回ペイントから黒で覆い、空ページのフラッシュを防ぐ
  */
 export function OpeningAnimation() {
   const [visible, setVisible] = useState(true);
-  const [mounted, setMounted] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const isMobile = useIsMobile();
   const totalDurationMs = isMobile
-    ? TOTAL_DURATION_MOBILE_MS
-    : TOTAL_DURATION_DESKTOP_MS;
+    ? OPENING_DURATION_MOBILE_MS
+    : OPENING_DURATION_DESKTOP_MS;
 
   useEffect(() => {
-    setMounted(true);
-
     if (shouldReduceMotion) {
       setVisible(false);
+      window.dispatchEvent(new Event(OPENING_DONE_EVENT));
       return;
     }
 
@@ -34,7 +33,6 @@ export function OpeningAnimation() {
 
     const timer = window.setTimeout(() => {
       setVisible(false);
-      document.body.style.overflow = previousOverflow;
     }, totalDurationMs);
 
     return () => {
@@ -43,59 +41,60 @@ export function OpeningAnimation() {
     };
   }, [shouldReduceMotion, totalDurationMs]);
 
-  if (!mounted) return null;
-
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence
+      onExitComplete={() => {
+        document.body.style.overflow = "";
+        window.dispatchEvent(new Event(OPENING_DONE_EVENT));
+      }}
+    >
       {visible && (
         <motion.div
           key="opening"
           className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden bg-black"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: [1, 1, 0] }}
-          transition={{
-            duration: isMobile ? 1.75 : 2.8,
-            times: [0, 0.72, 1],
-            ease: "easeInOut",
-          }}
+          // 初回から表示済み。フェードアウトだけ行う
+          initial={false}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: isMobile ? 0.28 : 0.45 } }}
           aria-hidden="true"
         >
           <div className="absolute inset-0 grid-bg opacity-40" />
 
-          <motion.div
-            className="absolute size-[min(90vw,520px)] rounded-full bg-line-green/10 blur-[120px]"
-            initial={{ scale: 0.5, opacity: 0 }}
-            animate={{ scale: [0.5, 1.15, 1], opacity: [0, 0.7, 0.5] }}
-            transition={{ duration: isMobile ? 0.9 : 1.4, ease: "easeOut" }}
-          />
-
-          <motion.div
-            className="absolute size-[min(70vw,380px)] rounded-full border border-line-green/20"
-            initial={{ scale: 0.6, opacity: 0 }}
-            animate={{ scale: [0.6, 1.08, 1], opacity: [0, 0.5, 0] }}
-            transition={{ duration: isMobile ? 1.0 : 1.6, ease: "easeOut" }}
-          />
+          {/* スマホは blur 多層を避けてカクつきを抑制 */}
+          {!isMobile && (
+            <>
+              <motion.div
+                className="absolute size-[min(90vw,520px)] rounded-full bg-line-green/10 blur-[120px]"
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: [0.5, 1.15, 1], opacity: [0, 0.7, 0.5] }}
+                transition={{ duration: 1.4, ease: "easeOut" }}
+              />
+              <motion.div
+                className="absolute size-[min(70vw,380px)] rounded-full border border-line-green/20"
+                initial={{ scale: 0.6, opacity: 0 }}
+                animate={{ scale: [0.6, 1.08, 1], opacity: [0, 0.5, 0] }}
+                transition={{ duration: 1.6, ease: "easeOut" }}
+              />
+            </>
+          )}
 
           <div className="relative flex flex-col items-center px-6">
             <motion.div
-              initial={{ scale: 0.55, opacity: 0, filter: "blur(10px)" }}
-              animate={{
-                scale: [0.55, 1.04, 1],
-                opacity: [0, 1, 1],
-                filter: ["blur(10px)", "blur(0px)", "blur(0px)"],
-              }}
+              initial={{ scale: 0.7, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
               transition={{
-                duration: isMobile ? 0.75 : 1.1,
-                times: [0, 0.7, 1],
+                duration: isMobile ? 0.55 : 1.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="relative"
             >
-              <motion.div
-                className="absolute -inset-6 rounded-full bg-line-green/20 blur-2xl"
-                animate={{ opacity: [0, 0.8, 0.45] }}
-                transition={{ duration: isMobile ? 0.8 : 1.2, ease: "easeOut" }}
-              />
+              {!isMobile && (
+                <motion.div
+                  className="absolute -inset-6 rounded-full bg-line-green/20 blur-2xl"
+                  animate={{ opacity: [0, 0.8, 0.45] }}
+                  transition={{ duration: 1.2, ease: "easeOut" }}
+                />
+              )}
               <Image
                 src="/images/logo.png"
                 alt=""
@@ -108,10 +107,10 @@ export function OpeningAnimation() {
 
             <motion.div
               className="mt-8 text-center"
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
-                delay: isMobile ? 0.35 : 0.65,
+                delay: isMobile ? 0.25 : 0.65,
                 duration: isMobile ? 0.4 : 0.55,
                 ease: "easeOut",
               }}
@@ -129,22 +128,12 @@ export function OpeningAnimation() {
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{ scaleX: 1, opacity: 1 }}
               transition={{
-                delay: isMobile ? 0.5 : 0.9,
-                duration: isMobile ? 0.4 : 0.6,
+                delay: isMobile ? 0.4 : 0.9,
+                duration: isMobile ? 0.35 : 0.6,
                 ease: "easeOut",
               }}
             />
           </div>
-
-          <motion.div
-            className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black to-transparent"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{
-              delay: isMobile ? 1.0 : 1.8,
-              duration: isMobile ? 0.5 : 0.8,
-            }}
-          />
         </motion.div>
       )}
     </AnimatePresence>

@@ -17,8 +17,12 @@ import {
  */
 export function ProblemsSection() {
   return (
-    <SectionWrapper id="problems" atmosphere="glow-left">
-      <AnimatedSection>
+    <SectionWrapper
+      id="problems"
+      atmosphere="glow-left"
+      className="pt-12 md:pt-32"
+    >
+      <AnimatedSection early>
         <SectionHeader
           label="For You"
           title="こんな悩み、ありませんか？"
@@ -36,7 +40,7 @@ export function ProblemsSection() {
         />
       </AnimatedSection>
 
-      <StaggerContainer className="grid gap-6 md:grid-cols-3">
+      <StaggerContainer early className="grid gap-6 md:grid-cols-3">
         {problems.map((problem, index) => (
           <StaggerItem key={problem.title}>
             <div
@@ -57,7 +61,7 @@ export function ProblemsSection() {
         ))}
       </StaggerContainer>
 
-      <AnimatedSection className="mt-12 text-center">
+      <AnimatedSection early className="mt-12 text-center">
         <p className="text-base text-white/50 md:text-lg">
           その悩み、
           <span className="font-semibold text-white">

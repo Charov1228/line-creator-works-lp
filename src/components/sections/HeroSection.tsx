@@ -1,27 +1,52 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
 import { Logo } from "@/components/shared/Logo";
 import { AmbientBackground } from "@/components/shared/AmbientBackground";
+import {
+  OPENING_DONE_EVENT,
+  OPENING_DURATION_DESKTOP_MS,
+  OPENING_DURATION_MOBILE_MS,
+} from "@/components/shared/OpeningAnimation";
 import { TypewriterHeadline } from "@/components/shared/TypewriterHeadline";
 import { siteConfig } from "@/data/site-config";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 /**
  * ファーストビュー
- * 受講後の未来 → 特徴 → CTA → けーさんとたろーの安心感、の順で視線誘導
- * スマホはヘッダーと重複するブランド表示を省き、画像→CTAの順で配置
+ * OP終了後に演出を開始し、OP中の裏での再生・終了時のカクつきを防ぐ
  */
 export function HeroSection() {
   const reduce = useReducedMotion();
   const isMobile = useIsMobile();
-  const typeStartMs = reduce ? 0 : isMobile ? 1400 : 2800;
-  const copyDelay = reduce ? 0 : isMobile ? 2.7 : 4.8;
-  const badgeDelay = reduce ? 0 : isMobile ? 2.85 : 5.0;
-  const ctaDelay = reduce ? 0 : isMobile ? 3.0 : 5.2;
+  const [openingDone, setOpeningDone] = useState(!!reduce);
+
+  useEffect(() => {
+    if (reduce) {
+      setOpeningDone(true);
+      return;
+    }
+
+    const done = () => setOpeningDone(true);
+    const fallbackMs = isMobile
+      ? OPENING_DURATION_MOBILE_MS + 400
+      : OPENING_DURATION_DESKTOP_MS + 550;
+    const timer = window.setTimeout(done, fallbackMs);
+    window.addEventListener(OPENING_DONE_EVENT, done);
+
+    return () => {
+      window.clearTimeout(timer);
+      window.removeEventListener(OPENING_DONE_EVENT, done);
+    };
+  }, [reduce, isMobile]);
+
+  const copyDelay = reduce ? 0 : isMobile ? 1.55 : 2.4;
+  const badgeDelay = reduce ? 0 : isMobile ? 1.7 : 2.55;
+  const ctaDelay = reduce ? 0 : isMobile ? 1.85 : 2.7;
 
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-black pt-14 md:pt-20">
@@ -29,12 +54,15 @@ export function HeroSection() {
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-between px-5 py-3 pb-5 md:justify-center md:px-8 md:py-16 lg:max-w-7xl lg:py-20">
         <div className="grid min-h-0 flex-1 items-stretch gap-3 md:flex-none md:items-center md:gap-6 lg:grid-cols-[0.9fr_1.25fr] lg:grid-rows-[auto_auto] lg:gap-x-10 lg:gap-y-8">
-          {/* コピー（スマホではロゴ省略／PCはブランド表示あり） */}
           <div className="min-w-0 shrink-0">
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              animate={
+                openingDone || reduce
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 20 }
+              }
+              transition={{ duration: 0.5, delay: reduce ? 0 : 0.05 }}
               className="mb-6 hidden items-center gap-4 md:flex"
             >
               <Logo size="lg" />
@@ -48,17 +76,33 @@ export function HeroSection() {
               </div>
             </motion.div>
 
-            <TypewriterHeadline
-              startDelayMs={typeStartMs}
-              className="text-[clamp(1.9rem,7.2vw,2.65rem)] md:text-[clamp(1.55rem,5.4vw,2.65rem)]"
-            />
+            {openingDone || reduce ? (
+              <TypewriterHeadline
+                startDelayMs={reduce ? 0 : isMobile ? 120 : 400}
+                className="text-[clamp(1.9rem,7.2vw,2.65rem)] md:text-[clamp(1.55rem,5.4vw,2.65rem)]"
+              />
+            ) : (
+              <h1
+                aria-hidden
+                className="invisible text-[clamp(1.9rem,7.2vw,2.65rem)] leading-[1.3] font-bold tracking-tight md:text-[clamp(1.55rem,5.4vw,2.65rem)]"
+              >
+                <span className="block whitespace-nowrap">
+                  学ぶだけで終わらない。
+                </span>
+                <span className="mt-0.5 block md:mt-1">仕事で使えるスキルへ。</span>
+              </h1>
+            )}
 
             <motion.p
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={false}
+              animate={
+                openingDone || reduce
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: isMobile ? 16 : 24 }
+              }
               transition={{
-                duration: isMobile ? 0.4 : 0.6,
-                delay: copyDelay,
+                duration: isMobile ? 0.45 : 0.6,
+                delay: openingDone ? copyDelay : 0,
               }}
               className="mt-3 max-w-lg text-[0.875rem] leading-[1.7] text-white/60 sm:text-[0.9375rem] md:mt-6 md:text-lg md:leading-[1.8]"
             >
@@ -68,11 +112,15 @@ export function HeroSection() {
             </motion.p>
 
             <motion.div
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={false}
+              animate={
+                openingDone || reduce
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: isMobile ? 16 : 24 }
+              }
               transition={{
-                duration: isMobile ? 0.4 : 0.6,
-                delay: badgeDelay,
+                duration: isMobile ? 0.45 : 0.6,
+                delay: openingDone ? badgeDelay : 0,
               }}
               className="mt-3 flex flex-nowrap gap-1.5 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] md:mt-8 md:gap-3 [&::-webkit-scrollbar]:hidden"
             >
@@ -91,13 +139,16 @@ export function HeroSection() {
               ))}
             </motion.div>
 
-            {/* PC: コピー直下にCTA（スマホは画像の下に配置） */}
             <motion.div
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={false}
+              animate={
+                openingDone || reduce
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 24 }
+              }
               transition={{
-                duration: isMobile ? 0.4 : 0.6,
-                delay: ctaDelay,
+                duration: isMobile ? 0.45 : 0.6,
+                delay: openingDone ? ctaDelay : 0,
               }}
               className="mt-10 hidden md:block"
             >
@@ -110,11 +161,18 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          {/* 画像（スマホではCTAの上） */}
           <motion.div
-            initial={reduce ? false : { opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            initial={false}
+            animate={
+              openingDone || reduce
+                ? { opacity: 1, ...(isMobile ? {} : { scale: 1 }) }
+                : { opacity: 0, ...(isMobile ? {} : { scale: 0.95 }) }
+            }
+            transition={{
+              duration: isMobile ? 0.5 : 0.8,
+              delay: openingDone ? (isMobile ? 0.08 : 0.15) : 0,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="relative mx-auto flex min-h-0 w-full max-w-md flex-1 flex-col lg:row-span-2 lg:mx-0 lg:max-w-none lg:flex-none"
           >
             <div className="absolute -top-1.5 right-1 z-10 sm:-top-3 sm:right-2">
@@ -147,13 +205,16 @@ export function HeroSection() {
             </div>
           </motion.div>
 
-          {/* スマホ: 画像の下にCTA */}
           <motion.div
-            initial={reduce ? false : { opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={false}
+            animate={
+              openingDone || reduce
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 16 }
+            }
             transition={{
-              duration: 0.4,
-              delay: ctaDelay,
+              duration: 0.45,
+              delay: openingDone ? ctaDelay : 0,
             }}
             className="md:hidden"
           >
@@ -166,9 +227,9 @@ export function HeroSection() {
         </div>
 
         <motion.div
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
+          initial={false}
+          animate={{ opacity: openingDone || reduce ? 1 : 0 }}
+          transition={{ delay: openingDone ? 1.0 : 0 }}
           className="mt-3 hidden justify-center md:mt-12 md:flex"
         >
           <a

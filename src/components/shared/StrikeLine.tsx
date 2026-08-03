@@ -79,7 +79,7 @@ export function StrikeLine({
       {
         threshold: isMobile ? 0 : 0.45,
         // 見出しが画面に入ってからライン（画面外で終わらせない）
-        rootMargin: isMobile ? "0px 0px -10% 0px" : "0px 0px -12% 0px",
+        rootMargin: isMobile ? "0px 0px -18% 0px" : "0px 0px -12% 0px",
       }
     );
     observer.observe(el);
