@@ -31,6 +31,19 @@ const serviceIcons = {
   handshake: Handshake,
 } as const;
 
+function ServiceTitle({ title }: { title: string }) {
+  if (title === "SNS運用・集客コンサルティング事業") {
+    return (
+      <>
+        SNS運用・
+        <br className="hidden md:inline" />
+        集客コンサルティング事業
+      </>
+    );
+  }
+  return title;
+}
+
 function ServiceCard({
   service,
   index,
@@ -52,7 +65,9 @@ function ServiceCard({
       <p className="mt-2 text-xs font-medium tracking-wider text-line-green">
         {service.subtitle}
       </p>
-      <h3 className="mt-1 text-lg font-bold text-white">{service.title}</h3>
+      <h3 className="mt-1 text-lg font-bold text-white">
+        <ServiceTitle title={service.title} />
+      </h3>
       <p className="mt-3 text-sm leading-relaxed text-white/60">
         {service.description}
       </p>
@@ -92,10 +107,18 @@ export default function LineCastSupportPage() {
                   {lineCastSupport.companyName}
                 </h1>
                 <p className="mt-4 text-lg text-white/70 md:text-xl">
-                  {lineCastSupport.tagline}
+                  人材・クリエイティブ・集客・営業まで、
+                  <br className="md:hidden" />
+                  成長をトータルで支援
                 </p>
                 <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/50">
-                  {lineCastSupport.description}
+                  人材採用・派遣、動画編集スクール運営、
+                  <br />
+                  SNS運用コンサルティング、映像制作、営業代行まで。
+                  <br />
+                  企業とクリエイター双方の成長を
+                  <br className="md:hidden" />
+                  サポートする事業を展開しています。
                 </p>
               </div>
             </div>
@@ -106,13 +129,31 @@ export default function LineCastSupportPage() {
         <SectionWrapper id="free-program" variant="card">
           <SectionHeader
             label={freeProgram.label}
-            title={freeProgram.title}
-            description={freeProgram.lead}
+            title={
+              <>
+                働きながら、
+                <br className="md:hidden" />
+                学び始められる無償制度
+              </>
+            }
+            description={
+              <>
+                これは「無料スクール」ではありません。
+                <br />
+                週5で働きながら、生活を安定させたうえで
+                <br />
+                動画編集という選択肢を持ちたい方のための、
+                <br />
+                福利厚生・キャリア支援制度です。
+              </>
+            }
           />
 
           <div className="mx-auto max-w-3xl rounded-3xl border border-line-green/25 bg-line-green/5 px-6 py-5 text-center md:px-8">
             <p className="text-sm leading-relaxed text-white/75 md:text-base">
-              {freeProgram.target}
+              まずは仕事と生活を安定させつつ、
+              <br className="hidden md:inline" />
+              将来の選択肢として動画編集を学び始めたい方を想定しています。
             </p>
           </div>
 
@@ -151,7 +192,13 @@ export default function LineCastSupportPage() {
           </div>
 
           <p className="mx-auto mt-10 max-w-3xl text-center text-sm leading-relaxed text-white/55 md:text-base">
-            {freeProgram.purpose}
+            給与以外の価値を届け、
+            <br className="md:hidden" />
+            これからの働き方の選択肢を増やすこと。
+            <br />
+            一緒に未来をつくる仲間を増やしていくことも、
+            <br className="md:hidden" />
+            この制度の狙いです。
           </p>
 
           <div className="mt-12 overflow-hidden rounded-3xl border border-white/10">
@@ -185,7 +232,11 @@ export default function LineCastSupportPage() {
 
           <div className="mt-12 text-center">
             <p className="mx-auto max-w-2xl text-sm leading-relaxed text-white/55 md:text-base">
-              {freeProgram.closing}
+              未経験の方のご相談も歓迎です。無理な勧誘はしません。
+              <br />
+              まずは状況や目標をお聞きし、
+              <br className="md:hidden" />
+              動画編集が合うかどうかを一緒に見極めます。
             </p>
             <div className="mt-8 flex justify-center">
               <LineCtaButton
@@ -201,7 +252,13 @@ export default function LineCastSupportPage() {
           <SectionHeader
             label="Business"
             title="事業内容"
-            description="人材・教育・マーケティング・映像制作・営業まで、企業の成長を多角的に支援します。"
+            description={
+              <>
+                人材・教育・マーケティング・映像制作・営業まで、
+                <br />
+                企業の成長を多角的に支援します。
+              </>
+            }
           />
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {topServices.map((service, index) => (
@@ -220,21 +277,6 @@ export default function LineCastSupportPage() {
                 index={index + 3}
               />
             ))}
-          </div>
-        </SectionWrapper>
-
-        {/* CTA */}
-        <SectionWrapper variant="gradient">
-          <div className="text-center">
-            <h2 className="text-2xl font-bold text-white md:text-3xl">
-              まずはお気軽にお問い合わせください
-            </h2>
-            <p className="mt-4 text-white/50">
-              各事業のご相談・ご依頼は公式LINEから受け付けています。
-            </p>
-            <div className="mt-8 flex justify-center">
-              <LineCtaButton sublabel="公式LINEからお問い合わせ" />
-            </div>
           </div>
         </SectionWrapper>
       </main>
