@@ -45,8 +45,8 @@ export function StrikeLine({
         if (style.visibility === "hidden" || style.display === "none") {
           return false;
         }
-        // スマホはフェード途中でもライン開始を許容
-        const opacityFloor = isMobile ? 0.45 : 0.85;
+        // スマホはフェードがある程度見えてからライン開始
+        const opacityFloor = isMobile ? 0.55 : 0.85;
         if (parseFloat(style.opacity) < opacityFloor) {
           return false;
         }
@@ -66,7 +66,7 @@ export function StrikeLine({
         () => {
           if (!cancelled) setActive(true);
         },
-        isMobile ? 80 : 280
+        isMobile ? 140 : 280
       );
     };
 
@@ -78,7 +78,8 @@ export function StrikeLine({
       },
       {
         threshold: isMobile ? 0 : 0.45,
-        rootMargin: isMobile ? "0px 0px 40% 0px" : "0px 0px -12% 0px",
+        // 見出しが画面に入ってからライン（画面外で終わらせない）
+        rootMargin: isMobile ? "0px 0px -10% 0px" : "0px 0px -12% 0px",
       }
     );
     observer.observe(el);

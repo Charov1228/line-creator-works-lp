@@ -40,10 +40,10 @@ export function TypewriterHeadline({
 
     let cancelled = false;
     const timers: number[] = [];
-    const speed1 = isMobile ? 48 : 70;
-    const speed2 = isMobile ? 52 : 75;
-    const speed3 = isMobile ? 60 : 90;
-    const gapMs = isMobile ? 140 : 280;
+    const speed1 = isMobile ? 55 : 70;
+    const speed2 = isMobile ? 58 : 75;
+    const speed3 = isMobile ? 70 : 90;
+    const gapMs = isMobile ? 180 : 280;
 
     const typeChars = (
       text: string,

@@ -65,7 +65,7 @@ export function BenefitsSection() {
         {/* 見出しだけ別枠でフェードインし、タイピングが見えるタイミングにする */}
         <AnimatedSection>
           <p className="text-center text-sm font-medium tracking-widest text-line-green uppercase">
-            <TypewriterLabel text="For Whom" startDelayMs={isMobile ? 160 : 850} />
+            <TypewriterLabel text="For Whom" startDelayMs={isMobile ? 280 : 850} />
           </p>
           <h3 className="mt-3 text-center text-2xl font-bold text-white md:text-3xl">
             <StrikeLine>こんな方に向いています</StrikeLine>

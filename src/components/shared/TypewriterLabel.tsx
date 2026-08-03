@@ -21,8 +21,8 @@ export function TypewriterLabel({
   const reduce = useReducedMotion();
   const isMobile = useIsMobile();
   const resolvedDelay =
-    startDelayMs ?? (isMobile ? 180 : 750);
-  const typeSpeedMs = isMobile ? 48 : 78;
+    startDelayMs ?? (isMobile ? 280 : 750);
+  const typeSpeedMs = isMobile ? 56 : 78;
   const ref = useRef<HTMLSpanElement>(null);
   const [value, setValue] = useState(reduce ? text : "");
   const [showCursor, setShowCursor] = useState(!reduce);
@@ -45,7 +45,7 @@ export function TypewriterLabel({
         if (style.visibility === "hidden" || style.display === "none") {
           return false;
         }
-        const opacityFloor = isMobile ? 0.4 : 0.85;
+        const opacityFloor = isMobile ? 0.55 : 0.85;
         if (parseFloat(style.opacity) < opacityFloor) {
           return false;
         }
@@ -74,7 +74,7 @@ export function TypewriterLabel({
       },
       {
         threshold: isMobile ? 0 : 0.9,
-        rootMargin: isMobile ? "0px 0px 40% 0px" : "0px 0px -18% 0px",
+        rootMargin: isMobile ? "0px 0px -10% 0px" : "0px 0px -18% 0px",
       }
     );
 
