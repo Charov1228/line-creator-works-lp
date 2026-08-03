@@ -8,6 +8,7 @@ import { Logo } from "@/components/shared/Logo";
 import { AmbientBackground } from "@/components/shared/AmbientBackground";
 import { TypewriterHeadline } from "@/components/shared/TypewriterHeadline";
 import { siteConfig } from "@/data/site-config";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 /**
  * ファーストビュー
@@ -16,6 +17,11 @@ import { siteConfig } from "@/data/site-config";
  */
 export function HeroSection() {
   const reduce = useReducedMotion();
+  const isMobile = useIsMobile();
+  const typeStartMs = reduce ? 0 : isMobile ? 1400 : 2800;
+  const copyDelay = reduce ? 0 : isMobile ? 2.7 : 4.8;
+  const badgeDelay = reduce ? 0 : isMobile ? 2.85 : 5.0;
+  const ctaDelay = reduce ? 0 : isMobile ? 3.0 : 5.2;
 
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-black pt-14 md:pt-20">
@@ -43,14 +49,17 @@ export function HeroSection() {
             </motion.div>
 
             <TypewriterHeadline
-              startDelayMs={reduce ? 0 : 2800}
+              startDelayMs={typeStartMs}
               className="text-[clamp(1.9rem,7.2vw,2.65rem)] md:text-[clamp(1.55rem,5.4vw,2.65rem)]"
             />
 
             <motion.p
               initial={reduce ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: reduce ? 0 : 4.8 }}
+              transition={{
+                duration: isMobile ? 0.4 : 0.6,
+                delay: copyDelay,
+              }}
               className="mt-3 max-w-lg text-[0.875rem] leading-[1.7] text-white/60 sm:text-[0.9375rem] md:mt-6 md:text-lg md:leading-[1.8]"
             >
               現役編集者が教え、
@@ -61,7 +70,10 @@ export function HeroSection() {
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: reduce ? 0 : 5.0 }}
+              transition={{
+                duration: isMobile ? 0.4 : 0.6,
+                delay: badgeDelay,
+              }}
               className="mt-3 flex flex-nowrap gap-1.5 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] md:mt-8 md:gap-3 [&::-webkit-scrollbar]:hidden"
             >
               {[
@@ -83,7 +95,10 @@ export function HeroSection() {
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: reduce ? 0 : 5.2 }}
+              transition={{
+                duration: isMobile ? 0.4 : 0.6,
+                delay: ctaDelay,
+              }}
               className="mt-10 hidden md:block"
             >
               <LineCtaButton
@@ -136,7 +151,10 @@ export function HeroSection() {
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: reduce ? 0 : 5.2 }}
+            transition={{
+              duration: 0.4,
+              delay: ctaDelay,
+            }}
             className="md:hidden"
           >
             <LineCtaButton

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 const LINE1 = "学ぶだけで終わらない。";
 const LINE2_PREFIX = "仕事で使えるスキル";
@@ -20,9 +21,12 @@ interface TypewriterHeadlineProps {
  */
 export function TypewriterHeadline({
   className,
-  startDelayMs = 2800,
+  startDelayMs,
 }: TypewriterHeadlineProps) {
   const reduce = useReducedMotion();
+  const isMobile = useIsMobile();
+  const resolvedStartDelay =
+    startDelayMs ?? (isMobile ? 1400 : 2800);
   const [line1, setLine1] = useState(reduce ? LINE1 : "");
   const [line2Prefix, setLine2Prefix] = useState(reduce ? LINE2_PREFIX : "");
   const [line2Suffix, setLine2Suffix] = useState(reduce ? LINE2_SUFFIX : "");
@@ -36,6 +40,10 @@ export function TypewriterHeadline({
 
     let cancelled = false;
     const timers: number[] = [];
+    const speed1 = isMobile ? 48 : 70;
+    const speed2 = isMobile ? 52 : 75;
+    const speed3 = isMobile ? 60 : 90;
+    const gapMs = isMobile ? 140 : 280;
 
     const typeChars = (
       text: string,
@@ -61,35 +69,35 @@ export function TypewriterHeadline({
       window.setTimeout(() => {
         if (cancelled) return;
         setPhase("line1");
-        typeChars(LINE1, setLine1, 70, () => {
+        typeChars(LINE1, setLine1, speed1, () => {
           if (cancelled) return;
           timers.push(
             window.setTimeout(() => {
               if (cancelled) return;
               setPhase("line2");
-              typeChars(LINE2_PREFIX, setLine2Prefix, 75, () => {
+              typeChars(LINE2_PREFIX, setLine2Prefix, speed2, () => {
                 if (cancelled) return;
-                typeChars(LINE2_SUFFIX, setLine2Suffix, 90, () => {
+                typeChars(LINE2_SUFFIX, setLine2Suffix, speed3, () => {
                   if (cancelled) return;
                   setPhase("done");
                   timers.push(
                     window.setTimeout(() => {
                       if (!cancelled) setShowCursor(false);
-                    }, 900)
+                    }, isMobile ? 500 : 900)
                   );
                 });
               });
-            }, 280)
+            }, gapMs)
           );
         });
-      }, startDelayMs)
+      }, resolvedStartDelay)
     );
 
     return () => {
       cancelled = true;
       timers.forEach((id) => window.clearTimeout(id));
     };
-  }, [reduce, startDelayMs]);
+  }, [reduce, resolvedStartDelay, isMobile]);
 
   const cursorOnLine1 = phase === "line1" || phase === "wait";
   const cursorOnLine2 = phase === "line2" || (phase === "done" && showCursor);

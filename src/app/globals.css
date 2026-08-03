@@ -215,6 +215,24 @@ body {
   animation: strike-line 1.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+@media (max-width: 767px) {
+  .strike-line-run {
+    animation-duration: 0.75s;
+  }
+
+  .card-border-flow {
+    animation-duration: 4.2s;
+  }
+
+  .step-highlight {
+    animation-duration: 6.5s;
+  }
+
+  .timeline-glow-flow {
+    animation-duration: 5.5s;
+  }
+}
+
 /* カード枠の緩やかな光の流れ（はっきり見える強さ） */
 @keyframes card-border-flow {
   0%,

@@ -99,6 +99,13 @@ export function Header({ variant = "default" }: HeaderProps) {
               <div className="hidden md:block">
                 <LineCtaButton size="sm" label="無料面談を予約" />
               </div>
+
+              <Link
+                href="/line-cast-support"
+                className="inline-flex max-w-[58%] shrink-0 items-center rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-[11px] leading-snug font-medium text-white transition hover:border-line-green/40 hover:bg-line-green/10 hover:text-line-green md:hidden"
+              >
+                働きながら学びたい方は
+              </Link>
             </>
           )}
         </div>

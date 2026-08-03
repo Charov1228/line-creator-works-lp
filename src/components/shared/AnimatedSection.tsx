@@ -2,8 +2,9 @@
 
 import { motion, type Variants, type ViewportOptions } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
-const fadeUpVariants: Variants = {
+const fadeUpDesktop: Variants = {
   hidden: { opacity: 0, y: 32 },
   visible: {
     opacity: 1,
@@ -12,21 +13,38 @@ const fadeUpVariants: Variants = {
   },
 };
 
-/**
- * スクロール表示の発火位置
- * 下端ギリギリではなく、読みやすい位置に入ってから一度だけアニメーション
- */
-const REVEAL_VIEWPORT_BLOCK: ViewportOptions = {
+const fadeUpMobile: Variants = {
+  hidden: { opacity: 0, y: 18 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+/** PC: 見やすい帯に入ってから。スマホ: 早めに発火 */
+const REVEAL_VIEWPORT_BLOCK_DESKTOP: ViewportOptions = {
   once: true,
-  // 上下を少し狭め、要素が画面の見やすい帯に入ってから開始
   margin: "-10% 0px -22% 0px",
   amount: 0.4,
 };
 
-const REVEAL_VIEWPORT_STAGGER: ViewportOptions = {
+const REVEAL_VIEWPORT_BLOCK_MOBILE: ViewportOptions = {
+  once: true,
+  margin: "0px 0px -6% 0px",
+  amount: 0.12,
+};
+
+const REVEAL_VIEWPORT_STAGGER_DESKTOP: ViewportOptions = {
   once: true,
   margin: "-8% 0px -20% 0px",
   amount: 0.35,
+};
+
+const REVEAL_VIEWPORT_STAGGER_MOBILE: ViewportOptions = {
+  once: true,
+  margin: "0px 0px -4% 0px",
+  amount: 0.1,
 };
 
 interface AnimatedSectionProps {
@@ -37,25 +55,33 @@ interface AnimatedSectionProps {
 
 /**
  * スクロール連動のフェードインアニメーション
- * 各セクションのラッパーとして使用
+ * 各セクションのラッパーとして使用（スマホは発火を早め・短めに）
  */
 export function AnimatedSection({
   children,
   className,
   delay = 0,
 }: AnimatedSectionProps) {
+  const isMobile = useIsMobile();
+  const fadeUp = isMobile ? fadeUpMobile : fadeUpDesktop;
+  const visibleTransition = (
+    fadeUp.visible as { transition: Record<string, unknown> }
+  ).transition;
+
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={REVEAL_VIEWPORT_BLOCK}
+      viewport={
+        isMobile ? REVEAL_VIEWPORT_BLOCK_MOBILE : REVEAL_VIEWPORT_BLOCK_DESKTOP
+      }
       variants={{
-        hidden: fadeUpVariants.hidden,
+        hidden: fadeUp.hidden,
         visible: {
-          ...fadeUpVariants.visible,
+          ...fadeUp.visible,
           transition: {
-            ...(fadeUpVariants.visible as { transition: object }).transition,
-            delay,
+            ...visibleTransition,
+            delay: isMobile ? delay * 0.5 : delay,
           },
         },
       }}
@@ -76,17 +102,25 @@ interface StaggerContainerProps {
 export function StaggerContainer({
   children,
   className,
-  staggerDelay = 0.1,
+  staggerDelay,
 }: StaggerContainerProps) {
+  const isMobile = useIsMobile();
+  const resolvedStagger =
+    staggerDelay ?? (isMobile ? 0.06 : 0.1);
+
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={REVEAL_VIEWPORT_STAGGER}
+      viewport={
+        isMobile
+          ? REVEAL_VIEWPORT_STAGGER_MOBILE
+          : REVEAL_VIEWPORT_STAGGER_DESKTOP
+      }
       variants={{
         hidden: {},
         visible: {
-          transition: { staggerChildren: staggerDelay },
+          transition: { staggerChildren: resolvedStagger },
         },
       }}
       className={cn(className)}
@@ -103,8 +137,11 @@ export function StaggerItem({
   children: React.ReactNode;
   className?: string;
 }) {
+  const isMobile = useIsMobile();
+  const fadeUp = isMobile ? fadeUpMobile : fadeUpDesktop;
+
   return (
-    <motion.div variants={fadeUpVariants} className={cn(className)}>
+    <motion.div variants={fadeUp} className={cn(className)}>
       {children}
     </motion.div>
   );

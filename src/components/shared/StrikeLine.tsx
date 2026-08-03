@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 interface StrikeLineProps {
   children: React.ReactNode;
@@ -12,7 +13,7 @@ interface StrikeLineProps {
 
 /**
  * 見出し背面を緑の太いラインが一度走る演出
- * 文字より背面・可読性を優先
+ * 文字より背面・可読性を優先（スマホは発火を早めに）
  */
 export function StrikeLine({
   children,
@@ -21,6 +22,7 @@ export function StrikeLine({
 }: StrikeLineProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const [active, setActive] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const el = ref.current;
@@ -43,7 +45,9 @@ export function StrikeLine({
         if (style.visibility === "hidden" || style.display === "none") {
           return false;
         }
-        if (parseFloat(style.opacity) < 0.85) {
+        // スマホはフェード途中でもライン開始を許容
+        const opacityFloor = isMobile ? 0.45 : 0.85;
+        if (parseFloat(style.opacity) < opacityFloor) {
           return false;
         }
         if (node === document.body) break;
@@ -58,10 +62,12 @@ export function StrikeLine({
         rafId = window.requestAnimationFrame(beginWhenVisible);
         return;
       }
-      // フェードイン後に線を引く
-      delayTimer = window.setTimeout(() => {
-        if (!cancelled) setActive(true);
-      }, 280);
+      delayTimer = window.setTimeout(
+        () => {
+          if (!cancelled) setActive(true);
+        },
+        isMobile ? 80 : 280
+      );
     };
 
     const observer = new IntersectionObserver(
@@ -70,7 +76,10 @@ export function StrikeLine({
         observer.disconnect();
         beginWhenVisible();
       },
-      { threshold: 0.45, rootMargin: "0px 0px -12% 0px" }
+      {
+        threshold: isMobile ? 0.2 : 0.45,
+        rootMargin: isMobile ? "0px 0px -4% 0px" : "0px 0px -12% 0px",
+      }
     );
     observer.observe(el);
 
@@ -80,7 +89,7 @@ export function StrikeLine({
       window.cancelAnimationFrame(rafId);
       window.clearTimeout(delayTimer);
     };
-  }, []);
+  }, [isMobile]);
 
   return (
     <span ref={ref} className={cn("relative inline-block max-w-full", className)}>

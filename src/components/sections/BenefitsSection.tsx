@@ -13,12 +13,15 @@ import {
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
 import { StrikeLine } from "@/components/shared/StrikeLine";
 import { TypewriterLabel } from "@/components/shared/TypewriterLabel";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 /**
  * 受講メリット・ターゲット具体化
  * スクール特徴は維持しつつ、受講後の変化と向き先を補強
  */
 export function BenefitsSection() {
+  const isMobile = useIsMobile();
+
   return (
     <SectionWrapper id="benefits" variant="card" atmosphere="soft-green">
       <AnimatedSection>
@@ -62,7 +65,7 @@ export function BenefitsSection() {
         {/* 見出しだけ別枠でフェードインし、タイピングが見えるタイミングにする */}
         <AnimatedSection>
           <p className="text-center text-sm font-medium tracking-widest text-line-green uppercase">
-            <TypewriterLabel text="For Whom" startDelayMs={850} />
+            <TypewriterLabel text="For Whom" startDelayMs={isMobile ? 160 : 850} />
           </p>
           <h3 className="mt-3 text-center text-2xl font-bold text-white md:text-3xl">
             <StrikeLine>こんな方に向いています</StrikeLine>
