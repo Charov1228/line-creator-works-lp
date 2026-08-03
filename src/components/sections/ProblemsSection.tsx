@@ -13,16 +13,16 @@ import {
 
 /**
  * 課題定義セクション
- * ターゲットの悩みに共感し、スクールへの関心を喚起
+ * ヒーロー直後の黒背景ではフェードだと消えて見えるため、スライドのみで登場
  */
 export function ProblemsSection() {
   return (
     <SectionWrapper
       id="problems"
       atmosphere="glow-left"
-      className="pt-12 md:pt-32"
+      className="pt-10 md:pt-32"
     >
-      <AnimatedSection early>
+      <AnimatedSection slideOnly>
         <SectionHeader
           label="For You"
           title="こんな悩み、ありませんか？"
@@ -40,7 +40,7 @@ export function ProblemsSection() {
         />
       </AnimatedSection>
 
-      <StaggerContainer early className="grid gap-6 md:grid-cols-3">
+      <StaggerContainer slideOnly className="grid gap-6 md:grid-cols-3">
         {problems.map((problem, index) => (
           <StaggerItem key={problem.title}>
             <div
@@ -61,7 +61,7 @@ export function ProblemsSection() {
         ))}
       </StaggerContainer>
 
-      <AnimatedSection early className="mt-12 text-center">
+      <AnimatedSection slideOnly className="mt-12 text-center">
         <p className="text-base text-white/50 md:text-lg">
           その悩み、
           <span className="font-semibold text-white">

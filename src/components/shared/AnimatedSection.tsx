@@ -1,5 +1,6 @@
 "use client";
 
+import { createContext, useContext } from "react";
 import { motion, type Variants, type ViewportOptions } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -23,28 +24,28 @@ const fadeUpMobile: Variants = {
   },
 };
 
+/**
+ * ヒーロー直後など、背景が黒のときに opacity:0 だと
+ * 「真っ黒な画面をスクロールしている」ように見えるため不透明のままスライド
+ */
+const slideUpMobile: Variants = {
+  hidden: { opacity: 1, y: 36 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
 const REVEAL_VIEWPORT_BLOCK_DESKTOP: ViewportOptions = {
   once: true,
   margin: "-10% 0px -22% 0px",
   amount: 0.4,
 };
 
-/**
- * 通常セクション: 画面下〜中ほどに入ってから発火
- * （先端だけの発火だとスクロール中に終わって見えない）
- */
 const REVEAL_VIEWPORT_BLOCK_MOBILE: ViewportOptions = {
   once: true,
   margin: "0px 0px -22% 0px",
-  amount: "some",
-};
-
-/**
- * ヒーロー直後など: 余白が長く感じやすいのでやや手前で発火
- */
-const REVEAL_VIEWPORT_BLOCK_MOBILE_EARLY: ViewportOptions = {
-  once: true,
-  margin: "0px 0px -8% 0px",
   amount: "some",
 };
 
@@ -60,46 +61,45 @@ const REVEAL_VIEWPORT_STAGGER_MOBILE: ViewportOptions = {
   amount: "some",
 };
 
-const REVEAL_VIEWPORT_STAGGER_MOBILE_EARLY: ViewportOptions = {
-  once: true,
-  margin: "0px 0px -6% 0px",
-  amount: "some",
-};
+const StaggerSlideContext = createContext(false);
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  /** ヒーロー直後など、黒余白が続きやすい箇所向け */
-  early?: boolean;
+  /**
+   * 黒背景の直後など、フェードだと消えて見える箇所向け。
+   * 不透明のままスライドインする
+   */
+  slideOnly?: boolean;
 }
 
 /**
- * スクロール連動のフェードイン
+ * スクロール連動の登場アニメーション
  */
 export function AnimatedSection({
   children,
   className,
   delay = 0,
-  early = false,
+  slideOnly = false,
 }: AnimatedSectionProps) {
   const isMobile = useIsMobile();
-  const fadeUp = isMobile ? fadeUpMobile : fadeUpDesktop;
+  const fadeUp = isMobile
+    ? slideOnly
+      ? slideUpMobile
+      : fadeUpMobile
+    : fadeUpDesktop;
   const visibleTransition = (
     fadeUp.visible as { transition: Record<string, unknown> }
   ).transition;
-
-  const viewport = !isMobile
-    ? REVEAL_VIEWPORT_BLOCK_DESKTOP
-    : early
-      ? REVEAL_VIEWPORT_BLOCK_MOBILE_EARLY
-      : REVEAL_VIEWPORT_BLOCK_MOBILE;
 
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={viewport}
+      viewport={
+        isMobile ? REVEAL_VIEWPORT_BLOCK_MOBILE : REVEAL_VIEWPORT_BLOCK_DESKTOP
+      }
       variants={{
         hidden: fadeUp.hidden,
         visible: {
@@ -121,7 +121,7 @@ interface StaggerContainerProps {
   children: React.ReactNode;
   className?: string;
   staggerDelay?: number;
-  early?: boolean;
+  slideOnly?: boolean;
 }
 
 /** 子要素を順番にアニメーション表示 */
@@ -129,32 +129,32 @@ export function StaggerContainer({
   children,
   className,
   staggerDelay,
-  early = false,
+  slideOnly = false,
 }: StaggerContainerProps) {
   const isMobile = useIsMobile();
   const resolvedStagger = staggerDelay ?? (isMobile ? 0.12 : 0.1);
 
-  const viewport = !isMobile
-    ? REVEAL_VIEWPORT_STAGGER_DESKTOP
-    : early
-      ? REVEAL_VIEWPORT_STAGGER_MOBILE_EARLY
-      : REVEAL_VIEWPORT_STAGGER_MOBILE;
-
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={viewport}
-      variants={{
-        hidden: {},
-        visible: {
-          transition: { staggerChildren: resolvedStagger },
-        },
-      }}
-      className={cn(className)}
-    >
-      {children}
-    </motion.div>
+    <StaggerSlideContext.Provider value={slideOnly}>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={
+          isMobile
+            ? REVEAL_VIEWPORT_STAGGER_MOBILE
+            : REVEAL_VIEWPORT_STAGGER_DESKTOP
+        }
+        variants={{
+          hidden: {},
+          visible: {
+            transition: { staggerChildren: resolvedStagger },
+          },
+        }}
+        className={cn(className)}
+      >
+        {children}
+      </motion.div>
+    </StaggerSlideContext.Provider>
   );
 }
 
@@ -166,7 +166,12 @@ export function StaggerItem({
   className?: string;
 }) {
   const isMobile = useIsMobile();
-  const fadeUp = isMobile ? fadeUpMobile : fadeUpDesktop;
+  const slideOnly = useContext(StaggerSlideContext);
+  const fadeUp = isMobile
+    ? slideOnly
+      ? slideUpMobile
+      : fadeUpMobile
+    : fadeUpDesktop;
 
   return (
     <motion.div variants={fadeUp} className={cn(className)}>

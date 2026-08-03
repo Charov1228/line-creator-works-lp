@@ -88,6 +88,11 @@ export function OpeningAnimation() {
               }}
               className="relative"
             >
+              {/* ロゴ内の暗い下地が四角く見えないよう、背景に馴染むソフトグロー */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute top-1/2 left-1/2 size-[135%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(6,199,85,0.32)_0%,rgba(6,199,85,0.1)_42%,transparent_70%)]"
+              />
               {!isMobile && (
                 <motion.div
                   className="absolute -inset-6 rounded-full bg-line-green/20 blur-2xl"
@@ -101,7 +106,7 @@ export function OpeningAnimation() {
                 width={200}
                 height={200}
                 priority
-                className="relative size-[min(42vw,200px)] object-contain drop-shadow-[0_0_40px_rgba(6,199,85,0.35)]"
+                className="relative size-[min(42vw,200px)] object-contain drop-shadow-[0_0_28px_rgba(6,199,85,0.45)]"
               />
             </motion.div>
 
