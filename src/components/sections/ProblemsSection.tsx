@@ -13,14 +13,15 @@ import {
 
 /**
  * 課題定義セクション
- * ヒーロー直後は黒帯が長くなりやすいので、手前発火で他セクションの見え方に近づける
+ * ヒーロー直後は直前が黒なので、他セクションより手前で発火させ
+ * 「画面下 30〜40% で見え始める」見え方に揃える
  */
 export function ProblemsSection() {
   return (
     <SectionWrapper
       id="problems"
       atmosphere="glow-left"
-      className="pt-10 md:pt-32"
+      className="pt-8 md:pt-32"
     >
       <AnimatedSection early>
         <SectionHeader

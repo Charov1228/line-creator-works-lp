@@ -41,7 +41,7 @@ const REVEAL_VIEWPORT_BLOCK_DESKTOP: ViewportOptions = {
 
 /**
  * 通常セクション（スマホ）
- * 黒帯が少し見えた直後より少し遅く、画面下付近で発火
+ * 画面下 30% 付近に先端が来たあたりで発火
  */
 const REVEAL_VIEWPORT_BLOCK_MOBILE: ViewportOptions = {
   once: true,
@@ -50,12 +50,13 @@ const REVEAL_VIEWPORT_BLOCK_MOBILE: ViewportOptions = {
 };
 
 /**
- * ヒーロー直後（悩みなど）
- * 黒が半分になる前＝帯が見え始めたあたりで発火
+ * ヒーロー直後（悩み）
+ * 直前が黒背景なので、先端が画面下端に入る手前〜入った直後に発火。
+ * 下 30〜40% まで来たときには、他セクション同様に見え始めている状態にする
  */
 const REVEAL_VIEWPORT_BLOCK_MOBILE_EARLY: ViewportOptions = {
   once: true,
-  margin: "0px 0px -12% 0px",
+  margin: "0px 0px 20% 0px",
   amount: "some",
 };
 
@@ -73,7 +74,7 @@ const REVEAL_VIEWPORT_STAGGER_MOBILE: ViewportOptions = {
 
 const REVEAL_VIEWPORT_STAGGER_MOBILE_EARLY: ViewportOptions = {
   once: true,
-  margin: "0px 0px -10% 0px",
+  margin: "0px 0px 18% 0px",
   amount: "some",
 };
 
