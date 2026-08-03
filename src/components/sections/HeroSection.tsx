@@ -21,8 +21,8 @@ export function HeroSection() {
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-black pt-14 md:pt-20">
       <AmbientBackground atmosphere="hero" />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-between px-5 py-3 pb-5 md:justify-center md:px-8 md:py-16 lg:py-20">
-        <div className="grid min-h-0 flex-1 items-stretch gap-3 md:flex-none md:items-center md:gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-between px-5 py-3 pb-5 md:justify-center md:px-8 md:py-16 lg:max-w-7xl lg:py-20">
+        <div className="grid min-h-0 flex-1 items-stretch gap-3 md:flex-none md:items-center md:gap-10 lg:grid-cols-[0.9fr_1.25fr] lg:gap-10">
           <div className="min-w-0 shrink-0">
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 20 }}
@@ -110,18 +110,18 @@ export function HeroSection() {
             </div>
 
             <div className="glow-green relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-2xl border border-white/10 bg-card p-1.5 sm:rounded-3xl sm:p-2 md:block md:flex-none">
-              <div className="relative min-h-[220px] flex-1 overflow-hidden rounded-xl sm:aspect-[4/3] sm:min-h-0 sm:flex-none sm:rounded-2xl lg:aspect-[4/3]">
+              <div className="relative min-h-[220px] flex-1 overflow-hidden rounded-xl sm:aspect-[4/3] sm:min-h-0 sm:flex-none sm:rounded-2xl lg:aspect-[5/4] lg:min-h-[420px]">
                 <Image
                   src="/images/hero.png"
                   alt="けーさんとたろー —— 動画編集を仕事にする第一歩"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 40vw"
+                  sizes="(max-width: 768px) 100vw, 55vw"
                   className="object-cover object-[center_20%]"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-3 pb-2.5 pt-10 sm:px-5 sm:pb-5 sm:pt-16">
-                  <p className="text-xs font-semibold text-white sm:text-base">
-                    好きな場所で学べる、新しい働き方へ。
+                  <p className="text-xs font-semibold text-white sm:text-base md:text-lg">
+                    未来を一緒に編集しよう。
                   </p>
                   <p className="mt-0.5 text-[10px] text-white/60 sm:mt-1 sm:text-sm">
                     現場の編集チームが、あなたの成長をサポートします。
