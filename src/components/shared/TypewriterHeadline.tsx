@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -13,6 +13,8 @@ interface TypewriterHeadlineProps {
   className?: string;
   /** オープニング後など、タイピング開始までの遅延(ms) */
   startDelayMs?: number;
+  /** 全文表示が完了したとき */
+  onComplete?: () => void;
 }
 
 /**
@@ -22,6 +24,7 @@ interface TypewriterHeadlineProps {
 export function TypewriterHeadline({
   className,
   startDelayMs,
+  onComplete,
 }: TypewriterHeadlineProps) {
   const reduce = useReducedMotion();
   const isMobile = useIsMobile();
@@ -34,9 +37,14 @@ export function TypewriterHeadline({
     reduce ? "done" : "wait"
   );
   const [showCursor, setShowCursor] = useState(!reduce);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
-    if (reduce) return;
+    if (reduce) {
+      onCompleteRef.current?.();
+      return;
+    }
 
     let cancelled = false;
     const timers: number[] = [];
@@ -80,6 +88,7 @@ export function TypewriterHeadline({
                 typeChars(LINE2_SUFFIX, setLine2Suffix, speed3, () => {
                   if (cancelled) return;
                   setPhase("done");
+                  onCompleteRef.current?.();
                   timers.push(
                     window.setTimeout(() => {
                       if (!cancelled) setShowCursor(false);
