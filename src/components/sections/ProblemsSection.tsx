@@ -13,8 +13,7 @@ import {
 
 /**
  * 課題定義セクション
- * ヒーロー直後は直前が黒なので、他セクションより手前で発火させ
- * 「画面下 30〜40% で見え始める」見え方に揃える
+ * 他セクションと同じ画面下約30%発火（端末判定のズレで遅くならないよう共通設定）
  */
 export function ProblemsSection() {
   return (
@@ -23,7 +22,7 @@ export function ProblemsSection() {
       atmosphere="glow-left"
       className="pt-8 md:pt-32"
     >
-      <AnimatedSection early>
+      <AnimatedSection>
         <SectionHeader
           label="For You"
           title="こんな悩み、ありませんか？"
@@ -41,7 +40,7 @@ export function ProblemsSection() {
         />
       </AnimatedSection>
 
-      <StaggerContainer early className="grid gap-6 md:grid-cols-3">
+      <StaggerContainer className="grid gap-6 md:grid-cols-3">
         {problems.map((problem, index) => (
           <StaggerItem key={problem.title}>
             <div
@@ -62,7 +61,7 @@ export function ProblemsSection() {
         ))}
       </StaggerContainer>
 
-      <AnimatedSection early className="mt-12 text-center">
+      <AnimatedSection className="mt-12 text-center">
         <p className="text-base text-white/50 md:text-lg">
           その悩み、
           <span className="font-semibold text-white">

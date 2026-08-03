@@ -36,6 +36,14 @@ export function OpeningAnimation() {
     document.body.style.overflow = "hidden";
 
     const timer = window.setTimeout(() => {
+      if (isMobile) {
+        // スマホは exit アニメとFV始動の重なりでカクつきやすいので即閉じる
+        document.body.style.overflow = previousOverflow;
+        setVisible(false);
+        window.dispatchEvent(new Event(OPENING_EXIT_EVENT));
+        window.dispatchEvent(new Event(OPENING_DONE_EVENT));
+        return;
+      }
       window.dispatchEvent(new Event(OPENING_EXIT_EVENT));
       setVisible(false);
     }, totalDurationMs);
@@ -44,11 +52,12 @@ export function OpeningAnimation() {
       window.clearTimeout(timer);
       document.body.style.overflow = previousOverflow;
     };
-  }, [shouldReduceMotion, totalDurationMs]);
+  }, [shouldReduceMotion, totalDurationMs, isMobile]);
 
   return (
     <AnimatePresence
       onExitComplete={() => {
+        if (isMobile) return;
         document.body.style.overflow = "";
         window.dispatchEvent(new Event(OPENING_DONE_EVENT));
       }}
@@ -60,10 +69,14 @@ export function OpeningAnimation() {
           // 初回から表示済み。フェードアウトだけ行う
           initial={false}
           animate={{ opacity: 1 }}
-          exit={{
-            opacity: 0,
-            transition: { duration: isMobile ? 0.32 : 0.45, ease: "easeOut" },
-          }}
+          exit={
+            isMobile
+              ? undefined
+              : {
+                  opacity: 0,
+                  transition: { duration: 0.45, ease: "easeOut" },
+                }
+          }
           aria-hidden="true"
         >
           <div className="absolute inset-0 grid-bg opacity-40" />

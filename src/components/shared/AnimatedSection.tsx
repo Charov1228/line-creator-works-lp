@@ -40,24 +40,12 @@ const REVEAL_VIEWPORT_BLOCK_DESKTOP: ViewportOptions = {
 };
 
 /**
- * 通常セクション（スマホ）
- * 画面下 30% 付近に先端が来たあたりで発火
+ * スマホ共通: 画面下約 30% に先端が来たあたりで発火
+ * amount は "some"（少しでも入ればOK）。PC用の 0.4 を誤適用すると遅く見える
  */
 const REVEAL_VIEWPORT_BLOCK_MOBILE: ViewportOptions = {
   once: true,
   margin: "0px 0px -30% 0px",
-  amount: "some",
-};
-
-/**
- * ヒーロー直後（悩み）
- * プラスの margin だとヒーロー直下の要素が「画面外扱い」で読み込み時に発火し、
- * スクロール時にはフェード済み＝ずっと見えている状態になる。
- * ストライクライン／タイプライターと同じ -18% で、見えている位置でフェードを開始する。
- */
-const REVEAL_VIEWPORT_BLOCK_MOBILE_EARLY: ViewportOptions = {
-  once: true,
-  margin: "0px 0px -18% 0px",
   amount: "some",
 };
 
@@ -69,13 +57,7 @@ const REVEAL_VIEWPORT_STAGGER_DESKTOP: ViewportOptions = {
 
 const REVEAL_VIEWPORT_STAGGER_MOBILE: ViewportOptions = {
   once: true,
-  margin: "0px 0px -28% 0px",
-  amount: "some",
-};
-
-const REVEAL_VIEWPORT_STAGGER_MOBILE_EARLY: ViewportOptions = {
-  once: true,
-  margin: "0px 0px -18% 0px",
+  margin: "0px 0px -30% 0px",
   amount: "some",
 };
 
@@ -86,8 +68,6 @@ interface AnimatedSectionProps {
   className?: string;
   delay?: number;
   slideOnly?: boolean;
-  /** ヒーロー直後など、黒帯が長くなりやすい箇所向けに手前で発火 */
-  early?: boolean;
 }
 
 /**
@@ -98,7 +78,6 @@ export function AnimatedSection({
   className,
   delay = 0,
   slideOnly = false,
-  early = false,
 }: AnimatedSectionProps) {
   const isMobile = useIsMobile();
   const fadeUp = isMobile
@@ -110,17 +89,15 @@ export function AnimatedSection({
     fadeUp.visible as { transition: Record<string, unknown> }
   ).transition;
 
-  const viewport = !isMobile
-    ? REVEAL_VIEWPORT_BLOCK_DESKTOP
-    : early
-      ? REVEAL_VIEWPORT_BLOCK_MOBILE_EARLY
-      : REVEAL_VIEWPORT_BLOCK_MOBILE;
-
   return (
     <motion.div
+      // 端末判定が変わったら observer を作り直す
+      key={isMobile ? "m" : "d"}
       initial="hidden"
       whileInView="visible"
-      viewport={viewport}
+      viewport={
+        isMobile ? REVEAL_VIEWPORT_BLOCK_MOBILE : REVEAL_VIEWPORT_BLOCK_DESKTOP
+      }
       variants={{
         hidden: fadeUp.hidden,
         visible: {
@@ -143,7 +120,6 @@ interface StaggerContainerProps {
   className?: string;
   staggerDelay?: number;
   slideOnly?: boolean;
-  early?: boolean;
 }
 
 /** 子要素を順番にアニメーション表示 */
@@ -152,23 +128,21 @@ export function StaggerContainer({
   className,
   staggerDelay,
   slideOnly = false,
-  early = false,
 }: StaggerContainerProps) {
   const isMobile = useIsMobile();
   const resolvedStagger = staggerDelay ?? (isMobile ? 0.12 : 0.1);
 
-  const viewport = !isMobile
-    ? REVEAL_VIEWPORT_STAGGER_DESKTOP
-    : early
-      ? REVEAL_VIEWPORT_STAGGER_MOBILE_EARLY
-      : REVEAL_VIEWPORT_STAGGER_MOBILE;
-
   return (
     <StaggerSlideContext.Provider value={slideOnly}>
       <motion.div
+        key={isMobile ? "m" : "d"}
         initial="hidden"
         whileInView="visible"
-        viewport={viewport}
+        viewport={
+          isMobile
+            ? REVEAL_VIEWPORT_STAGGER_MOBILE
+            : REVEAL_VIEWPORT_STAGGER_DESKTOP
+        }
         variants={{
           hidden: {},
           visible: {
