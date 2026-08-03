@@ -22,7 +22,7 @@ const fadeUpMobile: Variants = {
   },
 };
 
-/** PC: 見やすい帯に入ってから。スマホ: 早めに発火 */
+/** PC: 見やすい帯に入ってから。スマホ: 画面下から近づいた時点で発火（黒い余白スクロールを防ぐ） */
 const REVEAL_VIEWPORT_BLOCK_DESKTOP: ViewportOptions = {
   once: true,
   margin: "-10% 0px -22% 0px",
@@ -31,8 +31,9 @@ const REVEAL_VIEWPORT_BLOCK_DESKTOP: ViewportOptions = {
 
 const REVEAL_VIEWPORT_BLOCK_MOBILE: ViewportOptions = {
   once: true,
-  margin: "0px 0px -6% 0px",
-  amount: 0.12,
+  // 下方向に検出範囲を広げ、要素が画面に入る手前で開始
+  margin: "0px 0px 45% 0px",
+  amount: "some",
 };
 
 const REVEAL_VIEWPORT_STAGGER_DESKTOP: ViewportOptions = {
@@ -43,8 +44,8 @@ const REVEAL_VIEWPORT_STAGGER_DESKTOP: ViewportOptions = {
 
 const REVEAL_VIEWPORT_STAGGER_MOBILE: ViewportOptions = {
   once: true,
-  margin: "0px 0px -4% 0px",
-  amount: 0.1,
+  margin: "0px 0px 40% 0px",
+  amount: "some",
 };
 
 interface AnimatedSectionProps {

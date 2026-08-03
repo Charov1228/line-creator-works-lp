@@ -77,8 +77,8 @@ export function StrikeLine({
         beginWhenVisible();
       },
       {
-        threshold: isMobile ? 0.2 : 0.45,
-        rootMargin: isMobile ? "0px 0px -4% 0px" : "0px 0px -12% 0px",
+        threshold: isMobile ? 0 : 0.45,
+        rootMargin: isMobile ? "0px 0px 40% 0px" : "0px 0px -12% 0px",
       }
     );
     observer.observe(el);

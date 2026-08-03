@@ -73,8 +73,8 @@ export function TypewriterLabel({
         beginWhenVisible();
       },
       {
-        threshold: isMobile ? 0.35 : 0.9,
-        rootMargin: isMobile ? "0px 0px -4% 0px" : "0px 0px -18% 0px",
+        threshold: isMobile ? 0 : 0.9,
+        rootMargin: isMobile ? "0px 0px 40% 0px" : "0px 0px -18% 0px",
       }
     );
 
