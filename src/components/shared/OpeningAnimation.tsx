@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 export const OPENING_DURATION_DESKTOP_MS = 3200;
-export const OPENING_DURATION_MOBILE_MS = 2200;
+export const OPENING_DURATION_MOBILE_MS = 1700;
 export const OPENING_DONE_EVENT = "lcw:opening-done";
 
 /**
@@ -32,6 +32,9 @@ export function OpeningAnimation() {
     document.body.style.overflow = "hidden";
 
     const timer = window.setTimeout(() => {
+      // フェードアウト開始と同時にFVを始動（待ちを短縮）
+      document.body.style.overflow = previousOverflow;
+      window.dispatchEvent(new Event(OPENING_DONE_EVENT));
       setVisible(false);
     }, totalDurationMs);
 
@@ -42,12 +45,7 @@ export function OpeningAnimation() {
   }, [shouldReduceMotion, totalDurationMs]);
 
   return (
-    <AnimatePresence
-      onExitComplete={() => {
-        document.body.style.overflow = "";
-        window.dispatchEvent(new Event(OPENING_DONE_EVENT));
-      }}
-    >
+    <AnimatePresence>
       {visible && (
         <motion.div
           key="opening"

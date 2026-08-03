@@ -18,7 +18,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 
 /**
  * ファーストビュー
- * OP終了後に演出を開始し、OP中の裏での再生・終了時のカクつきを防ぐ
+ * OP終了（フェード開始）と同時に演出を開始
  */
 export function HeroSection() {
   const reduce = useReducedMotion();
@@ -33,8 +33,8 @@ export function HeroSection() {
 
     const done = () => setOpeningDone(true);
     const fallbackMs = isMobile
-      ? OPENING_DURATION_MOBILE_MS + 400
-      : OPENING_DURATION_DESKTOP_MS + 550;
+      ? OPENING_DURATION_MOBILE_MS + 80
+      : OPENING_DURATION_DESKTOP_MS + 120;
     const timer = window.setTimeout(done, fallbackMs);
     window.addEventListener(OPENING_DONE_EVENT, done);
 
@@ -44,9 +44,15 @@ export function HeroSection() {
     };
   }, [reduce, isMobile]);
 
-  const copyDelay = reduce ? 0 : isMobile ? 1.55 : 2.4;
-  const badgeDelay = reduce ? 0 : isMobile ? 1.7 : 2.55;
-  const ctaDelay = reduce ? 0 : isMobile ? 1.85 : 2.7;
+  // OP直後の待ちを短くし、画像とCTAは同じ尺・同じ遅延で揃える
+  const copyDelay = reduce ? 0 : isMobile ? 0.85 : 2.4;
+  const badgeDelay = reduce ? 0 : isMobile ? 0.98 : 2.55;
+  const ctaDelay = reduce ? 0 : isMobile ? 1.1 : 2.7;
+  const enterDuration = isMobile ? 0.45 : 0.6;
+  const enterTransition = {
+    duration: enterDuration,
+    delay: openingDone ? ctaDelay : 0,
+  };
 
   return (
     <section className="relative flex min-h-[100svh] flex-col overflow-hidden bg-black pt-14 md:pt-20">
@@ -78,7 +84,7 @@ export function HeroSection() {
 
             {openingDone || reduce ? (
               <TypewriterHeadline
-                startDelayMs={reduce ? 0 : isMobile ? 120 : 400}
+                startDelayMs={reduce ? 0 : isMobile ? 40 : 400}
                 className="text-[clamp(1.9rem,7.2vw,2.65rem)] md:text-[clamp(1.55rem,5.4vw,2.65rem)]"
               />
             ) : (
@@ -101,7 +107,7 @@ export function HeroSection() {
                   : { opacity: 0, y: isMobile ? 16 : 24 }
               }
               transition={{
-                duration: isMobile ? 0.45 : 0.6,
+                duration: enterDuration,
                 delay: openingDone ? copyDelay : 0,
               }}
               className="mt-3 max-w-lg text-[0.875rem] leading-[1.7] text-white/60 sm:text-[0.9375rem] md:mt-6 md:text-lg md:leading-[1.8]"
@@ -119,7 +125,7 @@ export function HeroSection() {
                   : { opacity: 0, y: isMobile ? 16 : 24 }
               }
               transition={{
-                duration: isMobile ? 0.45 : 0.6,
+                duration: enterDuration,
                 delay: openingDone ? badgeDelay : 0,
               }}
               className="mt-3 flex flex-nowrap gap-1.5 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] md:mt-8 md:gap-3 [&::-webkit-scrollbar]:hidden"
@@ -146,10 +152,7 @@ export function HeroSection() {
                   ? { opacity: 1, y: 0 }
                   : { opacity: 0, y: 24 }
               }
-              transition={{
-                duration: isMobile ? 0.45 : 0.6,
-                delay: openingDone ? ctaDelay : 0,
-              }}
+              transition={enterTransition}
               className="mt-10 hidden md:block"
             >
               <LineCtaButton
@@ -161,18 +164,15 @@ export function HeroSection() {
             </motion.div>
           </div>
 
+          {/* 画像: CTAと同じ timing / opacity+y で登場 */}
           <motion.div
             initial={false}
             animate={
               openingDone || reduce
-                ? { opacity: 1, ...(isMobile ? {} : { scale: 1 }) }
-                : { opacity: 0, ...(isMobile ? {} : { scale: 0.95 }) }
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: isMobile ? 16 : 24 }
             }
-            transition={{
-              duration: isMobile ? 0.5 : 0.8,
-              delay: openingDone ? (isMobile ? 0.08 : 0.15) : 0,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            transition={enterTransition}
             className="relative mx-auto flex min-h-0 w-full max-w-md flex-1 flex-col lg:row-span-2 lg:mx-0 lg:max-w-none lg:flex-none"
           >
             <div className="absolute -top-1.5 right-1 z-10 sm:-top-3 sm:right-2">
@@ -212,10 +212,7 @@ export function HeroSection() {
                 ? { opacity: 1, y: 0 }
                 : { opacity: 0, y: 16 }
             }
-            transition={{
-              duration: 0.45,
-              delay: openingDone ? ctaDelay : 0,
-            }}
+            transition={enterTransition}
             className="md:hidden"
           >
             <LineCtaButton
@@ -229,7 +226,7 @@ export function HeroSection() {
         <motion.div
           initial={false}
           animate={{ opacity: openingDone || reduce ? 1 : 0 }}
-          transition={{ delay: openingDone ? 1.0 : 0 }}
+          transition={{ delay: openingDone ? 0.6 : 0 }}
           className="mt-3 hidden justify-center md:mt-12 md:flex"
         >
           <a
