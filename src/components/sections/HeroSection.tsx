@@ -12,7 +12,7 @@ import { siteConfig } from "@/data/site-config";
 /**
  * ファーストビュー
  * 受講後の未来 → 特徴 → CTA → けーさんとたろーの安心感、の順で視線誘導
- * スマホは100svhを余白なく使い切る
+ * スマホはヘッダーと重複するブランド表示を省き、画像→CTAの順で配置
  */
 export function HeroSection() {
   const reduce = useReducedMotion();
@@ -22,31 +22,30 @@ export function HeroSection() {
       <AmbientBackground atmosphere="hero" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-1 flex-col justify-between px-5 py-3 pb-5 md:justify-center md:px-8 md:py-16 lg:max-w-7xl lg:py-20">
-        <div className="grid min-h-0 flex-1 items-stretch gap-3 md:flex-none md:items-center md:gap-10 lg:grid-cols-[0.9fr_1.25fr] lg:gap-10">
+        <div className="grid min-h-0 flex-1 items-stretch gap-3 md:flex-none md:items-center md:gap-6 lg:grid-cols-[0.9fr_1.25fr] lg:grid-rows-[auto_auto] lg:gap-x-10 lg:gap-y-8">
+          {/* コピー（スマホではロゴ省略／PCはブランド表示あり） */}
           <div className="min-w-0 shrink-0">
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-3 flex items-center gap-3 md:mb-6 md:gap-4"
+              className="mb-6 hidden items-center gap-4 md:flex"
             >
-              <span className="md:hidden">
-                <Logo size="md" />
-              </span>
-              <span className="hidden md:block">
-                <Logo size="lg" />
-              </span>
+              <Logo size="lg" />
               <div className="min-w-0">
-                <p className="text-[10px] font-medium tracking-wider text-line-green md:text-sm">
+                <p className="text-sm font-medium tracking-wider text-line-green">
                   {siteConfig.brand} 公式
                 </p>
-                <p className="text-base font-bold text-white md:text-xl">
+                <p className="text-xl font-bold text-white">
                   Line Creator Works
                 </p>
               </div>
             </motion.div>
 
-            <TypewriterHeadline startDelayMs={reduce ? 0 : 2800} />
+            <TypewriterHeadline
+              startDelayMs={reduce ? 0 : 2800}
+              className="text-[clamp(1.9rem,7.2vw,2.65rem)] md:text-[clamp(1.55rem,5.4vw,2.65rem)]"
+            />
 
             <motion.p
               initial={reduce ? false : { opacity: 0, y: 24 }}
@@ -80,11 +79,12 @@ export function HeroSection() {
               ))}
             </motion.div>
 
+            {/* PC: コピー直下にCTA（スマホは画像の下に配置） */}
             <motion.div
               initial={reduce ? false : { opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: reduce ? 0 : 5.2 }}
-              className="mt-4 md:mt-10"
+              className="mt-10 hidden md:block"
             >
               <LineCtaButton
                 size="lg"
@@ -95,11 +95,12 @@ export function HeroSection() {
             </motion.div>
           </div>
 
+          {/* 画像（スマホではCTAの上） */}
           <motion.div
             initial={reduce ? false : { opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative mx-auto flex min-h-0 w-full max-w-md flex-1 flex-col lg:mx-0 lg:max-w-none lg:flex-none"
+            className="relative mx-auto flex min-h-0 w-full max-w-md flex-1 flex-col lg:row-span-2 lg:mx-0 lg:max-w-none lg:flex-none"
           >
             <div className="absolute -top-1.5 right-1 z-10 sm:-top-3 sm:right-2">
               <div className="rounded-full border border-line-green/30 bg-black/85 px-2.5 py-1 backdrop-blur-md sm:px-4 sm:py-2">
@@ -129,6 +130,20 @@ export function HeroSection() {
                 </div>
               </div>
             </div>
+          </motion.div>
+
+          {/* スマホ: 画像の下にCTA */}
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: reduce ? 0 : 5.2 }}
+            className="md:hidden"
+          >
+            <LineCtaButton
+              size="lg"
+              label="公式LINEから無料面談を予約する"
+              sublabel="個別相談で詳しくご案内"
+            />
           </motion.div>
         </div>
 
