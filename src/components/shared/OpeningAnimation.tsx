@@ -32,9 +32,6 @@ export function OpeningAnimation() {
     document.body.style.overflow = "hidden";
 
     const timer = window.setTimeout(() => {
-      // フェードアウト開始と同時にFVを始動（待ちを短縮）
-      document.body.style.overflow = previousOverflow;
-      window.dispatchEvent(new Event(OPENING_DONE_EVENT));
       setVisible(false);
     }, totalDurationMs);
 
@@ -45,7 +42,12 @@ export function OpeningAnimation() {
   }, [shouldReduceMotion, totalDurationMs]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence
+      onExitComplete={() => {
+        document.body.style.overflow = "";
+        window.dispatchEvent(new Event(OPENING_DONE_EVENT));
+      }}
+    >
       {visible && (
         <motion.div
           key="opening"
@@ -53,7 +55,10 @@ export function OpeningAnimation() {
           // 初回から表示済み。フェードアウトだけ行う
           initial={false}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: isMobile ? 0.28 : 0.45 } }}
+          exit={{
+            opacity: 0,
+            transition: { duration: isMobile ? 0.32 : 0.45, ease: "easeOut" },
+          }}
           aria-hidden="true"
         >
           <div className="absolute inset-0 grid-bg opacity-40" />

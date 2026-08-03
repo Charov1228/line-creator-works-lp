@@ -13,7 +13,7 @@ import {
 
 /**
  * 課題定義セクション
- * 他セクションと同じフェードアップ登場（発火・尺も共通）
+ * ヒーロー直後は黒帯が長くなりやすいので、手前発火で他セクションの見え方に近づける
  */
 export function ProblemsSection() {
   return (
@@ -22,7 +22,7 @@ export function ProblemsSection() {
       atmosphere="glow-left"
       className="pt-10 md:pt-32"
     >
-      <AnimatedSection>
+      <AnimatedSection early>
         <SectionHeader
           label="For You"
           title="こんな悩み、ありませんか？"
@@ -40,7 +40,7 @@ export function ProblemsSection() {
         />
       </AnimatedSection>
 
-      <StaggerContainer className="grid gap-6 md:grid-cols-3">
+      <StaggerContainer early className="grid gap-6 md:grid-cols-3">
         {problems.map((problem, index) => (
           <StaggerItem key={problem.title}>
             <div
@@ -61,7 +61,7 @@ export function ProblemsSection() {
         ))}
       </StaggerContainer>
 
-      <AnimatedSection className="mt-12 text-center">
+      <AnimatedSection early className="mt-12 text-center">
         <p className="text-base text-white/50 md:text-lg">
           その悩み、
           <span className="font-semibold text-white">

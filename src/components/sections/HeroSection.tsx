@@ -18,7 +18,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 
 /**
  * ファーストビュー
- * OP終了（フェード開始）と同時に演出を開始
+ * OPのフェード完了後に演出開始（同時始動によるカクつきを避ける）
  */
 export function HeroSection() {
   const reduce = useReducedMotion();
@@ -33,8 +33,8 @@ export function HeroSection() {
 
     const done = () => setOpeningDone(true);
     const fallbackMs = isMobile
-      ? OPENING_DURATION_MOBILE_MS + 80
-      : OPENING_DURATION_DESKTOP_MS + 120;
+      ? OPENING_DURATION_MOBILE_MS + 400
+      : OPENING_DURATION_DESKTOP_MS + 550;
     const timer = window.setTimeout(done, fallbackMs);
     window.addEventListener(OPENING_DONE_EVENT, done);
 
@@ -44,7 +44,7 @@ export function HeroSection() {
     };
   }, [reduce, isMobile]);
 
-  // OP直後の待ちを短くし、画像とCTAは同じ尺・同じ遅延で揃える
+  // 画像とCTAは同じ尺・同じ遅延。タイピング直後から順に出す
   const copyDelay = reduce ? 0 : isMobile ? 0.85 : 2.4;
   const badgeDelay = reduce ? 0 : isMobile ? 0.98 : 2.55;
   const ctaDelay = reduce ? 0 : isMobile ? 1.1 : 2.7;
