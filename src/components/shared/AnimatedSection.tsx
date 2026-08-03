@@ -51,12 +51,13 @@ const REVEAL_VIEWPORT_BLOCK_MOBILE: ViewportOptions = {
 
 /**
  * ヒーロー直後（悩み）
- * 直前が黒背景なので、先端が画面下端に入る手前〜入った直後に発火。
- * 下 30〜40% まで来たときには、他セクション同様に見え始めている状態にする
+ * プラスの margin だとヒーロー直下の要素が「画面外扱い」で読み込み時に発火し、
+ * スクロール時にはフェード済み＝ずっと見えている状態になる。
+ * ストライクライン／タイプライターと同じ -18% で、見えている位置でフェードを開始する。
  */
 const REVEAL_VIEWPORT_BLOCK_MOBILE_EARLY: ViewportOptions = {
   once: true,
-  margin: "0px 0px 20% 0px",
+  margin: "0px 0px -18% 0px",
   amount: "some",
 };
 
@@ -74,7 +75,7 @@ const REVEAL_VIEWPORT_STAGGER_MOBILE: ViewportOptions = {
 
 const REVEAL_VIEWPORT_STAGGER_MOBILE_EARLY: ViewportOptions = {
   once: true,
-  margin: "0px 0px 18% 0px",
+  margin: "0px 0px -18% 0px",
   amount: "some",
 };
 

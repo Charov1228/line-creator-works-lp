@@ -9,6 +9,7 @@ import { Logo } from "@/components/shared/Logo";
 import { AmbientBackground } from "@/components/shared/AmbientBackground";
 import {
   OPENING_DONE_EVENT,
+  OPENING_EXIT_EVENT,
   OPENING_DURATION_DESKTOP_MS,
   OPENING_DURATION_MOBILE_MS,
 } from "@/components/shared/OpeningAnimation";
@@ -18,29 +19,39 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 
 /**
  * ファーストビュー
- * OPのフェード完了後に演出開始（同時始動によるカクつきを避ける）
+ * タイプライターはOPフェード開始と同時、その他はOP完了後に開始
  */
 export function HeroSection() {
   const reduce = useReducedMotion();
   const isMobile = useIsMobile();
+  const [typewriterReady, setTypewriterReady] = useState(!!reduce);
   const [openingDone, setOpeningDone] = useState(!!reduce);
 
   useEffect(() => {
     if (reduce) {
+      setTypewriterReady(true);
       setOpeningDone(true);
       return;
     }
 
-    const done = () => setOpeningDone(true);
-    const fallbackMs = isMobile
+    const onExit = () => setTypewriterReady(true);
+    const onDone = () => setOpeningDone(true);
+    const fallbackExitMs = isMobile
+      ? OPENING_DURATION_MOBILE_MS + 40
+      : OPENING_DURATION_DESKTOP_MS + 40;
+    const fallbackDoneMs = isMobile
       ? OPENING_DURATION_MOBILE_MS + 400
       : OPENING_DURATION_DESKTOP_MS + 550;
-    const timer = window.setTimeout(done, fallbackMs);
-    window.addEventListener(OPENING_DONE_EVENT, done);
+    const exitTimer = window.setTimeout(onExit, fallbackExitMs);
+    const doneTimer = window.setTimeout(onDone, fallbackDoneMs);
+    window.addEventListener(OPENING_EXIT_EVENT, onExit);
+    window.addEventListener(OPENING_DONE_EVENT, onDone);
 
     return () => {
-      window.clearTimeout(timer);
-      window.removeEventListener(OPENING_DONE_EVENT, done);
+      window.clearTimeout(exitTimer);
+      window.clearTimeout(doneTimer);
+      window.removeEventListener(OPENING_EXIT_EVENT, onExit);
+      window.removeEventListener(OPENING_DONE_EVENT, onDone);
     };
   }, [reduce, isMobile]);
 
@@ -82,9 +93,9 @@ export function HeroSection() {
               </div>
             </motion.div>
 
-            {openingDone || reduce ? (
+            {typewriterReady || reduce ? (
               <TypewriterHeadline
-                startDelayMs={reduce ? 0 : isMobile ? 40 : 400}
+                startDelayMs={0}
                 className="text-[clamp(1.9rem,7.2vw,2.65rem)] md:text-[clamp(1.55rem,5.4vw,2.65rem)]"
               />
             ) : (

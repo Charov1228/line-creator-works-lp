@@ -7,6 +7,9 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 
 export const OPENING_DURATION_DESKTOP_MS = 3200;
 export const OPENING_DURATION_MOBILE_MS = 1700;
+/** OPフェード開始（タイプライターなど即時開始用） */
+export const OPENING_EXIT_EVENT = "lcw:opening-exit";
+/** OPフェード完了（その他FV演出用） */
 export const OPENING_DONE_EVENT = "lcw:opening-done";
 
 /**
@@ -24,6 +27,7 @@ export function OpeningAnimation() {
   useEffect(() => {
     if (shouldReduceMotion) {
       setVisible(false);
+      window.dispatchEvent(new Event(OPENING_EXIT_EVENT));
       window.dispatchEvent(new Event(OPENING_DONE_EVENT));
       return;
     }
@@ -32,6 +36,7 @@ export function OpeningAnimation() {
     document.body.style.overflow = "hidden";
 
     const timer = window.setTimeout(() => {
+      window.dispatchEvent(new Event(OPENING_EXIT_EVENT));
       setVisible(false);
     }, totalDurationMs);
 
