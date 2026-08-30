@@ -101,15 +101,18 @@ body {
 /* 関連チャンネルの横スクロール */
 @keyframes channel-marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .channel-marquee {
   animation: channel-marquee 45s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .channel-marquee:hover {
@@ -282,6 +285,14 @@ body {
 
 .channel-marquee-slow {
   animation: channel-marquee 60s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* マーキー内カードは親 transform と競合しないよう paint を分離 */
+.marquee-track > * {
+  contain: layout style paint;
 }
 
 @media (prefers-reduced-motion: reduce) {

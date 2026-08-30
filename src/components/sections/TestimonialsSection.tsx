@@ -15,7 +15,7 @@ function TestimonialCard({
   item: (typeof testimonials)[number];
 }) {
   return (
-    <div className="card-border-flow flex h-full w-[min(85vw,320px)] shrink-0 flex-col rounded-3xl border border-white/10 bg-black/50 p-6 md:w-80 md:p-8">
+    <div className="flex h-full w-[min(85vw,320px)] shrink-0 flex-col rounded-3xl border border-white/10 bg-black/50 p-6 md:w-80 md:p-8">
       <Quote className="size-8 text-line-green/30" />
       <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-white/60 italic md:text-base">
         {item.comment}
@@ -50,13 +50,11 @@ export function TestimonialsSection() {
         />
       </AnimatedSection>
 
-      <AnimatedSection>
-        <HorizontalMarquee speedClass="channel-marquee-slow" className="gap-5">
-          {testimonials.map((item) => (
-            <TestimonialCard key={item.name} item={item} />
-          ))}
-        </HorizontalMarquee>
-      </AnimatedSection>
+      <HorizontalMarquee speedClass="channel-marquee-slow" className="gap-5">
+        {testimonials.map((item, index) => (
+          <TestimonialCard key={index} item={item} />
+        ))}
+      </HorizontalMarquee>
     </SectionWrapper>
   );
 }
