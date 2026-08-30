@@ -46,7 +46,7 @@ export function TestimonialsSection() {
         <SectionHeader
           label="Voice"
           title="受講者の声"
-          description="実際にスクールで学んだ方の体験談をお届けします。（文言は後日掲載予定）"
+          description="実際にスクールで学んだ方の体験談をお届けします。"
         />
       </AnimatedSection>
 
