@@ -309,11 +309,12 @@ export const instructors = [
 
 export const advisor = {
   name: "青笹 雅史",
-  role: "公式アドバイザー",
-  title: "動画編集キャンプ 代表",
+  role: "監修・公式アドバイザー",
+  title: "動画編集CAMP 代表",
   comment:
-    "動画編集の需要は今後も拡大し続けます。けーさんとたろーさんのチームは、実際に大量の動画を制作しながら人材を育てるという、非常に実践的なアプローチを取っています。現場で使えるスキルを身につけ、キャリアにつなげたい方にとって、心強い環境だと思います。",
+    "動画編集CAMPを通じて、18,000人以上の動画編集者を育成してきた立場から監修をさせてもらいました。けーさんとたろーさんがYouTubeで培った「人を惹きつける動画づくり」を実践的に学べる本スクールは、自信を持っておすすめできます。",
   image: "/images/instructors/aosasa.jpg",
+  objectPosition: "center 35%",
 } as const;
 
 export const faqs = [

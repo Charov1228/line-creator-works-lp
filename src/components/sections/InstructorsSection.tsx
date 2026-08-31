@@ -86,6 +86,7 @@ export function InstructorsSection() {
               aspectRatio="aspect-square"
               rounded="full"
               className="w-32 shrink-0 md:w-40"
+              objectPosition={advisor.objectPosition}
             />
             <div>
               <div className="flex flex-wrap items-center gap-2">
