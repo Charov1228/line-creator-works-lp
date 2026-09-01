@@ -306,8 +306,8 @@ export const instructors = [
     name: "りょうたろう",
     role: "運営",
     description: "けーさんとたろーチャンネルの企画・編集を担当。",
-    image: "/images/instructors/staff.jpg",
-    objectPosition: "center 18%",
+    image: "/images/instructors/ryotaro.jpg",
+    objectPosition: "center 28%",
   },
 ] as const;
 
