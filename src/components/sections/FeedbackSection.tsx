@@ -57,7 +57,7 @@ export function FeedbackSection() {
           title={
             <>
               現役編集者による
-              <br />
+              <br className="md:hidden" />
               フィードバック
             </>
           }
