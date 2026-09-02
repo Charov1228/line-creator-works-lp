@@ -16,16 +16,7 @@ const instructorNote =
 
 function FeedbackSessionVisual() {
   return (
-    <div className="relative mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none">
-      <div className="absolute -top-2 right-2 z-10 max-w-[min(88%,300px)] sm:-top-3 sm:right-3 sm:max-w-[min(78%,320px)]">
-        <div className="rounded-2xl border border-white/15 bg-black/85 p-3 backdrop-blur-md sm:p-4">
-          <p className="text-[10px] leading-relaxed text-white/75 sm:text-xs">
-            <span className="font-semibold text-line-green">講師陣：</span>
-            {instructorNote}
-          </p>
-        </div>
-      </div>
-
+    <div className="mx-auto w-full max-w-xl lg:mx-0 lg:max-w-none">
       <div className="glow-green relative overflow-hidden rounded-2xl border border-white/10 bg-card p-1.5 sm:rounded-3xl sm:p-2">
         <div className="relative aspect-video overflow-hidden rounded-xl sm:rounded-2xl">
           <Image
@@ -41,6 +32,13 @@ function FeedbackSessionVisual() {
             </p>
           </div>
         </div>
+      </div>
+
+      <div className="mt-4 rounded-2xl border border-line-green/20 bg-line-green/5 p-4 sm:mt-5 sm:p-5">
+        <p className="text-xs leading-relaxed text-white/80 sm:text-sm">
+          <span className="font-semibold text-line-green">講師陣：</span>
+          {instructorNote}
+        </p>
       </div>
     </div>
   );
