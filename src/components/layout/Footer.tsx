@@ -17,6 +17,18 @@ export function Footer() {
             >
               LINE CAST SUPPORT
             </Link>
+            <Link
+              href="/privacy-policy"
+              className="text-xs text-white/40 transition hover:text-white/70"
+            >
+              プライバシーポリシー
+            </Link>
+            <Link
+              href="/legal"
+              className="text-xs text-white/40 transition hover:text-white/70"
+            >
+              特定商取引法に基づく表記
+            </Link>
           </nav>
           <p className="max-w-md text-xs leading-relaxed text-white/30">
             本ページは動画編集スクール「Line Creator Works」の公式ランディングページです。
