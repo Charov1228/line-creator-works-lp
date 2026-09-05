@@ -90,6 +90,7 @@ export function WhySection() {
         <LineCtaButton
           label="まずは無料個別相談で詳しく聞いてみる"
           sublabel="まずは公式LINEで詳細を確認"
+          location="why"
         />
       </AnimatedSection>
     </SectionWrapper>

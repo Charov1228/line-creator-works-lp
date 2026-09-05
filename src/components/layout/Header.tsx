@@ -8,6 +8,7 @@ import { ArrowLeft } from "lucide-react";
 import { LineCtaButton } from "@/components/shared/LineCtaButton";
 import { Logo } from "@/components/shared/Logo";
 import { cn } from "@/lib/utils";
+import { trackWorkWhileLearningClick } from "@/lib/gtag";
 
 interface HeaderProps {
   /** company: 事業ページ用（ナビを省略） */
@@ -88,6 +89,9 @@ export function Header({ variant = "default" }: HeaderProps) {
                 <Link
                   href="/line-cast-support"
                   className="text-sm text-white/60 transition hover:text-white"
+                  onClick={() =>
+                    trackWorkWhileLearningClick("header_nav_desktop")
+                  }
                 >
                   働きながら学びたい方は
                 </Link>
@@ -97,12 +101,19 @@ export function Header({ variant = "default" }: HeaderProps) {
               </nav>
 
               <div className="hidden md:block">
-                <LineCtaButton size="sm" label="無料面談を予約" />
+                <LineCtaButton
+                  size="sm"
+                  label="無料面談を予約"
+                  location="header"
+                />
               </div>
 
               <Link
                 href="/line-cast-support"
                 className="inline-flex max-w-[58%] shrink-0 items-center rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-[11px] leading-snug font-medium text-white transition hover:border-line-green/40 hover:bg-line-green/10 hover:text-line-green md:hidden"
+                onClick={() =>
+                  trackWorkWhileLearningClick("header_nav_mobile")
+                }
               >
                 働きながら学びたい方は
               </Link>
@@ -126,6 +137,7 @@ export function Header({ variant = "default" }: HeaderProps) {
                 fullWidth
                 label="公式LINEから無料面談を予約する"
                 sublabel="スクール詳細はLINE限定でご案内"
+                location="header_mobile_sticky"
               />
             </motion.div>
           )}

@@ -107,7 +107,10 @@ export function CurriculumSection() {
       </div>
 
       <AnimatedSection className="mt-12 flex justify-center">
-        <LineCtaButton sublabel="カリキュラム詳細はLINEでご案内" />
+        <LineCtaButton
+          sublabel="カリキュラム詳細はLINEでご案内"
+          location="curriculum"
+        />
       </AnimatedSection>
     </SectionWrapper>
   );

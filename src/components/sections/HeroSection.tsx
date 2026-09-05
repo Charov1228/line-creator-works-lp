@@ -163,6 +163,7 @@ export function HeroSection() {
                 className="md:h-14 md:px-10 md:text-lg"
                 label="公式LINEから無料面談を予約する"
                 sublabel="個別相談で詳しくご案内"
+                location="hero_desktop"
               />
             </motion.div>
           </div>
@@ -219,6 +220,7 @@ export function HeroSection() {
               size="lg"
               label="公式LINEから無料面談を予約する"
               sublabel="個別相談で詳しくご案内"
+              location="hero_mobile"
             />
           </motion.div>
         </div>

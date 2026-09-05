@@ -9,6 +9,11 @@ export const lineCastSupport = {
   tagline: "人材・クリエイティブ・集客・営業まで、成長をトータルで支援",
   description:
     "人材採用・派遣、動画編集スクール運営、SNS運用コンサルティング、映像制作、営業代行まで。企業とクリエイター双方の成長をサポートする事業を展開しています。",
+  /**
+   * 会社ページ用の公式LINE URL（スクール用とは別）
+   * 確定後に差し替え
+   */
+  lineUrl: "https://lin.ee/placeholder-company",
 
   /**
    * 週5勤務の方向け・無償の福利厚生／キャリア支援制度

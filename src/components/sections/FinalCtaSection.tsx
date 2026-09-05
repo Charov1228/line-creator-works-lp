@@ -38,6 +38,7 @@ export function FinalCtaSection() {
               size="xl"
               label="公式LINEから無料面談を予約する"
               sublabel="公式LINE限定でスクールの詳細をご案内"
+              location="final_cta"
             />
           </div>
 

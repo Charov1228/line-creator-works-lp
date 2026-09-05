@@ -103,6 +103,7 @@ export function CareerSection() {
         <LineCtaButton
           label="キャリアの相談は無料面談で"
           sublabel="案件紹介の仕組みも個別にご説明"
+          location="career"
         />
       </AnimatedSection>
     </SectionWrapper>

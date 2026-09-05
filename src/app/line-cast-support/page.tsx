@@ -242,6 +242,9 @@ export default function LineCastSupportPage() {
               <LineCtaButton
                 label="公式LINEから無料相談する"
                 sublabel="働きながらの学び方についてご案内します"
+                href={lineCastSupport.lineUrl}
+                lineDestination="company"
+                location="company_free_program"
               />
             </div>
           </div>

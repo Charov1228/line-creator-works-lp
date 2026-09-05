@@ -93,6 +93,7 @@ export function BenefitsSection() {
             <LineCtaButton
               label="まずは無料個別相談で詳しく聞いてみる"
               sublabel="公式LINE限定でスクールの詳細をご案内"
+              location="benefits"
             />
           </div>
         </AnimatedSection>

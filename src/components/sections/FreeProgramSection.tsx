@@ -109,6 +109,7 @@ export function FreeProgramSection() {
         <LineCtaButton
           label="無料面談の詳細をLINEで確認"
           sublabel="コースの詳細は面談時にご案内"
+          location="free_program"
         />
       </AnimatedSection>
     </SectionWrapper>
