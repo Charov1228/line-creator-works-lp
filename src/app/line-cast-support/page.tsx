@@ -240,7 +240,7 @@ export default function LineCastSupportPage() {
             </p>
             <div className="mt-8 flex justify-center">
               <LineCtaButton
-                label="公式LINEから無料相談する"
+                label="公式LINEから無料面談する"
                 sublabel="働きながらの学び方についてご案内します"
                 href={lineCastSupport.lineUrl}
                 lineDestination="company"

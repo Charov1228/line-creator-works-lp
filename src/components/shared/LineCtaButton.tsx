@@ -39,7 +39,7 @@ export function LineCtaButton({
   size = "lg",
   variant = "default",
   className,
-  label = "公式LINEから無料面談を予約する",
+  label = "公式LINEから無料説明会を予約する",
   sublabel,
   fullWidth = false,
   href,

@@ -101,7 +101,7 @@ export function CareerSection() {
 
       <AnimatedSection className="mt-12 flex justify-center">
         <LineCtaButton
-          label="キャリアの相談は無料面談で"
+          label="キャリアの相談は無料説明会で"
           sublabel="案件紹介の仕組みも個別にご説明"
           location="career"
         />

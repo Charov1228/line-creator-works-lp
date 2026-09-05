@@ -88,7 +88,7 @@ export function WhySection() {
 
       <AnimatedSection className="mt-12 flex justify-center">
         <LineCtaButton
-          label="まずは無料個別相談で詳しく聞いてみる"
+          label="まずは無料説明会で詳しく聞いてみる"
           sublabel="まずは公式LINEで詳細を確認"
           location="why"
         />

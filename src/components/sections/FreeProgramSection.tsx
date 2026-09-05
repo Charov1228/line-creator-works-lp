@@ -107,8 +107,8 @@ export function FreeProgramSection() {
 
       <AnimatedSection className="mt-10 flex justify-center">
         <LineCtaButton
-          label="無料面談の詳細をLINEで確認"
-          sublabel="コースの詳細は面談時にご案内"
+          label="無料説明会の詳細をLINEで確認"
+          sublabel="コースの詳細は説明会時にご案内"
           location="free_program"
         />
       </AnimatedSection>

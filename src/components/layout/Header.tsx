@@ -103,7 +103,7 @@ export function Header({ variant = "default" }: HeaderProps) {
               <div className="hidden md:block">
                 <LineCtaButton
                   size="sm"
-                  label="無料面談を予約"
+                  label="無料説明会を予約"
                   location="header"
                 />
               </div>
@@ -135,7 +135,7 @@ export function Header({ variant = "default" }: HeaderProps) {
               <LineCtaButton
                 size="default"
                 fullWidth
-                label="公式LINEから無料面談を予約する"
+                label="公式LINEから無料説明会を予約する"
                 sublabel="スクール詳細はLINE限定でご案内"
                 location="header_mobile_sticky"
               />

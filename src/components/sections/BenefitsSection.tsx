@@ -91,7 +91,7 @@ export function BenefitsSection() {
           </ul>
           <div className="mt-10 flex justify-center">
             <LineCtaButton
-              label="まずは無料個別相談で詳しく聞いてみる"
+              label="まずは無料説明会で詳しく聞いてみる"
               sublabel="公式LINE限定でスクールの詳細をご案内"
               location="benefits"
             />

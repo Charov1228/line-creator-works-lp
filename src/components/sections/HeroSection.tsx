@@ -161,8 +161,8 @@ export function HeroSection() {
               <LineCtaButton
                 size="lg"
                 className="md:h-14 md:px-10 md:text-lg"
-                label="公式LINEから無料面談を予約する"
-                sublabel="個別相談で詳しくご案内"
+                label="公式LINEから無料説明会を予約する"
+                sublabel="説明会で詳しくご案内"
                 location="hero_desktop"
               />
             </motion.div>
@@ -218,8 +218,8 @@ export function HeroSection() {
           >
             <LineCtaButton
               size="lg"
-              label="公式LINEから無料面談を予約する"
-              sublabel="個別相談で詳しくご案内"
+              label="公式LINEから無料説明会を予約する"
+              sublabel="説明会で詳しくご案内"
               location="hero_mobile"
             />
           </motion.div>
