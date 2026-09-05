@@ -47,7 +47,16 @@ export const legalInfo = {
   ],
 } as const;
 
-export const privacyPolicySections = [
+export type PrivacyPolicySection = {
+  title: string;
+  body: readonly string[];
+  list?: readonly string[];
+  bodyAfter?: readonly string[];
+  listAfter?: readonly string[];
+  bodyEnd?: readonly string[];
+};
+
+export const privacyPolicySections: readonly PrivacyPolicySection[] = [
   {
     title: "第1条（個人情報）",
     body: [
@@ -148,7 +157,7 @@ export const privacyPolicySections = [
       "本ポリシーに関するお問い合わせは、下記の窓口までお願いいたします。",
     ],
   },
-] as const;
+];
 
 export const commercialTransactionItems = [
   { label: "販売事業者", value: legalInfo.companyName },
