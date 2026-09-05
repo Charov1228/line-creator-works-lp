@@ -9,41 +9,41 @@ export const metadata: Metadata = {
 };
 
 function renderValue(value: string | readonly string[]) {
-  if (Array.isArray(value)) {
-    return (
-      <ul className="list-disc space-y-1 pl-5">
-        {value.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-    );
+  if (typeof value === "string") {
+    if (value.startsWith("http")) {
+      return (
+        <a
+          href={value}
+          className="break-all text-line-green transition hover:text-line-green/80"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {value}
+        </a>
+      );
+    }
+
+    if (value.includes("@")) {
+      return (
+        <a
+          href={`mailto:${value}`}
+          className="break-all text-line-green transition hover:text-line-green/80"
+        >
+          {value}
+        </a>
+      );
+    }
+
+    return value;
   }
 
-  if (value.startsWith("http")) {
-    return (
-      <a
-        href={value}
-        className="break-all text-line-green transition hover:text-line-green/80"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        {value}
-      </a>
-    );
-  }
-
-  if (value.includes("@")) {
-    return (
-      <a
-        href={`mailto:${value}`}
-        className="break-all text-line-green transition hover:text-line-green/80"
-      >
-        {value}
-      </a>
-    );
-  }
-
-  return value;
+  return (
+    <ul className="list-disc space-y-1 pl-5">
+      {value.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
+  );
 }
 
 export default function LegalPage() {
