@@ -7,8 +7,9 @@ export const siteConfig = {
   name: "Line Creator Works",
   /** 運営ブランド名 */
   brand: "けーさんとたろー",
-  /** 公式LINE登録URL（公開時に差し替え） */
-  lineUrl: "https://lin.ee/placeholder",
+  /** 公式LINE登録URL（スクールLP用。「働きながら学びたい方は」ページは別URL） */
+  lineUrl:
+    "https://liff.line.me/2011462146-FIpKV593/landing?follow=%40596mlstk&lp=n57eHp&liff_id=2011462146-FIpKV593",
   /** OGP・SEO用 */
   seo: {
     title:
