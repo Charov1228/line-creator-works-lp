@@ -15,7 +15,7 @@ export function Footer() {
               href="/community"
               className="text-xs text-white/40 transition hover:text-white/70"
             >
-              受講後コミュニティ
+              コミュニティ
             </Link>
             <Link
               href="/line-cast-support"

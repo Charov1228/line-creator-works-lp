@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   Briefcase,
   Clapperboard,
@@ -10,14 +9,12 @@ import {
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CommunityFaq } from "@/components/community/CommunityFaq";
-import { Button } from "@/components/ui/button";
 import {
   SectionWrapper,
   SectionHeader,
 } from "@/components/shared/SectionWrapper";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { communityPage } from "@/data/community";
-import { legalInfo } from "@/data/legal";
 
 export const metadata: Metadata = {
   title: `${communityPage.name} | Line Creator Works`,
@@ -55,17 +52,6 @@ export default function CommunityPage() {
               <br className="md:hidden" />
               <span className="md:ml-2">{communityPage.price.billingNote}</span>
             </p>
-
-            <div className="mt-10 flex flex-col items-center gap-3">
-              <Button asChild size="lg">
-                <a href={`mailto:${communityPage.inquiryEmail}`}>
-                  参加についてのお問い合わせ
-                </a>
-              </Button>
-              <p className="text-xs text-white/40">
-                現時点では、このページからの直接決済は行っていません。
-              </p>
-            </div>
           </div>
         </section>
 
@@ -77,8 +63,8 @@ export default function CommunityPage() {
               title="コミュニティについて"
               description={
                 <>
-                  {communityPage.name}は、
-                  <br className="md:hidden" />
+                  Line Creator Worksコミュニティは、
+                  <br />
                   Line Creator Worksを受講した方のうち、
                   <br />
                   参加を希望する方向けの月額制オンラインコミュニティです。
@@ -211,7 +197,12 @@ export default function CommunityPage() {
         </SectionWrapper>
 
         {/* 6. FAQ */}
-        <SectionWrapper id="faq" variant="card" atmosphere="none">
+        <SectionWrapper
+          id="faq"
+          variant="card"
+          atmosphere="none"
+          className="pb-20 md:pb-28"
+        >
           <AnimatedSection>
             <SectionHeader
               label="FAQ"
@@ -220,81 +211,6 @@ export default function CommunityPage() {
             />
           </AnimatedSection>
           <CommunityFaq />
-        </SectionWrapper>
-
-        {/* CTA + 法定リンク */}
-        <SectionWrapper atmosphere="glow-left" className="pb-20 md:pb-28">
-          <AnimatedSection>
-            <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-2xl font-bold text-white md:text-3xl">
-                参加についてのお問い合わせ
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-white/60 md:text-base">
-                参加希望・解約方法などについては、下記メールアドレスまでご連絡ください。
-              </p>
-              <div className="mt-8">
-                <Button asChild size="lg">
-                  <a href={`mailto:${communityPage.inquiryEmail}`}>
-                    {communityPage.inquiryEmail}
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection className="mt-16">
-            <div className="mx-auto max-w-3xl rounded-3xl border border-white/10 bg-card p-6 md:p-8">
-              <p className="text-sm font-semibold text-white">運営・関連ページ</p>
-              <dl className="mt-4 space-y-3 text-sm text-white/70">
-                <div>
-                  <dt className="text-white/40">運営会社</dt>
-                  <dd className="mt-1">
-                    <Link
-                      href="/line-cast-support"
-                      className="text-line-green transition hover:text-line-green/80"
-                    >
-                      {legalInfo.companyName}
-                    </Link>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-white/40">関連リンク</dt>
-                  <dd className="mt-2 flex flex-wrap gap-x-5 gap-y-2">
-                    <Link
-                      href="/legal"
-                      className="text-line-green transition hover:text-line-green/80"
-                    >
-                      特定商取引法に基づく表記
-                    </Link>
-                    <Link
-                      href="/privacy-policy"
-                      className="text-line-green transition hover:text-line-green/80"
-                    >
-                      プライバシーポリシー
-                    </Link>
-                    <Link
-                      href="/line-cast-support"
-                      className="text-line-green transition hover:text-line-green/80"
-                    >
-                      運営会社情報
-                    </Link>
-                    <Link
-                      href="/"
-                      className="text-line-green transition hover:text-line-green/80"
-                    >
-                      スクールTOP
-                    </Link>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-white/40">利用規約</dt>
-                  <dd className="mt-1 text-white/50">
-                    現時点では専用の利用規約ページは未公開です。契約・解約条件は本ページおよび特定商取引法に基づく表記をご確認ください。
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </AnimatedSection>
         </SectionWrapper>
       </main>
       <Footer />

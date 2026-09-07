@@ -1,10 +1,10 @@
 /**
- * 受講後コミュニティページ用コンテンツ
+ * コミュニティページ用コンテンツ
  * Stripe審査でも提供内容・料金・契約条件が明確に分かるよう記載
  */
 export const communityPage = {
-  name: "Line Creator Works 受講後コミュニティ",
-  shortName: "受講後コミュニティ",
+  name: "Line Creator Works コミュニティ",
+  shortName: "コミュニティ",
   tagline: "受講後もつながる、動画編集者のためのオンラインコミュニティ",
   description:
     "Line Creator Works受講後の希望者を対象とした、月額制のオンラインコミュニティです。案件情報の紹介・共有、会員限定コンテンツの視聴、情報共有、会員同士の交流の場を提供します。",
@@ -15,7 +15,6 @@ export const communityPage = {
   },
   disclaimer:
     "本コミュニティへの参加により、案件の獲得、仕事の受注、収入等を保証するものではありません。",
-  inquiryEmail: "nakahara@line-rs.co.jp",
   features: [
     {
       title: "案件情報の紹介・共有",
