@@ -7,7 +7,7 @@ export const legalInfo = {
   companyName: "株式会社LINE CAST SUPPORT",
   representative: "東峰 慶之介",
   address: "〒124-0023 東京都葛飾区東新小岩1丁目3番11号",
-  email: "takano@line-rs.co.jp",
+  email: "nakahara@line-rs.co.jp",
   phoneNote:
     "電話でのお問い合わせは受け付けておりません。メールにてご連絡ください。",
   price: "220,000円（税込）",
