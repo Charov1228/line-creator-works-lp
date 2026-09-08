@@ -13,7 +13,7 @@ export const lineCastSupport = {
    * 会社ページ用の公式LINE URL（スクール用とは別）
    * 確定後に差し替え
    */
-  lineUrl: "https://lin.ee/placeholder-company",
+  lineUrl: "https://lin.ee/9601tvM",
 
   /**
    * 週5勤務の方向け・無償の福利厚生／キャリア支援制度

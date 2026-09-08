@@ -241,7 +241,7 @@ export default function LineCastSupportPage() {
             <div className="mt-8 flex justify-center">
               <LineCtaButton
                 label="公式LINEから無料面談する"
-                sublabel="働きながらの学び方についてご案内します"
+                sublabel="こちらはLine Creator Worksの公式LINEではありません。"
                 href={lineCastSupport.lineUrl}
                 lineDestination="company"
                 location="company_free_program"
