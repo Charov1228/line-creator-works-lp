@@ -147,13 +147,7 @@ export default function LineCastSupportPage() {
             }
           />
 
-          <div className="mx-auto max-w-3xl rounded-3xl border border-amber-500/30 bg-amber-500/5 px-6 py-5 text-center md:px-8">
-            <p className="text-sm leading-relaxed text-white/80 md:text-base">
-              {freeProgram.separationNote}
-            </p>
-          </div>
-
-          <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-line-green/25 bg-line-green/5 px-6 py-5 text-center md:px-8">
+          <div className="mx-auto max-w-3xl rounded-3xl border border-line-green/25 bg-line-green/5 px-6 py-5 text-center md:px-8">
             <p className="text-sm leading-relaxed text-white/75 md:text-base">
               まずは仕事と生活を安定させつつ、
               <br className="hidden md:inline" />
@@ -250,7 +244,7 @@ export default function LineCastSupportPage() {
               <br className="md:hidden" />
               動画編集が合うかどうかを一緒に見極めます。
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-8 flex flex-col items-center justify-center">
               <LineCtaButton
                 label="公式LINEから無料面談する"
                 sublabel="こちらはLine Creator Worksの公式LINEではありません。"
@@ -258,6 +252,11 @@ export default function LineCastSupportPage() {
                 lineDestination="company"
                 location="company_free_program"
               />
+              <p className="mt-4 max-w-md text-center text-[11px] leading-relaxed text-white/40 md:text-xs">
+                本制度は有料スクール（Line Creator Works）とは別契約・別制度です。
+                <br />
+                有料スクールの延長、割引コース、継続コースではありません。
+              </p>
             </div>
           </div>
         </SectionWrapper>

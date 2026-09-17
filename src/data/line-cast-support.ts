@@ -24,8 +24,6 @@ export const lineCastSupport = {
     title: "働きながら、学び始められる無償制度",
     lead:
       "これは有料のLine Creator Works（動画編集スクール）ではありません。人材派遣事業において当社で稼働する方向けの、福利厚生・キャリア支援としての無償制度です。",
-    separationNote:
-      "本制度は有料スクール（Line Creator Works）とは別契約・別制度です。有料スクールの延長、割引コース、継続コースではありません。",
     target:
       "まずは仕事と生活を安定させつつ、将来の選択肢として動画編集に触れたい方を想定しています。",
     includes: [
