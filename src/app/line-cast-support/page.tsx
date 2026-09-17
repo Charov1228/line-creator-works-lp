@@ -138,22 +138,26 @@ export default function LineCastSupportPage() {
             }
             description={
               <>
-                これは「無料スクール」ではありません。
+                これは有料のLine Creator Worksではありません。
                 <br />
-                週5で働きながら、生活を安定させたうえで
+                人材派遣事業で当社が稼働する方向けの、
                 <br />
-                動画編集という選択肢を持ちたい方のための、
-                <br />
-                福利厚生・キャリア支援制度です。
+                福利厚生・キャリア支援としての無償制度です。
               </>
             }
           />
 
-          <div className="mx-auto max-w-3xl rounded-3xl border border-line-green/25 bg-line-green/5 px-6 py-5 text-center md:px-8">
+          <div className="mx-auto max-w-3xl rounded-3xl border border-amber-500/30 bg-amber-500/5 px-6 py-5 text-center md:px-8">
+            <p className="text-sm leading-relaxed text-white/80 md:text-base">
+              {freeProgram.separationNote}
+            </p>
+          </div>
+
+          <div className="mx-auto mt-6 max-w-3xl rounded-3xl border border-line-green/25 bg-line-green/5 px-6 py-5 text-center md:px-8">
             <p className="text-sm leading-relaxed text-white/75 md:text-base">
               まずは仕事と生活を安定させつつ、
               <br className="hidden md:inline" />
-              将来の選択肢として動画編集を学び始めたい方を想定しています。
+              将来の選択肢として動画編集に触れたい方を想定しています。
             </p>
           </div>
 
@@ -175,7 +179,7 @@ export default function LineCastSupportPage() {
             <div className="rounded-3xl border border-white/10 bg-black/40 p-6 md:p-8">
               <h3 className="text-lg font-bold text-white">含まれない内容</h3>
               <p className="mt-2 text-xs text-white/40">
-                有料スクールとの違いをはっきりお伝えします
+                有料のLine Creator Works（別サービス）には含まれません
               </p>
               <ul className="mt-5 space-y-3">
                 {freeProgram.excludes.map((item) => (
@@ -209,9 +213,17 @@ export default function LineCastSupportPage() {
                     <th className="whitespace-nowrap p-4 font-medium text-white/40" />
                     <th className="whitespace-nowrap p-4 font-medium text-white/50">
                       有料スクール
+                      <br />
+                      <span className="text-xs font-normal text-white/35">
+                        Line Creator Works
+                      </span>
                     </th>
                     <th className="whitespace-nowrap p-4 font-bold text-line-green">
-                      無償制度（福利厚生）
+                      本制度
+                      <br />
+                      <span className="text-xs font-normal text-line-green/70">
+                        人材派遣の福利厚生
+                      </span>
                     </th>
                   </tr>
                 </thead>

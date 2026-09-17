@@ -29,13 +29,9 @@ export function CommunitySection() {
           }
           description={
             <>
-              受講期間中も卒業後も、
-              <br className="md:hidden" />
-              コミュニティに参加し続けられます。
+              受講期間中は、仲間と情報交換できる場があります。
               <br />
-              案件情報の共有、スキルアップの情報交換、
-              <br className="md:hidden" />
-              切磋琢磨の場。
+              修了後の有料コミュニティは任意の別サービスです。
             </>
           }
         />
