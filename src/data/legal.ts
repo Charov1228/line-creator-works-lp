@@ -6,15 +6,14 @@ export const legalInfo = {
   serviceName: "Line Creator Works",
   companyName: "株式会社LINE CAST SUPPORT",
   representative: "東峰 慶之介",
-  address: "〒124-0023 東京都葛飾区東新小岩1丁目3番11号",
+  address: "東京都台東区東上野3-37-11 VORT上野plus7F",
   email: "nakahara@line-rs.co.jp",
   phoneNote:
     "電話でのお問い合わせは受け付けておりません。メールにてご連絡ください。",
   price: "220,000円（税込）",
   coursePeriod:
     "受講期間は2か月以内です。お客様は2か月以内に受講を完了いただく必要があります。",
-  paymentMethods:
-    "クレジットカード決済、銀行振込（決済代行サービス確定後、変更となる場合があります）",
+  paymentMethods: "クレジットカード決済、銀行振込",
   paymentTiming: "お申し込み時に代金をお支払いください（前払い制）",
   deliveryTiming:
     "入金確認後、1週間以内に教材およびログイン情報等をメール等で提供します。",
@@ -26,15 +25,11 @@ export const legalInfo = {
   refundPolicy:
     "本サービスはオンラインで提供するデジタルコンテンツおよび役務の性質上、原則として返品・返金には応じかねます。",
   paymentDataNote:
-    "クレジットカード番号等の決済情報は、当社では直接保持せず、決済代行サービスを通じて処理されます。",
+    "クレジットカード番号等の決済情報は、当社では直接保持せず、決済代行サービス（UnivaPay）を通じて処理されます。",
   thirdPartyServices: [
     {
-      name: "決済代行サービス（Stripe等）",
+      name: "決済代行サービス（UnivaPay）",
       purpose: "受講料の決済処理",
-    },
-    {
-      name: "メール配信サービス",
-      purpose: "教材の案内、運営上の連絡",
     },
     {
       name: "LINE連携・Lstep",
@@ -112,7 +107,7 @@ export const privacyPolicySections: readonly PrivacyPolicySection[] = [
       "合併その他の事由による事業の承継に伴って個人情報が提供される場合",
     ],
     bodyEnd: [
-      "当社は、決済処理、メール配信、LINE連携、Lstep、Discord等の外部サービスを利用するにあたり、必要な範囲で個人情報の取扱いを委託することがあります。",
+      "当社は、決済処理（UnivaPay）、LINE連携、Lstep、Discord等の外部サービスを利用するにあたり、必要な範囲で個人情報の取扱いを委託することがあります。",
     ],
   },
   {

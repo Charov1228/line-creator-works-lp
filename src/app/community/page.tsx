@@ -67,7 +67,9 @@ export default function CommunityPage() {
                   <br />
                   Line Creator Worksを受講した方のうち、
                   <br />
-                  参加を希望する方向けの月額制オンラインコミュニティです。
+                  当社の基準を満たした方へ招待する
+                  <br />
+                  月額制オンラインコミュニティです。
                 </>
               }
             />
@@ -76,7 +78,7 @@ export default function CommunityPage() {
           <AnimatedSection>
             <div className="mx-auto max-w-3xl space-y-4 rounded-3xl border border-white/10 bg-black/40 p-6 md:p-8">
               <p className="text-sm leading-relaxed text-white/75 md:text-base">
-                加入は任意です。受講後に必ず本コミュニティへ参加する必要はありません。
+                受講修了者全員が自動で加入するものではありません。当社の基準を満たした方に、コミュニティへの招待をご案内します。
               </p>
               <p className="text-sm leading-relaxed text-white/75 md:text-base">
                 動画編集案件に関する情報の紹介・共有、会員限定コンテンツの視聴、動画編集に関する情報共有、会員同士の交流を目的とした場を提供します。
