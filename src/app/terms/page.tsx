@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { LegalDocumentLayout } from "@/components/legal/LegalDocumentLayout";
+import { TermsBackButton } from "@/components/legal/TermsBackButton";
 import { legalInfo } from "@/data/legal";
 import {
   termsEnactedNote,
@@ -61,43 +61,69 @@ function TermsBlockView({ block }: { block: TermsBlock }) {
   );
 }
 
+/**
+ * Lステップ申込フォーム等から直接開く想定の利用規約ページ。
+ * LPのヘッダー／フッター／TOP導線は出さず、前画面（LINE）へ戻しやすくする。
+ */
 export default function TermsPage() {
   return (
-    <LegalDocumentLayout
-      label="Legal"
-      title="Line Creator Works利用規約"
-      description={termsPreamble}
-    >
-      {termsSections.map((section) => (
-        <section key={section.title} className="scroll-mt-28">
-          <h2 className="text-base font-bold leading-snug text-white md:text-lg">
-            {section.title}
-          </h2>
-          <div className="mt-4 space-y-4 text-[15px] leading-[1.9] text-white/70 md:text-base md:leading-[1.95]">
-            {section.blocks.map((block, index) => (
-              <TermsBlockView
-                key={`${section.title}-${block.type}-${index}`}
-                block={block}
-              />
-            ))}
-          </div>
-        </section>
-      ))}
+    <main className="relative min-h-[100svh] bg-black pb-[calc(7.5rem+env(safe-area-inset-bottom))] pt-10 md:pb-32 md:pt-14">
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-line-green/5 to-transparent" />
 
-      <p className="border-t border-white/10 pt-8 text-sm text-white/45">
-        {termsEnactedNote}
-      </p>
+      <div className="relative mx-auto max-w-3xl px-5 md:px-8">
+        <p className="text-sm font-medium tracking-widest text-line-green uppercase">
+          Legal
+        </p>
+        <h1 className="mt-3 text-2xl font-bold tracking-tight text-white md:text-3xl">
+          Line Creator Works利用規約
+        </h1>
+        <p className="mt-5 text-[15px] leading-[1.9] text-white/60 md:text-base md:leading-[1.95]">
+          {termsPreamble}
+        </p>
 
-      <p className="text-sm leading-relaxed text-white/50">
-        個人情報の取扱いについては、別途
-        <Link
-          href="/privacy-policy"
-          className="mx-1 text-line-green underline-offset-2 transition hover:underline"
-        >
-          プライバシーポリシー
-        </Link>
-        をご確認ください。
-      </p>
-    </LegalDocumentLayout>
+        <div className="mt-10 space-y-10 md:mt-12 md:space-y-12">
+          {termsSections.map((section) => (
+            <section key={section.title}>
+              <h2 className="text-base font-bold leading-snug text-white md:text-lg">
+                {section.title}
+              </h2>
+              <div className="mt-4 space-y-4 text-[15px] leading-[1.9] text-white/70 md:text-base md:leading-[1.95]">
+                {section.blocks.map((block, index) => (
+                  <TermsBlockView
+                    key={`${section.title}-${block.type}-${index}`}
+                    block={block}
+                  />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+
+        <p className="mt-10 border-t border-white/10 pt-8 text-sm text-white/45">
+          {termsEnactedNote}
+        </p>
+
+        <p className="mt-6 text-sm leading-relaxed text-white/50">
+          個人情報の取扱いについては、別途
+          <Link
+            href="/privacy-policy"
+            className="mx-1 text-line-green underline-offset-2 transition hover:underline"
+          >
+            プライバシーポリシー
+          </Link>
+          をご確認ください。
+        </p>
+
+        <p className="mt-8 text-xs leading-relaxed text-white/30">
+          {legalInfo.companyName} / {legalInfo.serviceName}
+        </p>
+      </div>
+
+      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-white/10 bg-black/90 px-5 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur-md md:px-8">
+        <div className="mx-auto max-w-3xl">
+          <TermsBackButton />
+        </div>
+      </div>
+    </main>
   );
 }
