@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { TermsBackButton } from "@/components/legal/TermsBackButton";
 import { legalInfo } from "@/data/legal";
 import {
   termsEnactedNote,
@@ -63,11 +62,11 @@ function TermsBlockView({ block }: { block: TermsBlock }) {
 
 /**
  * Lステップ申込フォーム等から直接開く想定の利用規約ページ。
- * LPのヘッダー／フッター／TOP導線は出さず、前画面（LINE）へ戻しやすくする。
+ * LPのヘッダー／フッター／TOP導線は出さず、LINE内ブラウザの×で閉じる想定。
  */
 export default function TermsPage() {
   return (
-    <main className="relative min-h-[100svh] bg-black pb-[calc(7.5rem+env(safe-area-inset-bottom))] pt-10 md:pb-32 md:pt-14">
+    <main className="relative min-h-[100svh] bg-black pb-16 pt-10 md:pb-24 md:pt-14">
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-line-green/5 to-transparent" />
 
       <div className="relative mx-auto max-w-3xl px-5 md:px-8">
@@ -117,12 +116,6 @@ export default function TermsPage() {
         <p className="mt-8 text-xs leading-relaxed text-white/30">
           {legalInfo.companyName} / {legalInfo.serviceName}
         </p>
-      </div>
-
-      <div className="fixed inset-x-0 bottom-0 z-20 border-t border-white/10 bg-black/90 px-5 pb-[calc(0.75rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur-md md:px-8">
-        <div className="mx-auto max-w-3xl">
-          <TermsBackButton />
-        </div>
       </div>
     </main>
   );
