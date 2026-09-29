@@ -78,7 +78,9 @@ export default function CommunityPage() {
           <AnimatedSection>
             <div className="mx-auto max-w-3xl space-y-4 rounded-3xl border border-white/10 bg-black/40 p-6 md:p-8">
               <p className="text-sm leading-relaxed text-white/75 md:text-base">
-                受講修了者全員が自動で加入するものではありません。当社の基準を満たした方に、コミュニティへの招待をご案内します。
+                受講修了者全員が自動で加入するものではありません。
+                <br />
+                当社の基準を満たした方に、コミュニティへの招待をご案内します。
               </p>
               <p className="text-sm leading-relaxed text-white/75 md:text-base">
                 動画編集案件に関する情報の紹介・共有、会員限定コンテンツの視聴、動画編集に関する情報共有、会員同士の交流を目的とした場を提供します。
@@ -176,7 +178,7 @@ export default function CommunityPage() {
               <AnimatedSection key={note.title} delay={index * 0.04}>
                 <div className="h-full rounded-3xl border border-white/10 bg-card p-6">
                   <h3 className="font-bold text-white">{note.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/60">
+                  <p className="mt-3 text-sm leading-relaxed whitespace-pre-line text-white/60">
                     {note.description}
                   </p>
                 </div>
